@@ -1,8 +1,8 @@
 module.exports = {
   siteMetadata: {
-    title: `Gatsby Default Starter`,
-    description: `Kick off your next, great Gatsby project with this default starter. This barebones starter ships with the main Gatsby configuration files you might need.`,
-    author: `@gatsbyjs`,
+    title: `L'Oven Bakeshop`,
+    description: `L’Oven is more than just a bakery, it is a business created specifically to train and hire people with intellectual and developmental disabilities (IDD).`,
+    author: `Twyla Mount`,
   },
   plugins: [
     `gatsby-plugin-react-helmet`,
