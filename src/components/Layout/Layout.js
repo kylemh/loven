@@ -3,7 +3,7 @@ import PropTypes from 'prop-types'
 import { StaticQuery, graphql } from 'gatsby'
 
 import { PageHeader, PageContent, PageFooter } from '../Page'
-import HeroBanner from '../HeroBanner'
+import Container from '../Container'
 
 import './Layout.css'
 
@@ -22,7 +22,9 @@ const Layout = ({ children }) => (
       <>
         <PageHeader />
 
-        <HeroBanner title={data.site.siteMetadata.title} />
+        <Container isFullViewportHeight>
+          <h1>{data.site.siteMetadata.title}</h1>
+        </Container>
 
         <PageContent>{children}</PageContent>
 
