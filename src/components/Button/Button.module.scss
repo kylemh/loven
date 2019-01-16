@@ -39,7 +39,7 @@
   color: $white;
 
   &:hover:enabled {
-    background-color: darken($color: $secondaryColor, $amount: 5)
+    background-color: darken($color: $secondaryColor, $amount: 5);
     color: $white;
   }
 }
