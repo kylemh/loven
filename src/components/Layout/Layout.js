@@ -7,7 +7,7 @@ import Container from '../Container'
 
 import './Layout.css'
 
-const Layout = ({ children }) => (
+const Layout = ({ backgroundImageSource, children, isFullViewportHeight }) => (
   <StaticQuery
     query={graphql`
       query SiteTitleQuery {
@@ -22,7 +22,10 @@ const Layout = ({ children }) => (
       <>
         <PageHeader />
 
-        <Container isFullViewportHeight>
+        <Container
+          backgroundImageSource={backgroundImageSource}
+          isFullViewportHeight={isFullViewportHeight}
+        >
           <h1>{data.site.siteMetadata.title}</h1>
         </Container>
 
@@ -35,7 +38,14 @@ const Layout = ({ children }) => (
 )
 
 Layout.propTypes = {
+  backgroundImageSource: PropTypes.string,
   children: PropTypes.node.isRequired,
+  isFullViewportHeight: PropTypes.bool,
+}
+
+Layout.defaultProps = {
+  backgroundImageSource: null,
+  isFullViewportHeight: false,
 }
 
 export default Layout
