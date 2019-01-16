@@ -1,6 +1,6 @@
-import React from 'react'
-import { Link } from 'gatsby'
-import styles from './PageHeader.module.scss'
+import React from 'react';
+import { Link } from 'gatsby';
+import styles from './PageHeader.module.scss';
 
 const PageHeader = () => (
   <header className={styles.PageHeader}>
@@ -10,6 +10,6 @@ const PageHeader = () => (
       </Link>
     </nav>
   </header>
-)
+);
 
-export default PageHeader
+export default PageHeader;

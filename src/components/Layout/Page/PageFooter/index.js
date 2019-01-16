@@ -1,3 +1,3 @@
-import PageFooter from './PageFooter'
+import PageFooter from './PageFooter';
 
-export default PageFooter
+export default PageFooter;
