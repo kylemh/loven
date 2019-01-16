@@ -1,5 +1,7 @@
+@import '../../styles/variables.scss';
+
 .Container {
-  background-color: black;
+  background-color: $primaryColor;
   color: white;
   fill: white;
   background-position: center;
