@@ -1,12 +1,11 @@
 import React from 'react';
-import { Link } from 'gatsby';
 
 import styles from '../styles/pages/index.module.scss';
 import Logo from '../images/loven-logo.svg';
 import CoverImageSource from '../images/overhead-3-pies.jpg';
 import Layout from '../components/Layout';
 import Container from '../components/Container';
-import SEO from '../components/seo';
+import SEO from '../components/SEO';
 import Button from '../components/Button';
 
 const IndexPage = () => (
