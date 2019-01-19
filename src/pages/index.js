@@ -1,6 +1,8 @@
 import React from 'react';
 import { Link } from 'gatsby';
 
+import styles from '../styles/pages/index.module.scss';
+import Logo from '../images/loven-logo.svg';
 import CoverImageSource from '../images/overhead-3-pies.jpg';
 import Layout from '../components/Layout';
 import Container from '../components/Container';
@@ -12,11 +14,14 @@ const IndexPage = () => (
     <SEO title="Home" keywords={[`L'oven`, `Bakeshop`, `New Orleans`]} />
 
     <Container backgroundImageSource={CoverImageSource} isFullViewportHeight>
-      <h1>L'Oven Bakeshop</h1>
+      <img alt="L'oven Logo" src={Logo} className={styles.logo} />
+
+      <p className={styles.ctaParagraph}>
+        Spread some L'oven by subscribing to our bakery boxes!
+      </p>
+
       <Button>Subscribe</Button>
     </Container>
-
-    <Link to="/subscriptions/">Go to subscriptions</Link>
 
     <Container>
       <h3>Who We Are</h3>
