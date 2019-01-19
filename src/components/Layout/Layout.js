@@ -19,7 +19,7 @@ const Layout = ({ children }) => (
     `}
     render={data => (
       <>
-        <PageHeader />
+        {/* <PageHeader /> */}
         <PageContent>{children}</PageContent>
         <PageFooter />
       </>
