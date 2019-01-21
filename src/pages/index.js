@@ -8,7 +8,7 @@ import ImgSrcWomanMixingBowl from '../images/mixing-bowl.jpg';
 import ImgSrcWorkersPosing from '../images/pie-gang-signs.jpg';
 import ImgSrcTwyla from '../images/twyla-in-the-kitchen.jpg';
 
-import Button from '../components/Button';
+import { LinkButton } from '../components/Button';
 import Container from '../components/Container';
 import Layout from '../components/Layout';
 import Section from '../components/Section';
@@ -25,7 +25,7 @@ const IndexPage = () => (
         Spread some L'oven by subscribing to our bakery boxes!
       </h4>
 
-      <Button>Subscribe</Button>
+      <LinkButton to="/subscribe">Subscribe</LinkButton>
     </Container>
 
     <Container className={styles.heroBuffer}>
