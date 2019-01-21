@@ -1,11 +1,33 @@
-.ctaParagraph {
-  max-width: 500px;
-  text-align: center;
-}
-
 .logo {
   height: 175px;
   width: 175px;
   margin: 0;
   padding-bottom: 2rem;
+}
+
+.ctaParagraph {
+  max-width: 500px;
+  text-align: center;
+}
+
+.heroBuffer {
+  padding-top: 2rem;
+}
+
+.sectionText {
+  max-width: 500px;
+  margin: 1rem 2rem;
+
+  @media screen and (max-width: 600px) {
+    margin: 1rem 0;
+  }
+}
+
+.sectionImage {
+  max-width: 400px;
+  height: auto;
+
+  @media screen and (max-width: 600px) {
+    max-width: 275px;
+  }
 }
