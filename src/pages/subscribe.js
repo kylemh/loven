@@ -12,13 +12,21 @@ const Subscribe = () => (
     <Container isFullViewportHeight>
       <h1>Subscribe To Bakery Boxes</h1>
 
-      {/* <p>
-        Being more than just a bakery also extends to our product. We don't make
-        the goods until you buy in - nothing is sitting on a window sill for
-        hours. We deliver it right to your home immediately after baking it. The
-        catch is that we only deliver once a month, on a non-refundable 12-month
-        subscription basis.
-      </p> */}
+      <p>
+        Fresh, seasonal pastries made from local ingredients delivered to your
+        door the first Sunday of every month. A L'Oven Bakeshop Bakery Box
+        subscription will get you hand-delivered, delicious pastries while
+        giving people with intellectual and developmental disabilities job
+        training and employment. Each box contains a unique, seasonal pastry and
+        educational information on different exceptionalities we work with in
+        our kitchen.
+      </p>
+
+      <p>
+        Subscriptions are $30 a month, billed monthly. Sorry, no substitutions
+        or alterations to ingredients at this time. A month may be skipped or
+        reallocated if emailed 7 days prior to delivery.
+      </p>
 
       <Link to="/">Go back to the homepage</Link>
     </Container>
