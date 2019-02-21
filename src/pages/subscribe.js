@@ -27,16 +27,18 @@ const Subscribe = () => (
     <Container isFullViewportHeight>
       <h1>Subscribe To Bakery Boxes</h1>
 
-      <PayPalButton
-        client={CLIENT}
-        env={ENV}
-        commit={true}
-        currency={'USD'}
-        total={100}
-        onSuccess={onSuccess}
-        onError={onError}
-        onCancel={onCancel}
-      />
+      {typeof window !== 'undefined' ? (
+        <PayPalButton
+          client={CLIENT}
+          env={ENV}
+          commit={true}
+          currency={'USD'}
+          total={100}
+          onSuccess={onSuccess}
+          onError={onError}
+          onCancel={onCancel}
+        />
+      ) : null}
 
       <br />
 
