@@ -8,8 +8,10 @@ class PayPalButton extends Component {
   constructor(props) {
     super(props);
 
-    window.React = React;
-    window.ReactDOM = ReactDOM;
+    if (typeof window !== 'undefined') {
+      window.React = React;
+      window.ReactDOM = ReactDOM;
+    }
   }
 
   static propTypes = {
@@ -92,10 +94,13 @@ class PayPalButton extends Component {
         onSuccess(payment);
       });
 
-    const ReactButton = paypal.Button.driver('react', {
-      React: window.React,
-      ReactDOM: window.ReactDOM,
-    });
+    const ReactButton =
+      typeof window !== 'undefined'
+        ? paypal.Button.driver('react', {
+            React: window.React,
+            ReactDOM: window.ReactDOM,
+          })
+        : null;
 
     return (
       <div>
