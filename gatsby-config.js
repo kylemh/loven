@@ -9,7 +9,6 @@ module.exports = {
     author: `Twyla Mount`,
   },
   plugins: [
-    `gatsby-plugin-react-helmet`,
     {
       resolve: `gatsby-source-filesystem`,
       options: {

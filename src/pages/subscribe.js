@@ -1,24 +1,9 @@
 import React from 'react';
-import { Link } from 'gatsby';
 
+import { LinkButton } from '../components/Button';
 import Container from '../components/Container';
 import Layout from '../components/Layout';
-import PayPalButton from '../components/PayPalButton';
 import SEO from '../components/SEO';
-
-const CLIENT = {
-  sandbox: process.env.GATSBY_PAYPAL_SANDBOX,
-  production: process.env.GATSBY_PAYPAL_PRODUCTION,
-};
-
-const ENV = process.env.NODE_ENV === 'production' ? 'production' : 'sandbox';
-
-const onSuccess = payment => console.log('Successful payment!', payment);
-
-const onError = error =>
-  console.log('Erroneous payment OR failed to load script!', error);
-
-const onCancel = data => console.log('Cancelled payment!', data);
 
 const Subscribe = () => (
   <Layout>
@@ -27,18 +12,7 @@ const Subscribe = () => (
     <Container isFullViewportHeight>
       <h1>Subscribe To Bakery Boxes</h1>
 
-      {typeof window !== 'undefined' ? (
-        <PayPalButton
-          client={CLIENT}
-          env={ENV}
-          commit={true}
-          currency={'USD'}
-          total={100}
-          onSuccess={onSuccess}
-          onError={onError}
-          onCancel={onCancel}
-        />
-      ) : null}
+      {/* some button here */}
 
       <br />
 
@@ -58,9 +32,9 @@ const Subscribe = () => (
         reallocated if emailed 7 days prior to delivery.
       </p>
 
-      <Link to="/" style={{ color: 'blue' }}>
+      <LinkButton to="/" theme="secondary">
         Go back to the homepage
-      </Link>
+      </LinkButton>
     </Container>
   </Layout>
 );

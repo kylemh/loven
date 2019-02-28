@@ -1044,11 +1044,6 @@
   resolved "https://registry.yarnpkg.com/@xtuc/long/-/long-4.2.1.tgz#5c85d662f76fa1d34575766c5dcd6615abcd30d8"
   integrity sha512-FZdkNBDqBRHKQ2MEbSC17xnPFOhZxeJ2YGSfr2BKf3sujG49Qe3bB+rGCwQfIaA7WHnGeGkSijX4FuBCdrzW/g==
 
-Base64@^1.0.0:
-  version "1.0.1"
-  resolved "https://registry.yarnpkg.com/Base64/-/Base64-1.0.1.tgz#def45cc50c961bcc9bf2321d0f52bcbfec1f1bb1"
-  integrity sha1-3vRcxQyWG8yb8jIdD1K8v+wfG7E=
-
 abbrev@1:
   version "1.1.1"
   resolved "https://registry.yarnpkg.com/abbrev/-/abbrev-1.1.1.tgz#f8f2c887ad10bf67f634f005b6987fed3179aac8"
@@ -2032,22 +2027,6 @@ bcrypt-pbkdf@^1.0.0:
   dependencies:
     tweetnacl "^0.14.3"
 
-beaver-logger@^3.0.17, beaver-logger@^3.0.6:
-  version "3.0.17"
-  resolved "https://registry.yarnpkg.com/beaver-logger/-/beaver-logger-3.0.17.tgz#59d201ab9c7359e6250d10f3a72bf06dcc4c2866"
-  integrity sha512-tDc3/YGdUjjsyxG3ZpK5kPTDKm7xj9gXsThZuB0SJg2mi+EwPnkL7liiJ6IGkHb9J5haH3HUu+nB03UOdP/JFw==
-  dependencies:
-    zalgo-promise "^1.0.26"
-
-belter@^1.0.77:
-  version "1.0.85"
-  resolved "https://registry.yarnpkg.com/belter/-/belter-1.0.85.tgz#d643a4a1df57c84391254f95c4387f9adf1edf27"
-  integrity sha512-XuVck/HWgjxBIWoLk4JXIrUOO/f2wGJHOP5fd5dmf1uJppA2qdtRKddL3EwMEL4+6NhQ5qoDD2w2aAhuP57rLQ==
-  dependencies:
-    cross-domain-safe-weakmap "^1.0.20"
-    cross-domain-utils "^2.0.10"
-    zalgo-promise "^1.0.28"
-
 better-assert@~1.0.0:
   version "1.0.2"
   resolved "https://registry.yarnpkg.com/better-assert/-/better-assert-1.0.2.tgz#40866b9e1b9e0b55b481894311e68faffaebc522"
@@ -2204,11 +2183,6 @@ boolbase@^1.0.0, boolbase@~1.0.0:
   version "1.0.0"
   resolved "https://registry.yarnpkg.com/boolbase/-/boolbase-1.0.0.tgz#68dff5fbe60c51eb37725ea9e3ed310dcc1e776e"
   integrity sha1-aN/1++YMUes3cl6p4+0xDcwed24=
-
-bowser@^1.7.1:
-  version "1.9.4"
-  resolved "https://registry.yarnpkg.com/bowser/-/bowser-1.9.4.tgz#890c58a2813a9d3243704334fa81b96a5c150c9a"
-  integrity sha512-9IdMmj2KjigRq6oWhmwv1W36pDuA4STQZ8q6YO9um+x07xgYNCD3Oou+WP/3L1HNz7iqythGet3/p4wvc8AAwQ==
 
 boxen@^1.2.1:
   version "1.3.0"
@@ -3149,20 +3123,6 @@ create-react-context@^0.2.1:
   dependencies:
     fbjs "^0.8.0"
     gud "^1.0.0"
-
-cross-domain-safe-weakmap@^1.0.1, cross-domain-safe-weakmap@^1.0.20, cross-domain-safe-weakmap@^1.0.22:
-  version "1.0.23"
-  resolved "https://registry.yarnpkg.com/cross-domain-safe-weakmap/-/cross-domain-safe-weakmap-1.0.23.tgz#48e662e7ed2dcb71b1652e75a8c3fac7840189c1"
-  integrity sha512-yGsAJzibnlDcWESitCcO6mAbywWL+jV2woftEPgyfuPcA6sFdT1TGI99DZPZfyYxkFPKpP7tCgQcH2V5CJVUaQ==
-  dependencies:
-    cross-domain-utils "^2.0.0"
-
-cross-domain-utils@^2.0.0, cross-domain-utils@^2.0.1, cross-domain-utils@^2.0.10, cross-domain-utils@^2.0.16:
-  version "2.0.23"
-  resolved "https://registry.yarnpkg.com/cross-domain-utils/-/cross-domain-utils-2.0.23.tgz#b38b5c4e41f9026b2b73b0f1d75b2ca5955ca19a"
-  integrity sha512-xuVAS97YLJnqCALQeV8+4AIjzGPDK4ldmtRaReMPFbNgr3io+zLbGDjuzhLYgrVeWg6w76oALB8eiYA+HVvvaQ==
-  dependencies:
-    zalgo-promise "^1.0.11"
 
 cross-fetch@2.2.2:
   version "2.2.2"
@@ -4428,11 +4388,6 @@ executable@^4.1.0:
   dependencies:
     pify "^2.2.0"
 
-exenv@^1.2.1:
-  version "1.2.2"
-  resolved "https://registry.yarnpkg.com/exenv/-/exenv-1.2.2.tgz#2ae78e85d9894158670b03d47bec1f03bd91bb9d"
-  integrity sha1-KueOhdmJQVhnCwPUe+wfA72Ru50=
-
 exif-parser@^0.1.9:
   version "0.1.12"
   resolved "https://registry.yarnpkg.com/exif-parser/-/exif-parser-0.1.12.tgz#58a9d2d72c02c1f6f02a0ef4a9166272b7760922"
@@ -5143,10 +5098,10 @@ gatsby-plugin-page-creator@^2.0.5:
     parse-filepath "^1.0.1"
     slash "^1.0.0"
 
-gatsby-plugin-react-helmet@^3.0.2:
-  version "3.0.5"
-  resolved "https://registry.yarnpkg.com/gatsby-plugin-react-helmet/-/gatsby-plugin-react-helmet-3.0.5.tgz#eaeca7c83c6c273d31454598949dd0d3b4ff5f31"
-  integrity sha512-Xn8d4EckfUkO3xB8qfjn1AcqeA2fYgd6Mbin3RHc/Zu6YRiOQqdJAVBXz+7PbFpTt+6GCluKklEpFUA4RS4oYw==
+gatsby-plugin-react-helmet@^3.0.6:
+  version "3.0.6"
+  resolved "https://registry.yarnpkg.com/gatsby-plugin-react-helmet/-/gatsby-plugin-react-helmet-3.0.6.tgz#552d04e4e3a99562bae950a8cdfab672987158fb"
+  integrity sha512-y8YRZ660HOsplv9LN/RVxXJquRukvgcoMhGba40NzeocIKcVjkHdk0lrpWKGdxReuLlFQEn4KrX7EbbKN1/ylg==
   dependencies:
     "@babel/runtime" "^7.0.0"
 
@@ -5825,11 +5780,6 @@ hex-color-regex@^1.1.0:
   resolved "https://registry.yarnpkg.com/hex-color-regex/-/hex-color-regex-1.1.0.tgz#4c06fccb4602fe2602b3c93df82d7e7dbf1a8a8e"
   integrity sha512-l9sfDFsuqtOqKDsQdqrMRk0U85RZc0RtOR9yPI7mRVOa4FsR/BVnZ0shmQRM96Ji99kYZP/7hn1cedc1+ApsTQ==
 
-hi-base32@^0.5.0:
-  version "0.5.0"
-  resolved "https://registry.yarnpkg.com/hi-base32/-/hi-base32-0.5.0.tgz#61329f76a31f31008533f1c36f2473e259d64571"
-  integrity sha512-DDRmxSyoYuvjUb9EnXdoiMChBZ7ZcUVJsK5Frd3kqMhuBxvmZdnBeynAVfj7/ECbn++CekcoprvC/rprHPAtow==
-
 hmac-drbg@^1.0.0:
   version "1.0.1"
   resolved "https://registry.yarnpkg.com/hmac-drbg/-/hmac-drbg-1.0.1.tgz#d2745701025a6c775a6c545793ed502fc0c649a1"
@@ -5843,11 +5793,6 @@ hoek@4.x.x:
   version "4.2.1"
   resolved "https://registry.yarnpkg.com/hoek/-/hoek-4.2.1.tgz#9634502aa12c445dd5a7c5734b572bb8738aacbb"
   integrity sha512-QLg82fGkfnJ/4iy1xZ81/9SIJiq1NGFUMGs6ParyjBZr6jW2Ufj/snDqTHixNlHdPNwN2RLVD0Pi3igeK9+JfA==
-
-hoist-non-react-statics@^1.0.3:
-  version "1.2.0"
-  resolved "https://registry.yarnpkg.com/hoist-non-react-statics/-/hoist-non-react-statics-1.2.0.tgz#aa448cf0986d55cc40773b17174b7dd066cb7cfb"
-  integrity sha1-qkSM8JhtVcxAdzsXF0t90GbLfPs=
 
 hoist-non-react-statics@^2.5.0:
   version "2.5.5"
@@ -8564,20 +8509,6 @@ path-type@^3.0.0:
   dependencies:
     pify "^3.0.0"
 
-paypal-checkout@^4.0.253:
-  version "4.0.253"
-  resolved "https://registry.yarnpkg.com/paypal-checkout/-/paypal-checkout-4.0.253.tgz#2284c1da113323be2371b065c878cff9fed4c3b4"
-  integrity sha512-dwsOP/tD8wUREXlicSyRtwmd9kjDtN/3o5vf1DwSUg+gu5cVc1Ms35JdBjCdbBfDdiWsCmWhSYhS87xF0pf32w==
-  dependencies:
-    Base64 "^1.0.0"
-    beaver-logger "^3.0.6"
-    bowser "^1.7.1"
-    cross-domain-utils "^2.0.1"
-    hi-base32 "^0.5.0"
-    post-robot "^8.0.0"
-    zalgo-promise "^1.0.10"
-    zoid "^6.0.67"
-
 pbkdf2@^3.0.3:
   version "3.0.17"
   resolved "https://registry.yarnpkg.com/pbkdf2/-/pbkdf2-3.0.17.tgz#976c206530617b14ebb32114239f7b09336e93a6"
@@ -8697,15 +8628,6 @@ posix-character-classes@^0.1.0:
   version "0.1.1"
   resolved "https://registry.yarnpkg.com/posix-character-classes/-/posix-character-classes-0.1.1.tgz#01eac0fe3b5af71a2a6c02feabb8c1fef7e00eab"
   integrity sha1-AerA/jta9xoqbAL+q7jB/vfgDqs=
-
-post-robot@^8.0.0, post-robot@^8.0.29:
-  version "8.0.30"
-  resolved "https://registry.yarnpkg.com/post-robot/-/post-robot-8.0.30.tgz#5aac91bb996751549a3c273507b6448a293f6c1f"
-  integrity sha512-xo4TudIX85q2vKehlGcVlbYJyrG+2CU+s5zXDpxAba8RzjGPAT2GXpCzNI2TDaiB+UH1Y/rgSNC9tKSyVNwW8g==
-  dependencies:
-    cross-domain-safe-weakmap "^1.0.1"
-    cross-domain-utils "^2.0.0"
-    zalgo-promise "^1.0.3"
 
 postcss-calc@^7.0.0:
   version "7.0.1"
@@ -9173,7 +9095,7 @@ promise@^7.1.1:
   dependencies:
     asap "~2.0.3"
 
-prop-types@^15.5.4, prop-types@^15.6.1, prop-types@^15.6.2:
+prop-types@^15.6.1, prop-types@^15.6.2:
   version "15.6.2"
   resolved "https://registry.yarnpkg.com/prop-types/-/prop-types-15.6.2.tgz#05d5ca77b4453e985d60fc7ff8c859094a497102"
   integrity sha512-3pboPvLiWD7dkI3qf3KbUe6hKFKa52w+AE0VCqECtf+QHAKgOL37tTaNCnuX1nAAQ4ZhyP+kYVKf8rLmJ/feDQ==
@@ -9367,13 +9289,6 @@ rc@^1.1.7:
     minimist "^1.2.0"
     strip-json-comments "~2.0.1"
 
-react-async-script-loader@^0.3.0:
-  version "0.3.0"
-  resolved "https://registry.yarnpkg.com/react-async-script-loader/-/react-async-script-loader-0.3.0.tgz#c742b3ca25e08ba61ab7eb64371f814027692b86"
-  integrity sha1-x0KzyiXgi6Yat+tkNx+BQCdpK4Y=
-  dependencies:
-    hoist-non-react-statics "^1.0.3"
-
 react-dev-utils@^4.2.1:
   version "4.2.3"
   resolved "https://registry.yarnpkg.com/react-dev-utils/-/react-dev-utils-4.2.3.tgz#5b42d9ea58d5e9e017a2f57a40a8af408a3a46fb"
@@ -9413,16 +9328,6 @@ react-error-overlay@^3.0.0:
   resolved "https://registry.yarnpkg.com/react-error-overlay/-/react-error-overlay-3.0.0.tgz#c2bc8f4d91f1375b3dad6d75265d51cd5eeaf655"
   integrity sha512-XzgvowFrwDo6TWcpJ/WTiarb9UI6lhA4PMzS7n1joK3sHfBBBOQHUc0U4u57D6DWO9vHv6lVSWx2Q/Ymfyv4hw==
 
-react-helmet@^5.2.0:
-  version "5.2.0"
-  resolved "https://registry.yarnpkg.com/react-helmet/-/react-helmet-5.2.0.tgz#a81811df21313a6d55c5f058c4aeba5d6f3d97a7"
-  integrity sha1-qBgR3yExOm1VxfBYxK66XW89l6c=
-  dependencies:
-    deep-equal "^1.0.1"
-    object-assign "^4.1.1"
-    prop-types "^15.5.4"
-    react-side-effect "^1.1.0"
-
 react-hot-loader@^4.6.2:
   version "4.6.3"
   resolved "https://registry.yarnpkg.com/react-hot-loader/-/react-hot-loader-4.6.3.tgz#d9c8923c45b35fd51538ba4297081a00be6bccb1"
@@ -9442,14 +9347,6 @@ react-lifecycles-compat@^3.0.4:
   version "3.0.4"
   resolved "https://registry.yarnpkg.com/react-lifecycles-compat/-/react-lifecycles-compat-3.0.4.tgz#4f1a273afdfc8f3488a8c516bfda78f872352362"
   integrity sha512-fBASbA6LnOU9dOU2eW7aQ8xmYBSXUIWr+UmF9b1efZBazGNO+rcXT/icdKnYm2pTwcRylVUYwW7H1PHfLekVzA==
-
-react-side-effect@^1.1.0:
-  version "1.1.5"
-  resolved "https://registry.yarnpkg.com/react-side-effect/-/react-side-effect-1.1.5.tgz#f26059e50ed9c626d91d661b9f3c8bb38cd0ff2d"
-  integrity sha512-Z2ZJE4p/jIfvUpiUMRydEVpQRf2f8GMHczT6qLcARmX7QRb28JDBTpnM2g/i5y/p7ZDEXYGHWg0RbhikE+hJRw==
-  dependencies:
-    exenv "^1.2.1"
-    shallowequal "^1.0.1"
 
 react@^16.6.3:
   version "16.7.0"
@@ -10179,7 +10076,7 @@ shallow-compare@^1.2.2:
   resolved "https://registry.yarnpkg.com/shallow-compare/-/shallow-compare-1.2.2.tgz#fa4794627bf455a47c4f56881d8a6132d581ffdb"
   integrity sha512-LUMFi+RppPlrHzbqmFnINTrazo0lPNwhcgzuAXVVcfy/mqPDrQmHAyz5bvV0gDAuRFrk804V0HpQ6u9sZ0tBeg==
 
-shallowequal@^1.0.1, shallowequal@^1.0.2:
+shallowequal@^1.0.2:
   version "1.1.0"
   resolved "https://registry.yarnpkg.com/shallowequal/-/shallowequal-1.1.0.tgz#188d521de95b9087404fd4dcb68b13df0ae4e7f8"
   integrity sha512-y0m1JoUZSlPAjXVtPPW70aZWfIL/dSP7AFkRnniLCrK/8MDKog3TySTBmckD+RObVxH0v4Tox67+F14PdED2oQ==
@@ -12039,11 +11936,6 @@ yurnalist@^1.0.2:
     semver "^5.1.0"
     strip-bom "^3.0.0"
 
-zalgo-promise@^1.0.10, zalgo-promise@^1.0.11, zalgo-promise@^1.0.26, zalgo-promise@^1.0.28, zalgo-promise@^1.0.3, zalgo-promise@^1.0.34:
-  version "1.0.37"
-  resolved "https://registry.yarnpkg.com/zalgo-promise/-/zalgo-promise-1.0.37.tgz#7408f8f0af586f6ee32fa012c68a173cf7c3fd5a"
-  integrity sha512-KFz47YFobpPzGJ2h504r2Vq9uZPdhb5uodVmz595oK3vXR56CvSxo439lQUOWFkM5tqN1Ugc21/qjOjKN/gVMw==
-
 zen-observable-ts@^0.8.13:
   version "0.8.13"
   resolved "https://registry.yarnpkg.com/zen-observable-ts/-/zen-observable-ts-0.8.13.tgz#ae1fd77c84ef95510188b1f8bca579d7a5448fc2"
@@ -12055,16 +11947,3 @@ zen-observable@^0.8.0:
   version "0.8.11"
   resolved "https://registry.yarnpkg.com/zen-observable/-/zen-observable-0.8.11.tgz#d3415885eeeb42ee5abb9821c95bb518fcd6d199"
   integrity sha512-N3xXQVr4L61rZvGMpWe8XoCGX8vhU35dPyQ4fm5CY/KDlG0F75un14hjbckPXTDuKUY6V0dqR2giT6xN8Y4GEQ==
-
-zoid@^6.0.67:
-  version "6.0.70"
-  resolved "https://registry.yarnpkg.com/zoid/-/zoid-6.0.70.tgz#a40c01a8229adcde416257f9a278435cb8ed48c3"
-  integrity sha512-yvdQbi6ZZGrEo6rMi86gdsxOGrctKjtLIK5xhy+fP1x8eYymeChPzTRiF9mZYGAgzyq/dR6uCN0vYEo2Npu1Yw==
-  dependencies:
-    beaver-logger "^3.0.17"
-    belter "^1.0.77"
-    cross-domain-safe-weakmap "^1.0.22"
-    cross-domain-utils "^2.0.16"
-    hi-base32 "^0.5.0"
-    post-robot "^8.0.29"
-    zalgo-promise "^1.0.34"
