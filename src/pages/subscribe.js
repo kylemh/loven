@@ -1,6 +1,7 @@
 import React from 'react';
 
 import { LinkButton } from '../components/Button';
+import Checkout from '../components/Checkout';
 import Container from '../components/Container';
 import Layout from '../components/Layout';
 import SEO from '../components/SEO';
@@ -12,7 +13,7 @@ const Subscribe = () => (
     <Container isFullViewportHeight>
       <h1>Subscribe To Bakery Boxes</h1>
 
-      {/* some button here */}
+      <Checkout />
 
       <br />
 
