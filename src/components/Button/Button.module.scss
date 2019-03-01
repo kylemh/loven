@@ -33,12 +33,11 @@
 }
 
 .secondary {
-  background-color: $secondaryColor;
-  color: $white;
+  background-color: #ffffff;
+  color: $primaryColor;
 
   &:hover:enabled {
-    background-color: darken($color: $secondaryColor, $amount: 5);
-    color: $white;
+    background-color: darken($color: $white, $amount: 5);
   }
 }
 

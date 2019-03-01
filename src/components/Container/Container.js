@@ -11,7 +11,7 @@ const Container = ({
 }) => {
   // See https://css-tricks.com/tinted-images-multiple-backgrounds/ for explanation
   const darkOverlay =
-    'linear-gradient(rgba(36, 48, 69, 0.65),rgba(36, 48, 69, 0.65))';
+    'linear-gradient(rgba(36, 48, 69, 0.75),rgba(36, 48, 69, 0.75))';
   const dynamicBackgroundImage = backgroundImageSource
     ? {
         backgroundImage: `${darkOverlay}, url(${backgroundImageSource})`,
