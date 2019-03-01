@@ -2,7 +2,7 @@
 
 .Button {
   display: inline-block;
-  border: 2px solid transparent;
+  border: 2px solid currentColor;
   border-radius: 25px;
   outline: none;
   cursor: pointer;
@@ -13,18 +13,17 @@
   vertical-align: middle;
   line-height: 1.25;
   min-width: 175px;
-  padding: 0.75rem;
+  padding: 0.9rem 0.75rem 0.75rem 0.75rem;
   white-space: nowrap;
   transition: 0.2s linear background-color, 0.2s linear color;
 
   &:focus {
-    border-color: $white;
+    border-color: darken($color: $primaryColor, $amount: 5);
   }
 }
 
 .primary {
   background-color: $primaryColor;
-  border-color: $primaryColor;
   color: $white;
 
   &:hover:enabled {
@@ -35,7 +34,6 @@
 
 .secondary {
   background-color: $secondaryColor;
-  border-color: $secondaryColor;
   color: $white;
 
   &:hover:enabled {

@@ -37,7 +37,7 @@ module.exports = {
       resolve: 'gatsby-plugin-web-font-loader',
       options: {
         google: {
-          families: ['Cormorant Infant', 'Roboto'],
+          families: ['Dancing Script', 'Josefin Sans'],
         },
       },
     },

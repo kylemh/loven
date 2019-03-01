@@ -1,5 +1,6 @@
 import React from 'react';
 
+import { Link } from 'gatsby';
 import { LinkButton } from '../components/Button';
 import Checkout from '../components/Checkout';
 import Container from '../components/Container';
@@ -33,9 +34,7 @@ const Subscribe = () => (
         reallocated if emailed 7 days prior to delivery.
       </p>
 
-      <LinkButton to="/" theme="secondary">
-        Go back to the homepage
-      </LinkButton>
+      <Link to="/">Go back to the homepage</Link>
     </Container>
   </Layout>
 );

@@ -10,6 +10,7 @@ import ImgSrcTwyla from '../images/twyla-in-the-kitchen.jpg';
 
 import { LinkButton } from '../components/Button';
 import Container from '../components/Container';
+import Heading from '../components/Heading';
 import Layout from '../components/Layout';
 import Section from '../components/Section';
 import SEO from '../components/SEO';
@@ -17,22 +18,25 @@ import SEO from '../components/SEO';
 const IndexPage = () => (
   <Layout>
     <SEO title="Home" keywords={[`L'oven`, `Bakeshop`, `New Orleans`]} />
-
     <Container backgroundImageSource={ImgSrcCover} isFullViewportHeight>
       <img alt="L'oven Logo" src={Logo} className={styles.logo} />
 
-      <h4 className={styles.ctaParagraph}>
+      <span className={styles.ctaParagraph}>
         Spread some L'oven by subscribing to our bakery boxes!
-      </h4>
+      </span>
 
       <LinkButton to="/subscribe">Subscribe</LinkButton>
     </Container>
-
     <Container className={styles.heroBuffer}>
       <Section
-        title="Who We Are"
         columns={[
           <div className={styles.sectionText}>
+            <Heading
+              className={styles.mobileCenteredText}
+              tag="h2"
+              text="Who We Are"
+              withUnderline
+            />
             <p>
               L’Oven is more than a bakery, it is a business created
               specifically to train and hire people with intellectual and
@@ -57,33 +61,40 @@ const IndexPage = () => (
         ]}
       />
     </Container>
-
     <Container>
       <Section
-        title="What We Do"
         columns={[
           <img
             src={ImgSrcWorkersPosing}
             alt="Two men pose in next to bake stand"
             className={styles.sectionImage}
           />,
-          <p className={styles.sectionText}>
-            People are at the heart of our pastries. We hire and train people
-            with intellectual and developmental disabilities to perform tasks
-            from pastry production, customer service, dishwashing, machine
-            maintenance, and inventory management. Our kitchen utilizes
-            volunteer job coaches to assist in vocational training for our
-            employees. We make handmade pastries using quality ingredients,
-            sourcing local, seasonal ingredients as much as possible. Baked with
-            love, always.
-          </p>,
+          <div className={styles.sectionText}>
+            <Heading
+              className={styles.mobileCenteredText}
+              tag="h2"
+              text="Who We Are"
+              withUnderline
+            />
+            <p>
+              People are at the heart of our pastries. We hire and train people
+              with intellectual and developmental disabilities to perform tasks
+              from pastry production, customer service, dishwashing, machine
+              maintenance, and inventory management. Our kitchen utilizes
+              volunteer job coaches to assist in vocational training for our
+              employees. We make handmade pastries using quality ingredients,
+              sourcing local, seasonal ingredients as much as possible. Baked
+              with love, always.
+            </p>
+          </div>,
         ]}
       />
     </Container>
 
     <Container>
+      <Heading tag="h2" text="How We Do It" withUnderline />
+
       <Section
-        title="How We Do It"
         columns={[
           <p className={styles.sectionText}>
             L’Oven was envisioned by pastry chef and special education teacher
@@ -99,12 +110,7 @@ const IndexPage = () => (
             skill of educating people with special needs with her professional
             training in pastry to create L’Oven Bakeshop.
           </p>,
-          <img
-            className={styles.sectionImage}
-            src={ImgSrcTwyla}
-            alt="Twyla working in the kitchen with two other women"
-          />,
-          <p>
+          <p className={styles.sectionText}>
             Twyla Mount is both an accomplished special education teacher and
             pastry chef. While receiving her BA in Educational Sociology at
             Hampshire College in Massachusetts she began her training in French
@@ -117,6 +123,13 @@ const IndexPage = () => (
           </p>,
         ]}
       />
+
+      <div className={styles.bigImage}>
+        <img
+          src={ImgSrcTwyla}
+          alt="Twyla working in the kitchen with two other women"
+        />
+      </div>
     </Container>
   </Layout>
 );

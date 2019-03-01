@@ -16,7 +16,7 @@ Section.defaultProps = {
 function Section({ columns, id, title }) {
   return (
     <section id={id}>
-      <h3 className={styles.title}>{title}</h3>
+      {title && <h3 className={styles.title}>{title}</h3>}
 
       <div className={styles.columnsContainer}>
         {columns.map((column, index) =>

@@ -1,13 +1,16 @@
 html {
   -ms-text-size-adjust: 100%;
   -webkit-text-size-adjust: 100%;
-  font-size: 18px;
+  font-size: 20px;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 
 body {
-  font-family: Roboto, -apple-system, Segoe UI, Oxygen, Fira Sans, Droid Sans,
-    'Helvetica Neue', sans-serif;
+  font-family: Josefin Sans, -apple-system, Segoe UI, Oxygen, Fira Sans,
+    Droid Sans, 'Helvetica Neue', sans-serif;
   margin: 0;
+  overflow-x: hidden;
 }
 
 a {
@@ -19,6 +22,7 @@ a {
 a:active,
 a:hover {
   outline-width: 0;
+  text-decoration: none;
 }
 
 abbr[title] {
@@ -396,7 +400,8 @@ p {
   padding-right: 0;
   padding-top: 0;
   margin-bottom: 1.45rem;
-  max-width: 900px;
+  max-width: 550px;
+  line-height: 1.5;
 }
 
 figure {
@@ -675,18 +680,19 @@ h3,
 h4,
 h5,
 h6 {
-  letter-spacing: 1px;
-  font-family: 'Cormorant Infant', Times, serif;
+  font-family: 'Dancing Script', 'Bradley Hand', 'Apple Chancery', cursive;
+  text-decoration: none;
+  font-weight: bold;
 }
 
 @media only screen and (max-width: 768px) {
   html {
-    font-size: 16px;
+    font-size: 17px;
   }
 }
 
 @media only screen and (max-width: 500px) {
   html {
-    font-size: 15px;
+    font-size: 16px;
   }
 }

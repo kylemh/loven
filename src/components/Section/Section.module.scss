@@ -1,11 +1,10 @@
 .title {
   text-align: center;
-  text-decoration: underline;
 }
 
 .columnsContainer {
   display: flex;
   justify-content: center;
-  align-items: center;
+  align-items: flex-start;
   flex-wrap: wrap;
 }
