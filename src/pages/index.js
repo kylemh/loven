@@ -27,6 +27,7 @@ const IndexPage = () => (
 
       <LinkButton to="/subscribe">Subscribe</LinkButton>
     </Container>
+
     <Container className={styles.heroBuffer}>
       <Section
         columns={[

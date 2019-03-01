@@ -1,7 +1,6 @@
 import React from 'react';
 
 import { Link } from 'gatsby';
-import { LinkButton } from '../components/Button';
 import Checkout from '../components/Checkout';
 import Container from '../components/Container';
 import Layout from '../components/Layout';
