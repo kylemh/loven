@@ -10,8 +10,7 @@ class Checkout extends Component {
 
   redirectToCheckout = async () => {
     const { error } = await this.stripe.redirectToCheckout({
-      items: [{ plan: 'plan_EbzcEa5yCpjaMM', quantity: 1 }],
-      successUrl: 'https://lovenbakeshop.com/thank-you/',
+      successUrl: 'https://lovenbakeshop.com/thank_you/',
       cancelUrl: 'https://lovenbakeshop.com/subscribe/',
     });
 
