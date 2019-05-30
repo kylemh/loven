@@ -21,9 +21,11 @@ const IndexPage = () => (
     <Container backgroundImageSource={ImgSrcCover} isFullViewportHeight>
       <img alt="L'oven Logo" src={Logo} className={styles.logo} />
 
-      <span className={styles.ctaParagraph}>
-        Spread some L'oven by subscribing to our bakery boxes!
-      </span>
+      <p className={styles.ctaParagraph}>
+        Spread some L'oven:
+        <br />
+        Subscribe to our bakery boxes!
+      </p>
 
       <LinkButton to="/subscribe">Subscribe</LinkButton>
     </Container>
