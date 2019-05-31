@@ -1,5 +1,3 @@
-const isDev = process.env.NODE_ENV === 'development';
-
 require('dotenv').config({
   path: `.env`,
 });
@@ -39,7 +37,7 @@ module.exports = {
       resolve: 'gatsby-plugin-web-font-loader',
       options: {
         google: {
-          families: ['Dancing Script', 'Josefin Sans'],
+          families: ['Raleway', 'Josefin Sans'],
         },
       },
     },
@@ -48,7 +46,6 @@ module.exports = {
       options: {
         spaceId: process.env.CONTENTFUL_SPACE_ID,
         accessToken: process.env.CONTENTFUL_DELIVERY_TOKEN,
-        host: isDev ? 'preview.contentful.com' : 'cdn.contentful.com',
         downloadLocal: true,
       },
     },
