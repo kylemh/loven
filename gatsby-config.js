@@ -1,3 +1,5 @@
+const isDev = process.env.NODE_ENV === 'development';
+
 require('dotenv').config({
   path: `.env`,
 });
@@ -39,6 +41,15 @@ module.exports = {
         google: {
           families: ['Dancing Script', 'Josefin Sans'],
         },
+      },
+    },
+    {
+      resolve: 'gatsby-source-contentful',
+      options: {
+        spaceId: process.env.CONTENTFUL_SPACE_ID,
+        accessToken: process.env.CONTENTFUL_ACCESS_TOKEN,
+        host: isDev ? 'preview.contentful.com' : 'cdn.contentful.com',
+        downloadLocal: true,
       },
     },
   ],
