@@ -41,9 +41,6 @@ const Hero = () => {
   return (
     <BackgroundImage
       className={styles.Hero}
-      style={{
-        height: '100vh',
-      }}
       fluid={backgroundImg.sharp.fluid}
     >
       <div className={styles.container}>
