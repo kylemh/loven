@@ -1,39 +1,43 @@
 import React from 'react';
-import BackgroundImage from 'gatsby-background-image';
 import { graphql, useStaticQuery } from 'gatsby';
+import BackgroundImage from 'gatsby-background-image';
+
 import Logo from '../../images/loven-logo.svg';
 import { LinkButton } from '../Button';
-import styles from './Hero.module.scss'
+import styles from './Hero.module.scss';
 
-const Hero = props => {
+const Hero = () => {
+  const { backgroundImg } = useStaticQuery(graphql`
+    query {
+      backgroundImg: file(relativePath: { eq: "overhead-3-pies.jpg" }) {
+        sharp: childImageSharp {
+          fluid {
+            ...GatsbyImageSharpFluid_withWebp
+          }
+        }
+      }
+
+      #      homePageContent: allContentfulHomePage {
+      #        nodes {
+      #          callToAction {
+      #            callToAction
+      #          }
+      #          callToActionButtonText
+      #        }
+      #      }
+    }
+  `);
+
+  // will be retrieved from Contentful query
   const content = {
-    callToAction: { callToAction: "Spread some L'oven:\nSubscribe to our Bakery Boxes!" },
+    callToAction: {
+      callToAction: "Spread some L'oven:\nSubscribe to our Bakery Boxes!",
+    },
     callToActionButtonText: 'Subscribe!',
   };
   const { callToAction } = content.callToAction;
   const { callToActionButtonText } = content;
 
-
-  const { backgroundImg } = useStaticQuery(graphql`
-    query {
-        backgroundImg: file(relativePath: { eq: "overhead-3-pies.jpg" }) {
-            sharp: childImageSharp {
-                fluid {
-                    ...GatsbyImageSharpFluid_withWebp
-                }
-            }
-        }
-
-#      homePageContent: allContentfulHomePage {
-#        nodes {
-#          callToAction {
-#            callToAction
-#          }
-#          callToActionButtonText
-#        }
-#      }
-    }
-  `);
   return (
     <BackgroundImage
       className={styles.Hero}
