@@ -1,17 +1,3 @@
-.logo {
-  height: 175px;
-  width: 175px;
-  margin: 0;
-  padding-bottom: 2rem;
-}
-
-.ctaParagraph {
-  font-size: 1.25rem;
-  font-weight: bold;
-  text-align: center;
-  text-shadow: 1px 1px 10px black;
-}
-
 .heroBuffer {
   padding-top: 2rem;
 }
@@ -21,13 +7,8 @@
 }
 
 .sectionImage {
-  max-width: 400px;
-  padding: 1rem;
-  height: auto;
-
-  @media screen and (max-width: 600px) {
-    max-width: 350px;
-  }
+  width: 400px;
+  max-width: 100%;
 }
 
 .mobileCenteredText {
@@ -38,13 +19,6 @@
 }
 
 .bigImage {
-  max-width: 550px;
-
-  @media screen and (min-width: 1165px) {
-    max-width: 750px;
-  }
-}
-
-.bigImage > img {
-  width: 100%;
+  width: 550px;
+  max-width: 100%;
 }

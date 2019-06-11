@@ -1,0 +1,4284 @@
+directive @default(value: JSON!) on INPUT_FIELD_DEFINITION
+directive @dateformat(formatString: String, locale: String) on FIELD_DEFINITION
+directive @link(by: String! = "id", from: String) on FIELD_DEFINITION
+directive @fileByRelativePath(from: String) on FIELD_DEFINITION
+directive @proxy(from: String) on FIELD_DEFINITION
+directive @infer(noDefaultResolvers: Boolean) on OBJECT
+directive @dontInfer(noDefaultResolvers: Boolean) on OBJECT
+input BooleanQueryOperatorInput {
+  eq: Boolean
+  ne: Boolean
+  in: [Boolean]
+  nin: [Boolean]
+}
+
+type ContentfulAsset implements Node {
+  id: ID!
+  parent: Node
+  children: [Node!]!
+  internal: Internal!
+  contentful_id: String
+  file: ContentfulAssetFile
+  title: String
+  description: String
+  node_locale: String
+  localFile: File
+  fixed(
+    width: Int
+    height: Int
+    quality: Int = 50
+    toFormat: ContentfulImageFormat = NO_CHANGE
+    resizingBehavior: ImageResizingBehavior
+    cropFocus: ContentfulImageCropFocus = null
+    background: String = null
+  ): ContentfulFixed
+  resolutions(
+    width: Int
+    height: Int
+    quality: Int = 50
+    toFormat: ContentfulImageFormat = NO_CHANGE
+    resizingBehavior: ImageResizingBehavior
+    cropFocus: ContentfulImageCropFocus = null
+    background: String = null
+  ): ContentfulResolutions
+  @deprecated(
+    reason: "Resolutions was deprecated in Gatsby v2. It's been renamed to \\\"fixed\\\" https://example.com/write-docs-and-fix-this-example-link"
+  )
+  fluid(
+    maxWidth: Int
+    maxHeight: Int
+    quality: Int = 50
+    toFormat: ContentfulImageFormat = NO_CHANGE
+    resizingBehavior: ImageResizingBehavior
+    cropFocus: ContentfulImageCropFocus = null
+    background: String = null
+    sizes: String
+  ): ContentfulFluid
+  sizes(
+    maxWidth: Int
+    maxHeight: Int
+    quality: Int = 50
+    toFormat: ContentfulImageFormat = NO_CHANGE
+    resizingBehavior: ImageResizingBehavior
+    cropFocus: ContentfulImageCropFocus = null
+    background: String = null
+    sizes: String
+  ): ContentfulSizes
+  @deprecated(
+    reason: "Sizes was deprecated in Gatsby v2. It's been renamed to \\\"fluid\\\" https://example.com/write-docs-and-fix-this-example-link"
+  )
+  resize(
+    width: Int
+    height: Int
+    quality: Int = 50
+    jpegProgressive: Boolean = true
+    resizingBehavior: ImageResizingBehavior
+    toFormat: ContentfulImageFormat = NO_CHANGE
+    cropFocus: ContentfulImageCropFocus = null
+    background: String = null
+  ): ContentfulResize
+}
+
+type ContentfulAssetConnection {
+  totalCount: Int!
+  edges: [ContentfulAssetEdge!]!
+  nodes: [ContentfulAsset!]!
+  pageInfo: PageInfo!
+  distinct(field: ContentfulAssetFieldsEnum!): [String!]!
+  group(
+    skip: Int
+    limit: Int
+    field: ContentfulAssetFieldsEnum!
+  ): [ContentfulAssetGroupConnection!]!
+}
+
+type ContentfulAssetEdge {
+  next: ContentfulAsset
+  node: ContentfulAsset!
+  previous: ContentfulAsset
+}
+
+enum ContentfulAssetFieldsEnum {
+  id
+  parent___id
+  parent___parent___id
+  parent___parent___parent___id
+  parent___parent___parent___children
+  parent___parent___children
+  parent___parent___children___id
+  parent___parent___children___children
+  parent___parent___internal___content
+  parent___parent___internal___contentDigest
+  parent___parent___internal___description
+  parent___parent___internal___fieldOwners
+  parent___parent___internal___ignoreType
+  parent___parent___internal___mediaType
+  parent___parent___internal___owner
+  parent___parent___internal___type
+  parent___children
+  parent___children___id
+  parent___children___parent___id
+  parent___children___parent___children
+  parent___children___children
+  parent___children___children___id
+  parent___children___children___children
+  parent___children___internal___content
+  parent___children___internal___contentDigest
+  parent___children___internal___description
+  parent___children___internal___fieldOwners
+  parent___children___internal___ignoreType
+  parent___children___internal___mediaType
+  parent___children___internal___owner
+  parent___children___internal___type
+  parent___internal___content
+  parent___internal___contentDigest
+  parent___internal___description
+  parent___internal___fieldOwners
+  parent___internal___ignoreType
+  parent___internal___mediaType
+  parent___internal___owner
+  parent___internal___type
+  children
+  children___id
+  children___parent___id
+  children___parent___parent___id
+  children___parent___parent___children
+  children___parent___children
+  children___parent___children___id
+  children___parent___children___children
+  children___parent___internal___content
+  children___parent___internal___contentDigest
+  children___parent___internal___description
+  children___parent___internal___fieldOwners
+  children___parent___internal___ignoreType
+  children___parent___internal___mediaType
+  children___parent___internal___owner
+  children___parent___internal___type
+  children___children
+  children___children___id
+  children___children___parent___id
+  children___children___parent___children
+  children___children___children
+  children___children___children___id
+  children___children___children___children
+  children___children___internal___content
+  children___children___internal___contentDigest
+  children___children___internal___description
+  children___children___internal___fieldOwners
+  children___children___internal___ignoreType
+  children___children___internal___mediaType
+  children___children___internal___owner
+  children___children___internal___type
+  children___internal___content
+  children___internal___contentDigest
+  children___internal___description
+  children___internal___fieldOwners
+  children___internal___ignoreType
+  children___internal___mediaType
+  children___internal___owner
+  children___internal___type
+  internal___content
+  internal___contentDigest
+  internal___description
+  internal___fieldOwners
+  internal___ignoreType
+  internal___mediaType
+  internal___owner
+  internal___type
+  contentful_id
+  file___url
+  file___details___size
+  file___details___image___width
+  file___details___image___height
+  file___fileName
+  file___contentType
+  title
+  description
+  node_locale
+  localFile___id
+  localFile___parent___id
+  localFile___parent___parent___id
+  localFile___parent___parent___children
+  localFile___parent___children
+  localFile___parent___children___id
+  localFile___parent___children___children
+  localFile___parent___internal___content
+  localFile___parent___internal___contentDigest
+  localFile___parent___internal___description
+  localFile___parent___internal___fieldOwners
+  localFile___parent___internal___ignoreType
+  localFile___parent___internal___mediaType
+  localFile___parent___internal___owner
+  localFile___parent___internal___type
+  localFile___children
+  localFile___children___id
+  localFile___children___parent___id
+  localFile___children___parent___children
+  localFile___children___children
+  localFile___children___children___id
+  localFile___children___children___children
+  localFile___children___internal___content
+  localFile___children___internal___contentDigest
+  localFile___children___internal___description
+  localFile___children___internal___fieldOwners
+  localFile___children___internal___ignoreType
+  localFile___children___internal___mediaType
+  localFile___children___internal___owner
+  localFile___children___internal___type
+  localFile___internal___content
+  localFile___internal___contentDigest
+  localFile___internal___description
+  localFile___internal___fieldOwners
+  localFile___internal___ignoreType
+  localFile___internal___mediaType
+  localFile___internal___owner
+  localFile___internal___type
+  localFile___sourceInstanceName
+  localFile___absolutePath
+  localFile___relativePath
+  localFile___extension
+  localFile___size
+  localFile___prettySize
+  localFile___modifiedTime
+  localFile___accessTime
+  localFile___changeTime
+  localFile___birthTime
+  localFile___root
+  localFile___dir
+  localFile___base
+  localFile___ext
+  localFile___name
+  localFile___relativeDirectory
+  localFile___dev
+  localFile___mode
+  localFile___nlink
+  localFile___uid
+  localFile___gid
+  localFile___rdev
+  localFile___ino
+  localFile___atimeMs
+  localFile___mtimeMs
+  localFile___ctimeMs
+  localFile___birthtimeMs
+  localFile___atime
+  localFile___mtime
+  localFile___ctime
+  localFile___birthtime
+  localFile___url
+  localFile___publicURL
+  fixed___base64
+  fixed___tracedSVG
+  fixed___aspectRatio
+  fixed___width
+  fixed___height
+  fixed___src
+  fixed___srcSet
+  fixed___srcWebp
+  fixed___srcSetWebp
+  resolutions___base64
+  resolutions___tracedSVG
+  resolutions___aspectRatio
+  resolutions___width
+  resolutions___height
+  resolutions___src
+  resolutions___srcSet
+  resolutions___srcWebp
+  resolutions___srcSetWebp
+  fluid___base64
+  fluid___tracedSVG
+  fluid___aspectRatio
+  fluid___src
+  fluid___srcSet
+  fluid___srcWebp
+  fluid___srcSetWebp
+  fluid___sizes
+  sizes___base64
+  sizes___tracedSVG
+  sizes___aspectRatio
+  sizes___src
+  sizes___srcSet
+  sizes___srcWebp
+  sizes___srcSetWebp
+  sizes___sizes
+  resize___base64
+  resize___tracedSVG
+  resize___src
+  resize___width
+  resize___height
+  resize___aspectRatio
+}
+
+type ContentfulAssetFile {
+  url: String
+  details: ContentfulAssetFileDetails
+  fileName: String
+  contentType: String
+}
+
+type ContentfulAssetFileDetails {
+  size: Int
+  image: ContentfulAssetFileDetailsImage
+}
+
+input ContentfulAssetFileDetailsFilterInput {
+  size: IntQueryOperatorInput
+  image: ContentfulAssetFileDetailsImageFilterInput
+}
+
+type ContentfulAssetFileDetailsImage {
+  width: Int
+  height: Int
+}
+
+input ContentfulAssetFileDetailsImageFilterInput {
+  width: IntQueryOperatorInput
+  height: IntQueryOperatorInput
+}
+
+input ContentfulAssetFileFilterInput {
+  url: StringQueryOperatorInput
+  details: ContentfulAssetFileDetailsFilterInput
+  fileName: StringQueryOperatorInput
+  contentType: StringQueryOperatorInput
+}
+
+input ContentfulAssetFilterInput {
+  id: StringQueryOperatorInput
+  parent: NodeFilterInput
+  children: NodeFilterListInput
+  internal: InternalFilterInput
+  contentful_id: StringQueryOperatorInput
+  file: ContentfulAssetFileFilterInput
+  title: StringQueryOperatorInput
+  description: StringQueryOperatorInput
+  node_locale: StringQueryOperatorInput
+  localFile: FileFilterInput
+  fixed: ContentfulFixedFilterInput
+  resolutions: ContentfulResolutionsFilterInput
+  fluid: ContentfulFluidFilterInput
+  sizes: ContentfulSizesFilterInput
+  resize: ContentfulResizeFilterInput
+}
+
+type ContentfulAssetGroupConnection {
+  totalCount: Int!
+  edges: [ContentfulAssetEdge!]!
+  nodes: [ContentfulAsset!]!
+  pageInfo: PageInfo!
+  field: String!
+  fieldValue: String
+}
+
+input ContentfulAssetSortInput {
+  fields: [ContentfulAssetFieldsEnum]
+  order: [SortOrderEnum] = [ASC]
+}
+
+type ContentfulContentType implements Node {
+  id: ID!
+  parent: Node
+  children: [Node!]!
+  internal: Internal!
+  name: String
+  displayField: String
+  description: String
+}
+
+type ContentfulContentTypeConnection {
+  totalCount: Int!
+  edges: [ContentfulContentTypeEdge!]!
+  nodes: [ContentfulContentType!]!
+  pageInfo: PageInfo!
+  distinct(field: ContentfulContentTypeFieldsEnum!): [String!]!
+  group(
+    skip: Int
+    limit: Int
+    field: ContentfulContentTypeFieldsEnum!
+  ): [ContentfulContentTypeGroupConnection!]!
+}
+
+type ContentfulContentTypeEdge {
+  next: ContentfulContentType
+  node: ContentfulContentType!
+  previous: ContentfulContentType
+}
+
+enum ContentfulContentTypeFieldsEnum {
+  id
+  parent___id
+  parent___parent___id
+  parent___parent___parent___id
+  parent___parent___parent___children
+  parent___parent___children
+  parent___parent___children___id
+  parent___parent___children___children
+  parent___parent___internal___content
+  parent___parent___internal___contentDigest
+  parent___parent___internal___description
+  parent___parent___internal___fieldOwners
+  parent___parent___internal___ignoreType
+  parent___parent___internal___mediaType
+  parent___parent___internal___owner
+  parent___parent___internal___type
+  parent___children
+  parent___children___id
+  parent___children___parent___id
+  parent___children___parent___children
+  parent___children___children
+  parent___children___children___id
+  parent___children___children___children
+  parent___children___internal___content
+  parent___children___internal___contentDigest
+  parent___children___internal___description
+  parent___children___internal___fieldOwners
+  parent___children___internal___ignoreType
+  parent___children___internal___mediaType
+  parent___children___internal___owner
+  parent___children___internal___type
+  parent___internal___content
+  parent___internal___contentDigest
+  parent___internal___description
+  parent___internal___fieldOwners
+  parent___internal___ignoreType
+  parent___internal___mediaType
+  parent___internal___owner
+  parent___internal___type
+  children
+  children___id
+  children___parent___id
+  children___parent___parent___id
+  children___parent___parent___children
+  children___parent___children
+  children___parent___children___id
+  children___parent___children___children
+  children___parent___internal___content
+  children___parent___internal___contentDigest
+  children___parent___internal___description
+  children___parent___internal___fieldOwners
+  children___parent___internal___ignoreType
+  children___parent___internal___mediaType
+  children___parent___internal___owner
+  children___parent___internal___type
+  children___children
+  children___children___id
+  children___children___parent___id
+  children___children___parent___children
+  children___children___children
+  children___children___children___id
+  children___children___children___children
+  children___children___internal___content
+  children___children___internal___contentDigest
+  children___children___internal___description
+  children___children___internal___fieldOwners
+  children___children___internal___ignoreType
+  children___children___internal___mediaType
+  children___children___internal___owner
+  children___children___internal___type
+  children___internal___content
+  children___internal___contentDigest
+  children___internal___description
+  children___internal___fieldOwners
+  children___internal___ignoreType
+  children___internal___mediaType
+  children___internal___owner
+  children___internal___type
+  internal___content
+  internal___contentDigest
+  internal___description
+  internal___fieldOwners
+  internal___ignoreType
+  internal___mediaType
+  internal___owner
+  internal___type
+  name
+  displayField
+  description
+}
+
+input ContentfulContentTypeFilterInput {
+  id: StringQueryOperatorInput
+  parent: NodeFilterInput
+  children: NodeFilterListInput
+  internal: InternalFilterInput
+  name: StringQueryOperatorInput
+  displayField: StringQueryOperatorInput
+  description: StringQueryOperatorInput
+}
+
+type ContentfulContentTypeGroupConnection {
+  totalCount: Int!
+  edges: [ContentfulContentTypeEdge!]!
+  nodes: [ContentfulContentType!]!
+  pageInfo: PageInfo!
+  field: String!
+  fieldValue: String
+}
+
+input ContentfulContentTypeSortInput {
+  fields: [ContentfulContentTypeFieldsEnum]
+  order: [SortOrderEnum] = [ASC]
+}
+
+type ContentfulFixed {
+  base64: String
+  tracedSVG: String
+  aspectRatio: Float
+  width: Float
+  height: Float
+  src: String
+  srcSet: String
+  srcWebp: String
+  srcSetWebp: String
+}
+
+input ContentfulFixedFilterInput {
+  base64: StringQueryOperatorInput
+  tracedSVG: StringQueryOperatorInput
+  aspectRatio: FloatQueryOperatorInput
+  width: FloatQueryOperatorInput
+  height: FloatQueryOperatorInput
+  src: StringQueryOperatorInput
+  srcSet: StringQueryOperatorInput
+  srcWebp: StringQueryOperatorInput
+  srcSetWebp: StringQueryOperatorInput
+}
+
+type ContentfulFluid {
+  base64: String
+  tracedSVG: String
+  aspectRatio: Float
+  src: String
+  srcSet: String
+  srcWebp: String
+  srcSetWebp: String
+  sizes: String
+}
+
+input ContentfulFluidFilterInput {
+  base64: StringQueryOperatorInput
+  tracedSVG: StringQueryOperatorInput
+  aspectRatio: FloatQueryOperatorInput
+  src: StringQueryOperatorInput
+  srcSet: StringQueryOperatorInput
+  srcWebp: StringQueryOperatorInput
+  srcSetWebp: StringQueryOperatorInput
+  sizes: StringQueryOperatorInput
+}
+
+type ContentfulHomePage implements Node {
+  id: ID!
+  parent: Node
+  children: [Node!]!
+  internal: Internal!
+  callToActionButtonText: String
+  callToAction: contentfulHomePageCallToActionRichTextNode
+  contentful_id: String
+  createdAt(
+    formatString: String
+    fromNow: Boolean
+    difference: String
+    locale: String
+  ): Date
+  updatedAt(
+    formatString: String
+    fromNow: Boolean
+    difference: String
+    locale: String
+  ): Date
+  node_locale: String
+  pageContent: contentfulHomePagePageContentRichTextNode
+  childContentfulHomePageCallToActionRichTextNode: contentfulHomePageCallToActionRichTextNode
+  childContentfulHomePageCallToActionTextNode: contentfulHomePageCallToActionTextNode
+  childContentfulHomePagePageContentRichTextNode: contentfulHomePagePageContentRichTextNode
+}
+
+type contentfulHomePageCallToActionRichTextNode implements Node {
+  id: ID!
+  parent: Node
+  children: [Node!]!
+  internal: Internal!
+  content: [contentfulHomePageCallToActionRichTextNodeContent]
+  nodeType: String
+  @deprecated(reason: "This field is deprecated, please use 'json' instead.")
+  callToAction: String
+  json: JSON
+}
+
+type contentfulHomePageCallToActionRichTextNodeConnection {
+  totalCount: Int!
+  edges: [contentfulHomePageCallToActionRichTextNodeEdge!]!
+  nodes: [contentfulHomePageCallToActionRichTextNode!]!
+  pageInfo: PageInfo!
+  distinct(
+    field: contentfulHomePageCallToActionRichTextNodeFieldsEnum!
+  ): [String!]!
+  group(
+    skip: Int
+    limit: Int
+    field: contentfulHomePageCallToActionRichTextNodeFieldsEnum!
+  ): [contentfulHomePageCallToActionRichTextNodeGroupConnection!]!
+}
+
+type contentfulHomePageCallToActionRichTextNodeContent {
+  content: [contentfulHomePageCallToActionRichTextNodeContentContent]
+  nodeType: String
+}
+
+type contentfulHomePageCallToActionRichTextNodeContentContent {
+  value: String
+  nodeType: String
+}
+
+input contentfulHomePageCallToActionRichTextNodeContentContentFilterInput {
+  value: StringQueryOperatorInput
+  nodeType: StringQueryOperatorInput
+}
+
+input contentfulHomePageCallToActionRichTextNodeContentContentFilterListInput {
+  elemMatch: contentfulHomePageCallToActionRichTextNodeContentContentFilterInput
+}
+
+input contentfulHomePageCallToActionRichTextNodeContentFilterInput {
+  content: contentfulHomePageCallToActionRichTextNodeContentContentFilterListInput
+  nodeType: StringQueryOperatorInput
+}
+
+input contentfulHomePageCallToActionRichTextNodeContentFilterListInput {
+  elemMatch: contentfulHomePageCallToActionRichTextNodeContentFilterInput
+}
+
+type contentfulHomePageCallToActionRichTextNodeEdge {
+  next: contentfulHomePageCallToActionRichTextNode
+  node: contentfulHomePageCallToActionRichTextNode!
+  previous: contentfulHomePageCallToActionRichTextNode
+}
+
+enum contentfulHomePageCallToActionRichTextNodeFieldsEnum {
+  id
+  parent___id
+  parent___parent___id
+  parent___parent___parent___id
+  parent___parent___parent___children
+  parent___parent___children
+  parent___parent___children___id
+  parent___parent___children___children
+  parent___parent___internal___content
+  parent___parent___internal___contentDigest
+  parent___parent___internal___description
+  parent___parent___internal___fieldOwners
+  parent___parent___internal___ignoreType
+  parent___parent___internal___mediaType
+  parent___parent___internal___owner
+  parent___parent___internal___type
+  parent___children
+  parent___children___id
+  parent___children___parent___id
+  parent___children___parent___children
+  parent___children___children
+  parent___children___children___id
+  parent___children___children___children
+  parent___children___internal___content
+  parent___children___internal___contentDigest
+  parent___children___internal___description
+  parent___children___internal___fieldOwners
+  parent___children___internal___ignoreType
+  parent___children___internal___mediaType
+  parent___children___internal___owner
+  parent___children___internal___type
+  parent___internal___content
+  parent___internal___contentDigest
+  parent___internal___description
+  parent___internal___fieldOwners
+  parent___internal___ignoreType
+  parent___internal___mediaType
+  parent___internal___owner
+  parent___internal___type
+  children
+  children___id
+  children___parent___id
+  children___parent___parent___id
+  children___parent___parent___children
+  children___parent___children
+  children___parent___children___id
+  children___parent___children___children
+  children___parent___internal___content
+  children___parent___internal___contentDigest
+  children___parent___internal___description
+  children___parent___internal___fieldOwners
+  children___parent___internal___ignoreType
+  children___parent___internal___mediaType
+  children___parent___internal___owner
+  children___parent___internal___type
+  children___children
+  children___children___id
+  children___children___parent___id
+  children___children___parent___children
+  children___children___children
+  children___children___children___id
+  children___children___children___children
+  children___children___internal___content
+  children___children___internal___contentDigest
+  children___children___internal___description
+  children___children___internal___fieldOwners
+  children___children___internal___ignoreType
+  children___children___internal___mediaType
+  children___children___internal___owner
+  children___children___internal___type
+  children___internal___content
+  children___internal___contentDigest
+  children___internal___description
+  children___internal___fieldOwners
+  children___internal___ignoreType
+  children___internal___mediaType
+  children___internal___owner
+  children___internal___type
+  internal___content
+  internal___contentDigest
+  internal___description
+  internal___fieldOwners
+  internal___ignoreType
+  internal___mediaType
+  internal___owner
+  internal___type
+  content
+  content___content
+  content___content___value
+  content___content___nodeType
+  content___nodeType
+  nodeType
+  callToAction
+  json
+}
+
+input contentfulHomePageCallToActionRichTextNodeFilterInput {
+  id: StringQueryOperatorInput
+  parent: NodeFilterInput
+  children: NodeFilterListInput
+  internal: InternalFilterInput
+  content: contentfulHomePageCallToActionRichTextNodeContentFilterListInput
+  nodeType: StringQueryOperatorInput
+  callToAction: StringQueryOperatorInput
+  json: JSONQueryOperatorInput
+}
+
+type contentfulHomePageCallToActionRichTextNodeGroupConnection {
+  totalCount: Int!
+  edges: [contentfulHomePageCallToActionRichTextNodeEdge!]!
+  nodes: [contentfulHomePageCallToActionRichTextNode!]!
+  pageInfo: PageInfo!
+  field: String!
+  fieldValue: String
+}
+
+input contentfulHomePageCallToActionRichTextNodeSortInput {
+  fields: [contentfulHomePageCallToActionRichTextNodeFieldsEnum]
+  order: [SortOrderEnum] = [ASC]
+}
+
+type contentfulHomePageCallToActionTextNode implements Node {
+  id: ID!
+  parent: Node
+  children: [Node!]!
+  internal: Internal!
+  callToAction: String
+}
+
+type contentfulHomePageCallToActionTextNodeConnection {
+  totalCount: Int!
+  edges: [contentfulHomePageCallToActionTextNodeEdge!]!
+  nodes: [contentfulHomePageCallToActionTextNode!]!
+  pageInfo: PageInfo!
+  distinct(field: contentfulHomePageCallToActionTextNodeFieldsEnum!): [String!]!
+  group(
+    skip: Int
+    limit: Int
+    field: contentfulHomePageCallToActionTextNodeFieldsEnum!
+  ): [contentfulHomePageCallToActionTextNodeGroupConnection!]!
+}
+
+type contentfulHomePageCallToActionTextNodeEdge {
+  next: contentfulHomePageCallToActionTextNode
+  node: contentfulHomePageCallToActionTextNode!
+  previous: contentfulHomePageCallToActionTextNode
+}
+
+enum contentfulHomePageCallToActionTextNodeFieldsEnum {
+  id
+  parent___id
+  parent___parent___id
+  parent___parent___parent___id
+  parent___parent___parent___children
+  parent___parent___children
+  parent___parent___children___id
+  parent___parent___children___children
+  parent___parent___internal___content
+  parent___parent___internal___contentDigest
+  parent___parent___internal___description
+  parent___parent___internal___fieldOwners
+  parent___parent___internal___ignoreType
+  parent___parent___internal___mediaType
+  parent___parent___internal___owner
+  parent___parent___internal___type
+  parent___children
+  parent___children___id
+  parent___children___parent___id
+  parent___children___parent___children
+  parent___children___children
+  parent___children___children___id
+  parent___children___children___children
+  parent___children___internal___content
+  parent___children___internal___contentDigest
+  parent___children___internal___description
+  parent___children___internal___fieldOwners
+  parent___children___internal___ignoreType
+  parent___children___internal___mediaType
+  parent___children___internal___owner
+  parent___children___internal___type
+  parent___internal___content
+  parent___internal___contentDigest
+  parent___internal___description
+  parent___internal___fieldOwners
+  parent___internal___ignoreType
+  parent___internal___mediaType
+  parent___internal___owner
+  parent___internal___type
+  children
+  children___id
+  children___parent___id
+  children___parent___parent___id
+  children___parent___parent___children
+  children___parent___children
+  children___parent___children___id
+  children___parent___children___children
+  children___parent___internal___content
+  children___parent___internal___contentDigest
+  children___parent___internal___description
+  children___parent___internal___fieldOwners
+  children___parent___internal___ignoreType
+  children___parent___internal___mediaType
+  children___parent___internal___owner
+  children___parent___internal___type
+  children___children
+  children___children___id
+  children___children___parent___id
+  children___children___parent___children
+  children___children___children
+  children___children___children___id
+  children___children___children___children
+  children___children___internal___content
+  children___children___internal___contentDigest
+  children___children___internal___description
+  children___children___internal___fieldOwners
+  children___children___internal___ignoreType
+  children___children___internal___mediaType
+  children___children___internal___owner
+  children___children___internal___type
+  children___internal___content
+  children___internal___contentDigest
+  children___internal___description
+  children___internal___fieldOwners
+  children___internal___ignoreType
+  children___internal___mediaType
+  children___internal___owner
+  children___internal___type
+  internal___content
+  internal___contentDigest
+  internal___description
+  internal___fieldOwners
+  internal___ignoreType
+  internal___mediaType
+  internal___owner
+  internal___type
+  callToAction
+}
+
+input contentfulHomePageCallToActionTextNodeFilterInput {
+  id: StringQueryOperatorInput
+  parent: NodeFilterInput
+  children: NodeFilterListInput
+  internal: InternalFilterInput
+  callToAction: StringQueryOperatorInput
+}
+
+type contentfulHomePageCallToActionTextNodeGroupConnection {
+  totalCount: Int!
+  edges: [contentfulHomePageCallToActionTextNodeEdge!]!
+  nodes: [contentfulHomePageCallToActionTextNode!]!
+  pageInfo: PageInfo!
+  field: String!
+  fieldValue: String
+}
+
+input contentfulHomePageCallToActionTextNodeSortInput {
+  fields: [contentfulHomePageCallToActionTextNodeFieldsEnum]
+  order: [SortOrderEnum] = [ASC]
+}
+
+type ContentfulHomePageConnection {
+  totalCount: Int!
+  edges: [ContentfulHomePageEdge!]!
+  nodes: [ContentfulHomePage!]!
+  pageInfo: PageInfo!
+  distinct(field: ContentfulHomePageFieldsEnum!): [String!]!
+  group(
+    skip: Int
+    limit: Int
+    field: ContentfulHomePageFieldsEnum!
+  ): [ContentfulHomePageGroupConnection!]!
+}
+
+type ContentfulHomePageEdge {
+  next: ContentfulHomePage
+  node: ContentfulHomePage!
+  previous: ContentfulHomePage
+}
+
+enum ContentfulHomePageFieldsEnum {
+  id
+  parent___id
+  parent___parent___id
+  parent___parent___parent___id
+  parent___parent___parent___children
+  parent___parent___children
+  parent___parent___children___id
+  parent___parent___children___children
+  parent___parent___internal___content
+  parent___parent___internal___contentDigest
+  parent___parent___internal___description
+  parent___parent___internal___fieldOwners
+  parent___parent___internal___ignoreType
+  parent___parent___internal___mediaType
+  parent___parent___internal___owner
+  parent___parent___internal___type
+  parent___children
+  parent___children___id
+  parent___children___parent___id
+  parent___children___parent___children
+  parent___children___children
+  parent___children___children___id
+  parent___children___children___children
+  parent___children___internal___content
+  parent___children___internal___contentDigest
+  parent___children___internal___description
+  parent___children___internal___fieldOwners
+  parent___children___internal___ignoreType
+  parent___children___internal___mediaType
+  parent___children___internal___owner
+  parent___children___internal___type
+  parent___internal___content
+  parent___internal___contentDigest
+  parent___internal___description
+  parent___internal___fieldOwners
+  parent___internal___ignoreType
+  parent___internal___mediaType
+  parent___internal___owner
+  parent___internal___type
+  children
+  children___id
+  children___parent___id
+  children___parent___parent___id
+  children___parent___parent___children
+  children___parent___children
+  children___parent___children___id
+  children___parent___children___children
+  children___parent___internal___content
+  children___parent___internal___contentDigest
+  children___parent___internal___description
+  children___parent___internal___fieldOwners
+  children___parent___internal___ignoreType
+  children___parent___internal___mediaType
+  children___parent___internal___owner
+  children___parent___internal___type
+  children___children
+  children___children___id
+  children___children___parent___id
+  children___children___parent___children
+  children___children___children
+  children___children___children___id
+  children___children___children___children
+  children___children___internal___content
+  children___children___internal___contentDigest
+  children___children___internal___description
+  children___children___internal___fieldOwners
+  children___children___internal___ignoreType
+  children___children___internal___mediaType
+  children___children___internal___owner
+  children___children___internal___type
+  children___internal___content
+  children___internal___contentDigest
+  children___internal___description
+  children___internal___fieldOwners
+  children___internal___ignoreType
+  children___internal___mediaType
+  children___internal___owner
+  children___internal___type
+  internal___content
+  internal___contentDigest
+  internal___description
+  internal___fieldOwners
+  internal___ignoreType
+  internal___mediaType
+  internal___owner
+  internal___type
+  callToActionButtonText
+  callToAction___id
+  callToAction___parent___id
+  callToAction___parent___parent___id
+  callToAction___parent___parent___children
+  callToAction___parent___children
+  callToAction___parent___children___id
+  callToAction___parent___children___children
+  callToAction___parent___internal___content
+  callToAction___parent___internal___contentDigest
+  callToAction___parent___internal___description
+  callToAction___parent___internal___fieldOwners
+  callToAction___parent___internal___ignoreType
+  callToAction___parent___internal___mediaType
+  callToAction___parent___internal___owner
+  callToAction___parent___internal___type
+  callToAction___children
+  callToAction___children___id
+  callToAction___children___parent___id
+  callToAction___children___parent___children
+  callToAction___children___children
+  callToAction___children___children___id
+  callToAction___children___children___children
+  callToAction___children___internal___content
+  callToAction___children___internal___contentDigest
+  callToAction___children___internal___description
+  callToAction___children___internal___fieldOwners
+  callToAction___children___internal___ignoreType
+  callToAction___children___internal___mediaType
+  callToAction___children___internal___owner
+  callToAction___children___internal___type
+  callToAction___internal___content
+  callToAction___internal___contentDigest
+  callToAction___internal___description
+  callToAction___internal___fieldOwners
+  callToAction___internal___ignoreType
+  callToAction___internal___mediaType
+  callToAction___internal___owner
+  callToAction___internal___type
+  callToAction___content
+  callToAction___content___content
+  callToAction___content___content___value
+  callToAction___content___content___nodeType
+  callToAction___content___nodeType
+  callToAction___nodeType
+  callToAction___callToAction
+  callToAction___json
+  contentful_id
+  createdAt
+  updatedAt
+  node_locale
+  pageContent___id
+  pageContent___parent___id
+  pageContent___parent___parent___id
+  pageContent___parent___parent___children
+  pageContent___parent___children
+  pageContent___parent___children___id
+  pageContent___parent___children___children
+  pageContent___parent___internal___content
+  pageContent___parent___internal___contentDigest
+  pageContent___parent___internal___description
+  pageContent___parent___internal___fieldOwners
+  pageContent___parent___internal___ignoreType
+  pageContent___parent___internal___mediaType
+  pageContent___parent___internal___owner
+  pageContent___parent___internal___type
+  pageContent___children
+  pageContent___children___id
+  pageContent___children___parent___id
+  pageContent___children___parent___children
+  pageContent___children___children
+  pageContent___children___children___id
+  pageContent___children___children___children
+  pageContent___children___internal___content
+  pageContent___children___internal___contentDigest
+  pageContent___children___internal___description
+  pageContent___children___internal___fieldOwners
+  pageContent___children___internal___ignoreType
+  pageContent___children___internal___mediaType
+  pageContent___children___internal___owner
+  pageContent___children___internal___type
+  pageContent___internal___content
+  pageContent___internal___contentDigest
+  pageContent___internal___description
+  pageContent___internal___fieldOwners
+  pageContent___internal___ignoreType
+  pageContent___internal___mediaType
+  pageContent___internal___owner
+  pageContent___internal___type
+  pageContent___content
+  pageContent___content___content
+  pageContent___content___content___value
+  pageContent___content___content___nodeType
+  pageContent___content___nodeType
+  pageContent___nodeType
+  pageContent___pageContent
+  pageContent___json
+}
+
+input ContentfulHomePageFilterInput {
+  id: StringQueryOperatorInput
+  parent: NodeFilterInput
+  children: NodeFilterListInput
+  internal: InternalFilterInput
+  callToActionButtonText: StringQueryOperatorInput
+  callToAction: contentfulHomePageCallToActionRichTextNodeFilterInput
+  contentful_id: StringQueryOperatorInput
+  createdAt: DateQueryOperatorInput
+  updatedAt: DateQueryOperatorInput
+  node_locale: StringQueryOperatorInput
+  pageContent: contentfulHomePagePageContentRichTextNodeFilterInput
+}
+
+type ContentfulHomePageGroupConnection {
+  totalCount: Int!
+  edges: [ContentfulHomePageEdge!]!
+  nodes: [ContentfulHomePage!]!
+  pageInfo: PageInfo!
+  field: String!
+  fieldValue: String
+}
+
+type contentfulHomePagePageContentRichTextNode implements Node {
+  id: ID!
+  parent: Node
+  children: [Node!]!
+  internal: Internal!
+  content: [contentfulHomePagePageContentRichTextNodeContent]
+  nodeType: String
+  @deprecated(reason: "This field is deprecated, please use 'json' instead.")
+  pageContent: String
+  json: JSON
+}
+
+type contentfulHomePagePageContentRichTextNodeConnection {
+  totalCount: Int!
+  edges: [contentfulHomePagePageContentRichTextNodeEdge!]!
+  nodes: [contentfulHomePagePageContentRichTextNode!]!
+  pageInfo: PageInfo!
+  distinct(
+    field: contentfulHomePagePageContentRichTextNodeFieldsEnum!
+  ): [String!]!
+  group(
+    skip: Int
+    limit: Int
+    field: contentfulHomePagePageContentRichTextNodeFieldsEnum!
+  ): [contentfulHomePagePageContentRichTextNodeGroupConnection!]!
+}
+
+type contentfulHomePagePageContentRichTextNodeContent {
+  content: [contentfulHomePagePageContentRichTextNodeContentContent]
+  nodeType: String
+}
+
+type contentfulHomePagePageContentRichTextNodeContentContent {
+  value: String
+  nodeType: String
+}
+
+input contentfulHomePagePageContentRichTextNodeContentContentFilterInput {
+  value: StringQueryOperatorInput
+  nodeType: StringQueryOperatorInput
+}
+
+input contentfulHomePagePageContentRichTextNodeContentContentFilterListInput {
+  elemMatch: contentfulHomePagePageContentRichTextNodeContentContentFilterInput
+}
+
+input contentfulHomePagePageContentRichTextNodeContentFilterInput {
+  content: contentfulHomePagePageContentRichTextNodeContentContentFilterListInput
+  nodeType: StringQueryOperatorInput
+}
+
+input contentfulHomePagePageContentRichTextNodeContentFilterListInput {
+  elemMatch: contentfulHomePagePageContentRichTextNodeContentFilterInput
+}
+
+type contentfulHomePagePageContentRichTextNodeEdge {
+  next: contentfulHomePagePageContentRichTextNode
+  node: contentfulHomePagePageContentRichTextNode!
+  previous: contentfulHomePagePageContentRichTextNode
+}
+
+enum contentfulHomePagePageContentRichTextNodeFieldsEnum {
+  id
+  parent___id
+  parent___parent___id
+  parent___parent___parent___id
+  parent___parent___parent___children
+  parent___parent___children
+  parent___parent___children___id
+  parent___parent___children___children
+  parent___parent___internal___content
+  parent___parent___internal___contentDigest
+  parent___parent___internal___description
+  parent___parent___internal___fieldOwners
+  parent___parent___internal___ignoreType
+  parent___parent___internal___mediaType
+  parent___parent___internal___owner
+  parent___parent___internal___type
+  parent___children
+  parent___children___id
+  parent___children___parent___id
+  parent___children___parent___children
+  parent___children___children
+  parent___children___children___id
+  parent___children___children___children
+  parent___children___internal___content
+  parent___children___internal___contentDigest
+  parent___children___internal___description
+  parent___children___internal___fieldOwners
+  parent___children___internal___ignoreType
+  parent___children___internal___mediaType
+  parent___children___internal___owner
+  parent___children___internal___type
+  parent___internal___content
+  parent___internal___contentDigest
+  parent___internal___description
+  parent___internal___fieldOwners
+  parent___internal___ignoreType
+  parent___internal___mediaType
+  parent___internal___owner
+  parent___internal___type
+  children
+  children___id
+  children___parent___id
+  children___parent___parent___id
+  children___parent___parent___children
+  children___parent___children
+  children___parent___children___id
+  children___parent___children___children
+  children___parent___internal___content
+  children___parent___internal___contentDigest
+  children___parent___internal___description
+  children___parent___internal___fieldOwners
+  children___parent___internal___ignoreType
+  children___parent___internal___mediaType
+  children___parent___internal___owner
+  children___parent___internal___type
+  children___children
+  children___children___id
+  children___children___parent___id
+  children___children___parent___children
+  children___children___children
+  children___children___children___id
+  children___children___children___children
+  children___children___internal___content
+  children___children___internal___contentDigest
+  children___children___internal___description
+  children___children___internal___fieldOwners
+  children___children___internal___ignoreType
+  children___children___internal___mediaType
+  children___children___internal___owner
+  children___children___internal___type
+  children___internal___content
+  children___internal___contentDigest
+  children___internal___description
+  children___internal___fieldOwners
+  children___internal___ignoreType
+  children___internal___mediaType
+  children___internal___owner
+  children___internal___type
+  internal___content
+  internal___contentDigest
+  internal___description
+  internal___fieldOwners
+  internal___ignoreType
+  internal___mediaType
+  internal___owner
+  internal___type
+  content
+  content___content
+  content___content___value
+  content___content___nodeType
+  content___nodeType
+  nodeType
+  pageContent
+  json
+}
+
+input contentfulHomePagePageContentRichTextNodeFilterInput {
+  id: StringQueryOperatorInput
+  parent: NodeFilterInput
+  children: NodeFilterListInput
+  internal: InternalFilterInput
+  content: contentfulHomePagePageContentRichTextNodeContentFilterListInput
+  nodeType: StringQueryOperatorInput
+  pageContent: StringQueryOperatorInput
+  json: JSONQueryOperatorInput
+}
+
+type contentfulHomePagePageContentRichTextNodeGroupConnection {
+  totalCount: Int!
+  edges: [contentfulHomePagePageContentRichTextNodeEdge!]!
+  nodes: [contentfulHomePagePageContentRichTextNode!]!
+  pageInfo: PageInfo!
+  field: String!
+  fieldValue: String
+}
+
+input contentfulHomePagePageContentRichTextNodeSortInput {
+  fields: [contentfulHomePagePageContentRichTextNodeFieldsEnum]
+  order: [SortOrderEnum] = [ASC]
+}
+
+input ContentfulHomePageSortInput {
+  fields: [ContentfulHomePageFieldsEnum]
+  order: [SortOrderEnum] = [ASC]
+}
+
+enum ContentfulImageCropFocus {
+  TOP
+  TOP_LEFT
+  TOP_RIGHT
+  BOTTOM
+  BOTTOM_RIGHT
+  BOTTOM_LEFT
+  RIGHT
+  LEFT
+  FACE
+  FACES
+  CENTER
+}
+
+enum ContentfulImageFormat {
+  NO_CHANGE
+  JPG
+  PNG
+  WEBP
+}
+
+type ContentfulResize {
+  base64: String
+  tracedSVG: String
+  src: String
+  width: Int
+  height: Int
+  aspectRatio: Float
+}
+
+input ContentfulResizeFilterInput {
+  base64: StringQueryOperatorInput
+  tracedSVG: StringQueryOperatorInput
+  src: StringQueryOperatorInput
+  width: IntQueryOperatorInput
+  height: IntQueryOperatorInput
+  aspectRatio: FloatQueryOperatorInput
+}
+
+type ContentfulResolutions {
+  base64: String
+  tracedSVG: String
+  aspectRatio: Float
+  width: Float
+  height: Float
+  src: String
+  srcSet: String
+  srcWebp: String
+  srcSetWebp: String
+}
+
+input ContentfulResolutionsFilterInput {
+  base64: StringQueryOperatorInput
+  tracedSVG: StringQueryOperatorInput
+  aspectRatio: FloatQueryOperatorInput
+  width: FloatQueryOperatorInput
+  height: FloatQueryOperatorInput
+  src: StringQueryOperatorInput
+  srcSet: StringQueryOperatorInput
+  srcWebp: StringQueryOperatorInput
+  srcSetWebp: StringQueryOperatorInput
+}
+
+type ContentfulSizes {
+  base64: String
+  tracedSVG: String
+  aspectRatio: Float
+  src: String
+  srcSet: String
+  srcWebp: String
+  srcSetWebp: String
+  sizes: String
+}
+
+input ContentfulSizesFilterInput {
+  base64: StringQueryOperatorInput
+  tracedSVG: StringQueryOperatorInput
+  aspectRatio: FloatQueryOperatorInput
+  src: StringQueryOperatorInput
+  srcSet: StringQueryOperatorInput
+  srcWebp: StringQueryOperatorInput
+  srcSetWebp: StringQueryOperatorInput
+  sizes: StringQueryOperatorInput
+}
+
+type ContentfulSubscriptionPage implements Node {
+  id: ID!
+  parent: Node
+  children: [Node!]!
+  internal: Internal!
+  subscriptionMessage: contentfulSubscriptionPageSubscriptionMessageTextNode
+  contentful_id: String
+  createdAt(
+    formatString: String
+    fromNow: Boolean
+    difference: String
+    locale: String
+  ): Date
+  updatedAt(
+    formatString: String
+    fromNow: Boolean
+    difference: String
+    locale: String
+  ): Date
+  node_locale: String
+  childContentfulSubscriptionPageSubscriptionMessageTextNode: contentfulSubscriptionPageSubscriptionMessageTextNode
+}
+
+type ContentfulSubscriptionPageConnection {
+  totalCount: Int!
+  edges: [ContentfulSubscriptionPageEdge!]!
+  nodes: [ContentfulSubscriptionPage!]!
+  pageInfo: PageInfo!
+  distinct(field: ContentfulSubscriptionPageFieldsEnum!): [String!]!
+  group(
+    skip: Int
+    limit: Int
+    field: ContentfulSubscriptionPageFieldsEnum!
+  ): [ContentfulSubscriptionPageGroupConnection!]!
+}
+
+type ContentfulSubscriptionPageEdge {
+  next: ContentfulSubscriptionPage
+  node: ContentfulSubscriptionPage!
+  previous: ContentfulSubscriptionPage
+}
+
+enum ContentfulSubscriptionPageFieldsEnum {
+  id
+  parent___id
+  parent___parent___id
+  parent___parent___parent___id
+  parent___parent___parent___children
+  parent___parent___children
+  parent___parent___children___id
+  parent___parent___children___children
+  parent___parent___internal___content
+  parent___parent___internal___contentDigest
+  parent___parent___internal___description
+  parent___parent___internal___fieldOwners
+  parent___parent___internal___ignoreType
+  parent___parent___internal___mediaType
+  parent___parent___internal___owner
+  parent___parent___internal___type
+  parent___children
+  parent___children___id
+  parent___children___parent___id
+  parent___children___parent___children
+  parent___children___children
+  parent___children___children___id
+  parent___children___children___children
+  parent___children___internal___content
+  parent___children___internal___contentDigest
+  parent___children___internal___description
+  parent___children___internal___fieldOwners
+  parent___children___internal___ignoreType
+  parent___children___internal___mediaType
+  parent___children___internal___owner
+  parent___children___internal___type
+  parent___internal___content
+  parent___internal___contentDigest
+  parent___internal___description
+  parent___internal___fieldOwners
+  parent___internal___ignoreType
+  parent___internal___mediaType
+  parent___internal___owner
+  parent___internal___type
+  children
+  children___id
+  children___parent___id
+  children___parent___parent___id
+  children___parent___parent___children
+  children___parent___children
+  children___parent___children___id
+  children___parent___children___children
+  children___parent___internal___content
+  children___parent___internal___contentDigest
+  children___parent___internal___description
+  children___parent___internal___fieldOwners
+  children___parent___internal___ignoreType
+  children___parent___internal___mediaType
+  children___parent___internal___owner
+  children___parent___internal___type
+  children___children
+  children___children___id
+  children___children___parent___id
+  children___children___parent___children
+  children___children___children
+  children___children___children___id
+  children___children___children___children
+  children___children___internal___content
+  children___children___internal___contentDigest
+  children___children___internal___description
+  children___children___internal___fieldOwners
+  children___children___internal___ignoreType
+  children___children___internal___mediaType
+  children___children___internal___owner
+  children___children___internal___type
+  children___internal___content
+  children___internal___contentDigest
+  children___internal___description
+  children___internal___fieldOwners
+  children___internal___ignoreType
+  children___internal___mediaType
+  children___internal___owner
+  children___internal___type
+  internal___content
+  internal___contentDigest
+  internal___description
+  internal___fieldOwners
+  internal___ignoreType
+  internal___mediaType
+  internal___owner
+  internal___type
+  subscriptionMessage___id
+  subscriptionMessage___parent___id
+  subscriptionMessage___parent___parent___id
+  subscriptionMessage___parent___parent___children
+  subscriptionMessage___parent___children
+  subscriptionMessage___parent___children___id
+  subscriptionMessage___parent___children___children
+  subscriptionMessage___parent___internal___content
+  subscriptionMessage___parent___internal___contentDigest
+  subscriptionMessage___parent___internal___description
+  subscriptionMessage___parent___internal___fieldOwners
+  subscriptionMessage___parent___internal___ignoreType
+  subscriptionMessage___parent___internal___mediaType
+  subscriptionMessage___parent___internal___owner
+  subscriptionMessage___parent___internal___type
+  subscriptionMessage___children
+  subscriptionMessage___children___id
+  subscriptionMessage___children___parent___id
+  subscriptionMessage___children___parent___children
+  subscriptionMessage___children___children
+  subscriptionMessage___children___children___id
+  subscriptionMessage___children___children___children
+  subscriptionMessage___children___internal___content
+  subscriptionMessage___children___internal___contentDigest
+  subscriptionMessage___children___internal___description
+  subscriptionMessage___children___internal___fieldOwners
+  subscriptionMessage___children___internal___ignoreType
+  subscriptionMessage___children___internal___mediaType
+  subscriptionMessage___children___internal___owner
+  subscriptionMessage___children___internal___type
+  subscriptionMessage___internal___content
+  subscriptionMessage___internal___contentDigest
+  subscriptionMessage___internal___description
+  subscriptionMessage___internal___fieldOwners
+  subscriptionMessage___internal___ignoreType
+  subscriptionMessage___internal___mediaType
+  subscriptionMessage___internal___owner
+  subscriptionMessage___internal___type
+  subscriptionMessage___subscriptionMessage
+  contentful_id
+  createdAt
+  updatedAt
+  node_locale
+}
+
+input ContentfulSubscriptionPageFilterInput {
+  id: StringQueryOperatorInput
+  parent: NodeFilterInput
+  children: NodeFilterListInput
+  internal: InternalFilterInput
+  subscriptionMessage: contentfulSubscriptionPageSubscriptionMessageTextNodeFilterInput
+  contentful_id: StringQueryOperatorInput
+  createdAt: DateQueryOperatorInput
+  updatedAt: DateQueryOperatorInput
+  node_locale: StringQueryOperatorInput
+}
+
+type ContentfulSubscriptionPageGroupConnection {
+  totalCount: Int!
+  edges: [ContentfulSubscriptionPageEdge!]!
+  nodes: [ContentfulSubscriptionPage!]!
+  pageInfo: PageInfo!
+  field: String!
+  fieldValue: String
+}
+
+input ContentfulSubscriptionPageSortInput {
+  fields: [ContentfulSubscriptionPageFieldsEnum]
+  order: [SortOrderEnum] = [ASC]
+}
+
+type contentfulSubscriptionPageSubscriptionMessageTextNode implements Node {
+  id: ID!
+  parent: Node
+  children: [Node!]!
+  internal: Internal!
+  subscriptionMessage: String
+}
+
+type contentfulSubscriptionPageSubscriptionMessageTextNodeConnection {
+  totalCount: Int!
+  edges: [contentfulSubscriptionPageSubscriptionMessageTextNodeEdge!]!
+  nodes: [contentfulSubscriptionPageSubscriptionMessageTextNode!]!
+  pageInfo: PageInfo!
+  distinct(
+    field: contentfulSubscriptionPageSubscriptionMessageTextNodeFieldsEnum!
+  ): [String!]!
+  group(
+    skip: Int
+    limit: Int
+    field: contentfulSubscriptionPageSubscriptionMessageTextNodeFieldsEnum!
+  ): [contentfulSubscriptionPageSubscriptionMessageTextNodeGroupConnection!]!
+}
+
+type contentfulSubscriptionPageSubscriptionMessageTextNodeEdge {
+  next: contentfulSubscriptionPageSubscriptionMessageTextNode
+  node: contentfulSubscriptionPageSubscriptionMessageTextNode!
+  previous: contentfulSubscriptionPageSubscriptionMessageTextNode
+}
+
+enum contentfulSubscriptionPageSubscriptionMessageTextNodeFieldsEnum {
+  id
+  parent___id
+  parent___parent___id
+  parent___parent___parent___id
+  parent___parent___parent___children
+  parent___parent___children
+  parent___parent___children___id
+  parent___parent___children___children
+  parent___parent___internal___content
+  parent___parent___internal___contentDigest
+  parent___parent___internal___description
+  parent___parent___internal___fieldOwners
+  parent___parent___internal___ignoreType
+  parent___parent___internal___mediaType
+  parent___parent___internal___owner
+  parent___parent___internal___type
+  parent___children
+  parent___children___id
+  parent___children___parent___id
+  parent___children___parent___children
+  parent___children___children
+  parent___children___children___id
+  parent___children___children___children
+  parent___children___internal___content
+  parent___children___internal___contentDigest
+  parent___children___internal___description
+  parent___children___internal___fieldOwners
+  parent___children___internal___ignoreType
+  parent___children___internal___mediaType
+  parent___children___internal___owner
+  parent___children___internal___type
+  parent___internal___content
+  parent___internal___contentDigest
+  parent___internal___description
+  parent___internal___fieldOwners
+  parent___internal___ignoreType
+  parent___internal___mediaType
+  parent___internal___owner
+  parent___internal___type
+  children
+  children___id
+  children___parent___id
+  children___parent___parent___id
+  children___parent___parent___children
+  children___parent___children
+  children___parent___children___id
+  children___parent___children___children
+  children___parent___internal___content
+  children___parent___internal___contentDigest
+  children___parent___internal___description
+  children___parent___internal___fieldOwners
+  children___parent___internal___ignoreType
+  children___parent___internal___mediaType
+  children___parent___internal___owner
+  children___parent___internal___type
+  children___children
+  children___children___id
+  children___children___parent___id
+  children___children___parent___children
+  children___children___children
+  children___children___children___id
+  children___children___children___children
+  children___children___internal___content
+  children___children___internal___contentDigest
+  children___children___internal___description
+  children___children___internal___fieldOwners
+  children___children___internal___ignoreType
+  children___children___internal___mediaType
+  children___children___internal___owner
+  children___children___internal___type
+  children___internal___content
+  children___internal___contentDigest
+  children___internal___description
+  children___internal___fieldOwners
+  children___internal___ignoreType
+  children___internal___mediaType
+  children___internal___owner
+  children___internal___type
+  internal___content
+  internal___contentDigest
+  internal___description
+  internal___fieldOwners
+  internal___ignoreType
+  internal___mediaType
+  internal___owner
+  internal___type
+  subscriptionMessage
+}
+
+input contentfulSubscriptionPageSubscriptionMessageTextNodeFilterInput {
+  id: StringQueryOperatorInput
+  parent: NodeFilterInput
+  children: NodeFilterListInput
+  internal: InternalFilterInput
+  subscriptionMessage: StringQueryOperatorInput
+}
+
+type contentfulSubscriptionPageSubscriptionMessageTextNodeGroupConnection {
+  totalCount: Int!
+  edges: [contentfulSubscriptionPageSubscriptionMessageTextNodeEdge!]!
+  nodes: [contentfulSubscriptionPageSubscriptionMessageTextNode!]!
+  pageInfo: PageInfo!
+  field: String!
+  fieldValue: String
+}
+
+input contentfulSubscriptionPageSubscriptionMessageTextNodeSortInput {
+  fields: [contentfulSubscriptionPageSubscriptionMessageTextNodeFieldsEnum]
+  order: [SortOrderEnum] = [ASC]
+}
+
+type ContentfulThankYouPage implements Node {
+  id: ID!
+  parent: Node
+  children: [Node!]!
+  internal: Internal!
+  paragraph: contentfulThankYouPageParagraphTextNode
+  contentful_id: String
+  createdAt(
+    formatString: String
+    fromNow: Boolean
+    difference: String
+    locale: String
+  ): Date
+  updatedAt(
+    formatString: String
+    fromNow: Boolean
+    difference: String
+    locale: String
+  ): Date
+  node_locale: String
+  childContentfulThankYouPageParagraphTextNode: contentfulThankYouPageParagraphTextNode
+}
+
+type ContentfulThankYouPageConnection {
+  totalCount: Int!
+  edges: [ContentfulThankYouPageEdge!]!
+  nodes: [ContentfulThankYouPage!]!
+  pageInfo: PageInfo!
+  distinct(field: ContentfulThankYouPageFieldsEnum!): [String!]!
+  group(
+    skip: Int
+    limit: Int
+    field: ContentfulThankYouPageFieldsEnum!
+  ): [ContentfulThankYouPageGroupConnection!]!
+}
+
+type ContentfulThankYouPageEdge {
+  next: ContentfulThankYouPage
+  node: ContentfulThankYouPage!
+  previous: ContentfulThankYouPage
+}
+
+enum ContentfulThankYouPageFieldsEnum {
+  id
+  parent___id
+  parent___parent___id
+  parent___parent___parent___id
+  parent___parent___parent___children
+  parent___parent___children
+  parent___parent___children___id
+  parent___parent___children___children
+  parent___parent___internal___content
+  parent___parent___internal___contentDigest
+  parent___parent___internal___description
+  parent___parent___internal___fieldOwners
+  parent___parent___internal___ignoreType
+  parent___parent___internal___mediaType
+  parent___parent___internal___owner
+  parent___parent___internal___type
+  parent___children
+  parent___children___id
+  parent___children___parent___id
+  parent___children___parent___children
+  parent___children___children
+  parent___children___children___id
+  parent___children___children___children
+  parent___children___internal___content
+  parent___children___internal___contentDigest
+  parent___children___internal___description
+  parent___children___internal___fieldOwners
+  parent___children___internal___ignoreType
+  parent___children___internal___mediaType
+  parent___children___internal___owner
+  parent___children___internal___type
+  parent___internal___content
+  parent___internal___contentDigest
+  parent___internal___description
+  parent___internal___fieldOwners
+  parent___internal___ignoreType
+  parent___internal___mediaType
+  parent___internal___owner
+  parent___internal___type
+  children
+  children___id
+  children___parent___id
+  children___parent___parent___id
+  children___parent___parent___children
+  children___parent___children
+  children___parent___children___id
+  children___parent___children___children
+  children___parent___internal___content
+  children___parent___internal___contentDigest
+  children___parent___internal___description
+  children___parent___internal___fieldOwners
+  children___parent___internal___ignoreType
+  children___parent___internal___mediaType
+  children___parent___internal___owner
+  children___parent___internal___type
+  children___children
+  children___children___id
+  children___children___parent___id
+  children___children___parent___children
+  children___children___children
+  children___children___children___id
+  children___children___children___children
+  children___children___internal___content
+  children___children___internal___contentDigest
+  children___children___internal___description
+  children___children___internal___fieldOwners
+  children___children___internal___ignoreType
+  children___children___internal___mediaType
+  children___children___internal___owner
+  children___children___internal___type
+  children___internal___content
+  children___internal___contentDigest
+  children___internal___description
+  children___internal___fieldOwners
+  children___internal___ignoreType
+  children___internal___mediaType
+  children___internal___owner
+  children___internal___type
+  internal___content
+  internal___contentDigest
+  internal___description
+  internal___fieldOwners
+  internal___ignoreType
+  internal___mediaType
+  internal___owner
+  internal___type
+  paragraph___id
+  paragraph___parent___id
+  paragraph___parent___parent___id
+  paragraph___parent___parent___children
+  paragraph___parent___children
+  paragraph___parent___children___id
+  paragraph___parent___children___children
+  paragraph___parent___internal___content
+  paragraph___parent___internal___contentDigest
+  paragraph___parent___internal___description
+  paragraph___parent___internal___fieldOwners
+  paragraph___parent___internal___ignoreType
+  paragraph___parent___internal___mediaType
+  paragraph___parent___internal___owner
+  paragraph___parent___internal___type
+  paragraph___children
+  paragraph___children___id
+  paragraph___children___parent___id
+  paragraph___children___parent___children
+  paragraph___children___children
+  paragraph___children___children___id
+  paragraph___children___children___children
+  paragraph___children___internal___content
+  paragraph___children___internal___contentDigest
+  paragraph___children___internal___description
+  paragraph___children___internal___fieldOwners
+  paragraph___children___internal___ignoreType
+  paragraph___children___internal___mediaType
+  paragraph___children___internal___owner
+  paragraph___children___internal___type
+  paragraph___internal___content
+  paragraph___internal___contentDigest
+  paragraph___internal___description
+  paragraph___internal___fieldOwners
+  paragraph___internal___ignoreType
+  paragraph___internal___mediaType
+  paragraph___internal___owner
+  paragraph___internal___type
+  paragraph___paragraph
+  contentful_id
+  createdAt
+  updatedAt
+  node_locale
+}
+
+input ContentfulThankYouPageFilterInput {
+  id: StringQueryOperatorInput
+  parent: NodeFilterInput
+  children: NodeFilterListInput
+  internal: InternalFilterInput
+  paragraph: contentfulThankYouPageParagraphTextNodeFilterInput
+  contentful_id: StringQueryOperatorInput
+  createdAt: DateQueryOperatorInput
+  updatedAt: DateQueryOperatorInput
+  node_locale: StringQueryOperatorInput
+}
+
+type ContentfulThankYouPageGroupConnection {
+  totalCount: Int!
+  edges: [ContentfulThankYouPageEdge!]!
+  nodes: [ContentfulThankYouPage!]!
+  pageInfo: PageInfo!
+  field: String!
+  fieldValue: String
+}
+
+type contentfulThankYouPageParagraphTextNode implements Node {
+  id: ID!
+  parent: Node
+  children: [Node!]!
+  internal: Internal!
+  paragraph: String
+}
+
+type contentfulThankYouPageParagraphTextNodeConnection {
+  totalCount: Int!
+  edges: [contentfulThankYouPageParagraphTextNodeEdge!]!
+  nodes: [contentfulThankYouPageParagraphTextNode!]!
+  pageInfo: PageInfo!
+  distinct(
+    field: contentfulThankYouPageParagraphTextNodeFieldsEnum!
+  ): [String!]!
+  group(
+    skip: Int
+    limit: Int
+    field: contentfulThankYouPageParagraphTextNodeFieldsEnum!
+  ): [contentfulThankYouPageParagraphTextNodeGroupConnection!]!
+}
+
+type contentfulThankYouPageParagraphTextNodeEdge {
+  next: contentfulThankYouPageParagraphTextNode
+  node: contentfulThankYouPageParagraphTextNode!
+  previous: contentfulThankYouPageParagraphTextNode
+}
+
+enum contentfulThankYouPageParagraphTextNodeFieldsEnum {
+  id
+  parent___id
+  parent___parent___id
+  parent___parent___parent___id
+  parent___parent___parent___children
+  parent___parent___children
+  parent___parent___children___id
+  parent___parent___children___children
+  parent___parent___internal___content
+  parent___parent___internal___contentDigest
+  parent___parent___internal___description
+  parent___parent___internal___fieldOwners
+  parent___parent___internal___ignoreType
+  parent___parent___internal___mediaType
+  parent___parent___internal___owner
+  parent___parent___internal___type
+  parent___children
+  parent___children___id
+  parent___children___parent___id
+  parent___children___parent___children
+  parent___children___children
+  parent___children___children___id
+  parent___children___children___children
+  parent___children___internal___content
+  parent___children___internal___contentDigest
+  parent___children___internal___description
+  parent___children___internal___fieldOwners
+  parent___children___internal___ignoreType
+  parent___children___internal___mediaType
+  parent___children___internal___owner
+  parent___children___internal___type
+  parent___internal___content
+  parent___internal___contentDigest
+  parent___internal___description
+  parent___internal___fieldOwners
+  parent___internal___ignoreType
+  parent___internal___mediaType
+  parent___internal___owner
+  parent___internal___type
+  children
+  children___id
+  children___parent___id
+  children___parent___parent___id
+  children___parent___parent___children
+  children___parent___children
+  children___parent___children___id
+  children___parent___children___children
+  children___parent___internal___content
+  children___parent___internal___contentDigest
+  children___parent___internal___description
+  children___parent___internal___fieldOwners
+  children___parent___internal___ignoreType
+  children___parent___internal___mediaType
+  children___parent___internal___owner
+  children___parent___internal___type
+  children___children
+  children___children___id
+  children___children___parent___id
+  children___children___parent___children
+  children___children___children
+  children___children___children___id
+  children___children___children___children
+  children___children___internal___content
+  children___children___internal___contentDigest
+  children___children___internal___description
+  children___children___internal___fieldOwners
+  children___children___internal___ignoreType
+  children___children___internal___mediaType
+  children___children___internal___owner
+  children___children___internal___type
+  children___internal___content
+  children___internal___contentDigest
+  children___internal___description
+  children___internal___fieldOwners
+  children___internal___ignoreType
+  children___internal___mediaType
+  children___internal___owner
+  children___internal___type
+  internal___content
+  internal___contentDigest
+  internal___description
+  internal___fieldOwners
+  internal___ignoreType
+  internal___mediaType
+  internal___owner
+  internal___type
+  paragraph
+}
+
+input contentfulThankYouPageParagraphTextNodeFilterInput {
+  id: StringQueryOperatorInput
+  parent: NodeFilterInput
+  children: NodeFilterListInput
+  internal: InternalFilterInput
+  paragraph: StringQueryOperatorInput
+}
+
+type contentfulThankYouPageParagraphTextNodeGroupConnection {
+  totalCount: Int!
+  edges: [contentfulThankYouPageParagraphTextNodeEdge!]!
+  nodes: [contentfulThankYouPageParagraphTextNode!]!
+  pageInfo: PageInfo!
+  field: String!
+  fieldValue: String
+}
+
+input contentfulThankYouPageParagraphTextNodeSortInput {
+  fields: [contentfulThankYouPageParagraphTextNodeFieldsEnum]
+  order: [SortOrderEnum] = [ASC]
+}
+
+input ContentfulThankYouPageSortInput {
+  fields: [ContentfulThankYouPageFieldsEnum]
+  order: [SortOrderEnum] = [ASC]
+}
+
+scalar Date
+
+input DateQueryOperatorInput {
+  eq: Date
+  ne: Date
+  gt: Date
+  gte: Date
+  lt: Date
+  lte: Date
+  in: [Date]
+  nin: [Date]
+}
+
+type Directory implements Node {
+  id: ID!
+  parent: Node
+  children: [Node!]!
+  internal: Internal!
+  sourceInstanceName: String
+  absolutePath: String
+  relativePath: String
+  extension: String
+  size: Int
+  prettySize: String
+  modifiedTime(
+    formatString: String
+    fromNow: Boolean
+    difference: String
+    locale: String
+  ): Date
+  accessTime(
+    formatString: String
+    fromNow: Boolean
+    difference: String
+    locale: String
+  ): Date
+  changeTime(
+    formatString: String
+    fromNow: Boolean
+    difference: String
+    locale: String
+  ): Date
+  birthTime(
+    formatString: String
+    fromNow: Boolean
+    difference: String
+    locale: String
+  ): Date
+  root: String
+  dir: String
+  base: String
+  ext: String
+  name: String
+  relativeDirectory: String
+  dev: Float
+  mode: Int
+  nlink: Int
+  uid: Int
+  gid: Int
+  rdev: Int
+  ino: Float
+  atimeMs: Float
+  mtimeMs: Float
+  ctimeMs: Float
+  birthtimeMs: Float
+  atime(
+    formatString: String
+    fromNow: Boolean
+    difference: String
+    locale: String
+  ): Date
+  mtime(
+    formatString: String
+    fromNow: Boolean
+    difference: String
+    locale: String
+  ): Date
+  ctime(
+    formatString: String
+    fromNow: Boolean
+    difference: String
+    locale: String
+  ): Date
+  birthtime(
+    formatString: String
+    fromNow: Boolean
+    difference: String
+    locale: String
+  ): Date
+}
+
+type DirectoryConnection {
+  totalCount: Int!
+  edges: [DirectoryEdge!]!
+  nodes: [Directory!]!
+  pageInfo: PageInfo!
+  distinct(field: DirectoryFieldsEnum!): [String!]!
+  group(
+    skip: Int
+    limit: Int
+    field: DirectoryFieldsEnum!
+  ): [DirectoryGroupConnection!]!
+}
+
+type DirectoryEdge {
+  next: Directory
+  node: Directory!
+  previous: Directory
+}
+
+enum DirectoryFieldsEnum {
+  id
+  parent___id
+  parent___parent___id
+  parent___parent___parent___id
+  parent___parent___parent___children
+  parent___parent___children
+  parent___parent___children___id
+  parent___parent___children___children
+  parent___parent___internal___content
+  parent___parent___internal___contentDigest
+  parent___parent___internal___description
+  parent___parent___internal___fieldOwners
+  parent___parent___internal___ignoreType
+  parent___parent___internal___mediaType
+  parent___parent___internal___owner
+  parent___parent___internal___type
+  parent___children
+  parent___children___id
+  parent___children___parent___id
+  parent___children___parent___children
+  parent___children___children
+  parent___children___children___id
+  parent___children___children___children
+  parent___children___internal___content
+  parent___children___internal___contentDigest
+  parent___children___internal___description
+  parent___children___internal___fieldOwners
+  parent___children___internal___ignoreType
+  parent___children___internal___mediaType
+  parent___children___internal___owner
+  parent___children___internal___type
+  parent___internal___content
+  parent___internal___contentDigest
+  parent___internal___description
+  parent___internal___fieldOwners
+  parent___internal___ignoreType
+  parent___internal___mediaType
+  parent___internal___owner
+  parent___internal___type
+  children
+  children___id
+  children___parent___id
+  children___parent___parent___id
+  children___parent___parent___children
+  children___parent___children
+  children___parent___children___id
+  children___parent___children___children
+  children___parent___internal___content
+  children___parent___internal___contentDigest
+  children___parent___internal___description
+  children___parent___internal___fieldOwners
+  children___parent___internal___ignoreType
+  children___parent___internal___mediaType
+  children___parent___internal___owner
+  children___parent___internal___type
+  children___children
+  children___children___id
+  children___children___parent___id
+  children___children___parent___children
+  children___children___children
+  children___children___children___id
+  children___children___children___children
+  children___children___internal___content
+  children___children___internal___contentDigest
+  children___children___internal___description
+  children___children___internal___fieldOwners
+  children___children___internal___ignoreType
+  children___children___internal___mediaType
+  children___children___internal___owner
+  children___children___internal___type
+  children___internal___content
+  children___internal___contentDigest
+  children___internal___description
+  children___internal___fieldOwners
+  children___internal___ignoreType
+  children___internal___mediaType
+  children___internal___owner
+  children___internal___type
+  internal___content
+  internal___contentDigest
+  internal___description
+  internal___fieldOwners
+  internal___ignoreType
+  internal___mediaType
+  internal___owner
+  internal___type
+  sourceInstanceName
+  absolutePath
+  relativePath
+  extension
+  size
+  prettySize
+  modifiedTime
+  accessTime
+  changeTime
+  birthTime
+  root
+  dir
+  base
+  ext
+  name
+  relativeDirectory
+  dev
+  mode
+  nlink
+  uid
+  gid
+  rdev
+  ino
+  atimeMs
+  mtimeMs
+  ctimeMs
+  birthtimeMs
+  atime
+  mtime
+  ctime
+  birthtime
+}
+
+input DirectoryFilterInput {
+  id: StringQueryOperatorInput
+  parent: NodeFilterInput
+  children: NodeFilterListInput
+  internal: InternalFilterInput
+  sourceInstanceName: StringQueryOperatorInput
+  absolutePath: StringQueryOperatorInput
+  relativePath: StringQueryOperatorInput
+  extension: StringQueryOperatorInput
+  size: IntQueryOperatorInput
+  prettySize: StringQueryOperatorInput
+  modifiedTime: DateQueryOperatorInput
+  accessTime: DateQueryOperatorInput
+  changeTime: DateQueryOperatorInput
+  birthTime: DateQueryOperatorInput
+  root: StringQueryOperatorInput
+  dir: StringQueryOperatorInput
+  base: StringQueryOperatorInput
+  ext: StringQueryOperatorInput
+  name: StringQueryOperatorInput
+  relativeDirectory: StringQueryOperatorInput
+  dev: FloatQueryOperatorInput
+  mode: IntQueryOperatorInput
+  nlink: IntQueryOperatorInput
+  uid: IntQueryOperatorInput
+  gid: IntQueryOperatorInput
+  rdev: IntQueryOperatorInput
+  ino: FloatQueryOperatorInput
+  atimeMs: FloatQueryOperatorInput
+  mtimeMs: FloatQueryOperatorInput
+  ctimeMs: FloatQueryOperatorInput
+  birthtimeMs: FloatQueryOperatorInput
+  atime: DateQueryOperatorInput
+  mtime: DateQueryOperatorInput
+  ctime: DateQueryOperatorInput
+  birthtime: DateQueryOperatorInput
+}
+
+type DirectoryGroupConnection {
+  totalCount: Int!
+  edges: [DirectoryEdge!]!
+  nodes: [Directory!]!
+  pageInfo: PageInfo!
+  field: String!
+  fieldValue: String
+}
+
+input DirectorySortInput {
+  fields: [DirectoryFieldsEnum]
+  order: [SortOrderEnum] = [ASC]
+}
+
+input DuotoneGradient {
+  highlight: String
+  shadow: String
+  opacity: Int
+}
+
+type File implements Node {
+  id: ID!
+  parent: Node
+  children: [Node!]!
+  internal: Internal!
+  sourceInstanceName: String
+  absolutePath: String
+  relativePath: String
+  extension: String
+  size: Int
+  prettySize: String
+  modifiedTime(
+    formatString: String
+    fromNow: Boolean
+    difference: String
+    locale: String
+  ): Date
+  accessTime(
+    formatString: String
+    fromNow: Boolean
+    difference: String
+    locale: String
+  ): Date
+  changeTime(
+    formatString: String
+    fromNow: Boolean
+    difference: String
+    locale: String
+  ): Date
+  birthTime(
+    formatString: String
+    fromNow: Boolean
+    difference: String
+    locale: String
+  ): Date
+  root: String
+  dir: String
+  base: String
+  ext: String
+  name: String
+  relativeDirectory: String
+  dev: Float
+  mode: Int
+  nlink: Int
+  uid: Int
+  gid: Int
+  rdev: Int
+  ino: Float
+  atimeMs: Float
+  mtimeMs: Float
+  ctimeMs: Float
+  birthtimeMs: Float
+  atime(
+    formatString: String
+    fromNow: Boolean
+    difference: String
+    locale: String
+  ): Date
+  mtime(
+    formatString: String
+    fromNow: Boolean
+    difference: String
+    locale: String
+  ): Date
+  ctime(
+    formatString: String
+    fromNow: Boolean
+    difference: String
+    locale: String
+  ): Date
+  birthtime(
+    formatString: String
+    fromNow: Boolean
+    difference: String
+    locale: String
+  ): Date
+  url: String
+  publicURL: String
+  childImageSharp: ImageSharp
+}
+
+type FileConnection {
+  totalCount: Int!
+  edges: [FileEdge!]!
+  nodes: [File!]!
+  pageInfo: PageInfo!
+  distinct(field: FileFieldsEnum!): [String!]!
+  group(skip: Int, limit: Int, field: FileFieldsEnum!): [FileGroupConnection!]!
+}
+
+type FileEdge {
+  next: File
+  node: File!
+  previous: File
+}
+
+enum FileFieldsEnum {
+  id
+  parent___id
+  parent___parent___id
+  parent___parent___parent___id
+  parent___parent___parent___children
+  parent___parent___children
+  parent___parent___children___id
+  parent___parent___children___children
+  parent___parent___internal___content
+  parent___parent___internal___contentDigest
+  parent___parent___internal___description
+  parent___parent___internal___fieldOwners
+  parent___parent___internal___ignoreType
+  parent___parent___internal___mediaType
+  parent___parent___internal___owner
+  parent___parent___internal___type
+  parent___children
+  parent___children___id
+  parent___children___parent___id
+  parent___children___parent___children
+  parent___children___children
+  parent___children___children___id
+  parent___children___children___children
+  parent___children___internal___content
+  parent___children___internal___contentDigest
+  parent___children___internal___description
+  parent___children___internal___fieldOwners
+  parent___children___internal___ignoreType
+  parent___children___internal___mediaType
+  parent___children___internal___owner
+  parent___children___internal___type
+  parent___internal___content
+  parent___internal___contentDigest
+  parent___internal___description
+  parent___internal___fieldOwners
+  parent___internal___ignoreType
+  parent___internal___mediaType
+  parent___internal___owner
+  parent___internal___type
+  children
+  children___id
+  children___parent___id
+  children___parent___parent___id
+  children___parent___parent___children
+  children___parent___children
+  children___parent___children___id
+  children___parent___children___children
+  children___parent___internal___content
+  children___parent___internal___contentDigest
+  children___parent___internal___description
+  children___parent___internal___fieldOwners
+  children___parent___internal___ignoreType
+  children___parent___internal___mediaType
+  children___parent___internal___owner
+  children___parent___internal___type
+  children___children
+  children___children___id
+  children___children___parent___id
+  children___children___parent___children
+  children___children___children
+  children___children___children___id
+  children___children___children___children
+  children___children___internal___content
+  children___children___internal___contentDigest
+  children___children___internal___description
+  children___children___internal___fieldOwners
+  children___children___internal___ignoreType
+  children___children___internal___mediaType
+  children___children___internal___owner
+  children___children___internal___type
+  children___internal___content
+  children___internal___contentDigest
+  children___internal___description
+  children___internal___fieldOwners
+  children___internal___ignoreType
+  children___internal___mediaType
+  children___internal___owner
+  children___internal___type
+  internal___content
+  internal___contentDigest
+  internal___description
+  internal___fieldOwners
+  internal___ignoreType
+  internal___mediaType
+  internal___owner
+  internal___type
+  sourceInstanceName
+  absolutePath
+  relativePath
+  extension
+  size
+  prettySize
+  modifiedTime
+  accessTime
+  changeTime
+  birthTime
+  root
+  dir
+  base
+  ext
+  name
+  relativeDirectory
+  dev
+  mode
+  nlink
+  uid
+  gid
+  rdev
+  ino
+  atimeMs
+  mtimeMs
+  ctimeMs
+  birthtimeMs
+  atime
+  mtime
+  ctime
+  birthtime
+  url
+  publicURL
+}
+
+input FileFilterInput {
+  id: StringQueryOperatorInput
+  parent: NodeFilterInput
+  children: NodeFilterListInput
+  internal: InternalFilterInput
+  sourceInstanceName: StringQueryOperatorInput
+  absolutePath: StringQueryOperatorInput
+  relativePath: StringQueryOperatorInput
+  extension: StringQueryOperatorInput
+  size: IntQueryOperatorInput
+  prettySize: StringQueryOperatorInput
+  modifiedTime: DateQueryOperatorInput
+  accessTime: DateQueryOperatorInput
+  changeTime: DateQueryOperatorInput
+  birthTime: DateQueryOperatorInput
+  root: StringQueryOperatorInput
+  dir: StringQueryOperatorInput
+  base: StringQueryOperatorInput
+  ext: StringQueryOperatorInput
+  name: StringQueryOperatorInput
+  relativeDirectory: StringQueryOperatorInput
+  dev: FloatQueryOperatorInput
+  mode: IntQueryOperatorInput
+  nlink: IntQueryOperatorInput
+  uid: IntQueryOperatorInput
+  gid: IntQueryOperatorInput
+  rdev: IntQueryOperatorInput
+  ino: FloatQueryOperatorInput
+  atimeMs: FloatQueryOperatorInput
+  mtimeMs: FloatQueryOperatorInput
+  ctimeMs: FloatQueryOperatorInput
+  birthtimeMs: FloatQueryOperatorInput
+  atime: DateQueryOperatorInput
+  mtime: DateQueryOperatorInput
+  ctime: DateQueryOperatorInput
+  birthtime: DateQueryOperatorInput
+  url: StringQueryOperatorInput
+  publicURL: StringQueryOperatorInput
+}
+
+type FileGroupConnection {
+  totalCount: Int!
+  edges: [FileEdge!]!
+  nodes: [File!]!
+  pageInfo: PageInfo!
+  field: String!
+  fieldValue: String
+}
+
+input FileSortInput {
+  fields: [FileFieldsEnum]
+  order: [SortOrderEnum] = [ASC]
+}
+
+input FloatQueryOperatorInput {
+  eq: Float
+  ne: Float
+  gt: Float
+  gte: Float
+  lt: Float
+  lte: Float
+  in: [Float]
+  nin: [Float]
+}
+
+enum ImageCropFocus {
+  CENTER
+  NORTH
+  NORTHEAST
+  EAST
+  SOUTHEAST
+  SOUTH
+  SOUTHWEST
+  WEST
+  NORTHWEST
+  ENTROPY
+  ATTENTION
+}
+
+enum ImageFit {
+  COVER
+  CONTAIN
+  FILL
+}
+
+enum ImageFormat {
+  NO_CHANGE
+  JPG
+  PNG
+  WEBP
+}
+
+enum ImageResizingBehavior {
+  NO_CHANGE
+  PAD
+  CROP
+  FILL
+  THUMB
+  SCALE
+}
+
+type ImageSharp implements Node {
+  id: ID!
+  parent: Node
+  children: [Node!]!
+  internal: Internal!
+  fixed(
+    width: Int
+    height: Int
+    base64Width: Int
+    jpegProgressive: Boolean = true
+    pngCompressionSpeed: Int = 4
+    grayscale: Boolean = false
+    duotone: DuotoneGradient
+    traceSVG: Potrace
+    quality: Int
+    toFormat: ImageFormat = NO_CHANGE
+    toFormatBase64: ImageFormat = NO_CHANGE
+    cropFocus: ImageCropFocus = ATTENTION
+    fit: ImageFit = COVER
+    background: String = "rgba(0,0,0,1)"
+    rotate: Int = 0
+    trim: Float = 0
+  ): ImageSharpFixed
+  resolutions(
+    width: Int
+    height: Int
+    base64Width: Int
+    jpegProgressive: Boolean = true
+    pngCompressionSpeed: Int = 4
+    grayscale: Boolean = false
+    duotone: DuotoneGradient
+    traceSVG: Potrace
+    quality: Int
+    toFormat: ImageFormat = NO_CHANGE
+    toFormatBase64: ImageFormat = NO_CHANGE
+    cropFocus: ImageCropFocus = ATTENTION
+    fit: ImageFit = COVER
+    background: String = "rgba(0,0,0,1)"
+    rotate: Int = 0
+    trim: Float = 0
+  ): ImageSharpResolutions
+  @deprecated(
+    reason: "Resolutions was deprecated in Gatsby v2. It's been renamed to \\\"fixed\\\" https://example.com/write-docs-and-fix-this-example-link"
+  )
+  fluid(
+    maxWidth: Int
+    maxHeight: Int
+    base64Width: Int
+    grayscale: Boolean = false
+    jpegProgressive: Boolean = true
+    pngCompressionSpeed: Int = 4
+    duotone: DuotoneGradient
+    traceSVG: Potrace
+    quality: Int
+    toFormat: ImageFormat = NO_CHANGE
+    toFormatBase64: ImageFormat = NO_CHANGE
+    cropFocus: ImageCropFocus = ATTENTION
+    fit: ImageFit = COVER
+    background: String = "rgba(0,0,0,1)"
+    rotate: Int = 0
+    trim: Float = 0
+    sizes: String = ""
+    srcSetBreakpoints: [Int] = []
+  ): ImageSharpFluid
+  sizes(
+    maxWidth: Int
+    maxHeight: Int
+    base64Width: Int
+    grayscale: Boolean = false
+    jpegProgressive: Boolean = true
+    pngCompressionSpeed: Int = 4
+    duotone: DuotoneGradient
+    traceSVG: Potrace
+    quality: Int
+    toFormat: ImageFormat = NO_CHANGE
+    toFormatBase64: ImageFormat = NO_CHANGE
+    cropFocus: ImageCropFocus = ATTENTION
+    fit: ImageFit = COVER
+    background: String = "rgba(0,0,0,1)"
+    rotate: Int = 0
+    trim: Float = 0
+    sizes: String = ""
+    srcSetBreakpoints: [Int] = []
+  ): ImageSharpSizes
+  @deprecated(
+    reason: "Sizes was deprecated in Gatsby v2. It's been renamed to \\\"fluid\\\" https://example.com/write-docs-and-fix-this-example-link"
+  )
+  original: ImageSharpOriginal
+  resize(
+    width: Int
+    height: Int
+    quality: Int
+    jpegProgressive: Boolean = true
+    pngCompressionLevel: Int = 9
+    pngCompressionSpeed: Int = 4
+    grayscale: Boolean = false
+    duotone: DuotoneGradient
+    base64: Boolean = false
+    traceSVG: Potrace
+    toFormat: ImageFormat = NO_CHANGE
+    cropFocus: ImageCropFocus = ATTENTION
+    fit: ImageFit = COVER
+    background: String = "rgba(0,0,0,1)"
+    rotate: Int = 0
+    trim: Float = 0
+  ): ImageSharpResize
+}
+
+type ImageSharpConnection {
+  totalCount: Int!
+  edges: [ImageSharpEdge!]!
+  nodes: [ImageSharp!]!
+  pageInfo: PageInfo!
+  distinct(field: ImageSharpFieldsEnum!): [String!]!
+  group(
+    skip: Int
+    limit: Int
+    field: ImageSharpFieldsEnum!
+  ): [ImageSharpGroupConnection!]!
+}
+
+type ImageSharpEdge {
+  next: ImageSharp
+  node: ImageSharp!
+  previous: ImageSharp
+}
+
+enum ImageSharpFieldsEnum {
+  id
+  parent___id
+  parent___parent___id
+  parent___parent___parent___id
+  parent___parent___parent___children
+  parent___parent___children
+  parent___parent___children___id
+  parent___parent___children___children
+  parent___parent___internal___content
+  parent___parent___internal___contentDigest
+  parent___parent___internal___description
+  parent___parent___internal___fieldOwners
+  parent___parent___internal___ignoreType
+  parent___parent___internal___mediaType
+  parent___parent___internal___owner
+  parent___parent___internal___type
+  parent___children
+  parent___children___id
+  parent___children___parent___id
+  parent___children___parent___children
+  parent___children___children
+  parent___children___children___id
+  parent___children___children___children
+  parent___children___internal___content
+  parent___children___internal___contentDigest
+  parent___children___internal___description
+  parent___children___internal___fieldOwners
+  parent___children___internal___ignoreType
+  parent___children___internal___mediaType
+  parent___children___internal___owner
+  parent___children___internal___type
+  parent___internal___content
+  parent___internal___contentDigest
+  parent___internal___description
+  parent___internal___fieldOwners
+  parent___internal___ignoreType
+  parent___internal___mediaType
+  parent___internal___owner
+  parent___internal___type
+  children
+  children___id
+  children___parent___id
+  children___parent___parent___id
+  children___parent___parent___children
+  children___parent___children
+  children___parent___children___id
+  children___parent___children___children
+  children___parent___internal___content
+  children___parent___internal___contentDigest
+  children___parent___internal___description
+  children___parent___internal___fieldOwners
+  children___parent___internal___ignoreType
+  children___parent___internal___mediaType
+  children___parent___internal___owner
+  children___parent___internal___type
+  children___children
+  children___children___id
+  children___children___parent___id
+  children___children___parent___children
+  children___children___children
+  children___children___children___id
+  children___children___children___children
+  children___children___internal___content
+  children___children___internal___contentDigest
+  children___children___internal___description
+  children___children___internal___fieldOwners
+  children___children___internal___ignoreType
+  children___children___internal___mediaType
+  children___children___internal___owner
+  children___children___internal___type
+  children___internal___content
+  children___internal___contentDigest
+  children___internal___description
+  children___internal___fieldOwners
+  children___internal___ignoreType
+  children___internal___mediaType
+  children___internal___owner
+  children___internal___type
+  internal___content
+  internal___contentDigest
+  internal___description
+  internal___fieldOwners
+  internal___ignoreType
+  internal___mediaType
+  internal___owner
+  internal___type
+  fixed___base64
+  fixed___tracedSVG
+  fixed___aspectRatio
+  fixed___width
+  fixed___height
+  fixed___src
+  fixed___srcSet
+  fixed___srcWebp
+  fixed___srcSetWebp
+  fixed___originalName
+  resolutions___base64
+  resolutions___tracedSVG
+  resolutions___aspectRatio
+  resolutions___width
+  resolutions___height
+  resolutions___src
+  resolutions___srcSet
+  resolutions___srcWebp
+  resolutions___srcSetWebp
+  resolutions___originalName
+  fluid___base64
+  fluid___tracedSVG
+  fluid___aspectRatio
+  fluid___src
+  fluid___srcSet
+  fluid___srcWebp
+  fluid___srcSetWebp
+  fluid___sizes
+  fluid___originalImg
+  fluid___originalName
+  fluid___presentationWidth
+  fluid___presentationHeight
+  sizes___base64
+  sizes___tracedSVG
+  sizes___aspectRatio
+  sizes___src
+  sizes___srcSet
+  sizes___srcWebp
+  sizes___srcSetWebp
+  sizes___sizes
+  sizes___originalImg
+  sizes___originalName
+  sizes___presentationWidth
+  sizes___presentationHeight
+  original___width
+  original___height
+  original___src
+  resize___src
+  resize___tracedSVG
+  resize___width
+  resize___height
+  resize___aspectRatio
+  resize___originalName
+}
+
+input ImageSharpFilterInput {
+  id: StringQueryOperatorInput
+  parent: NodeFilterInput
+  children: NodeFilterListInput
+  internal: InternalFilterInput
+  fixed: ImageSharpFixedFilterInput
+  resolutions: ImageSharpResolutionsFilterInput
+  fluid: ImageSharpFluidFilterInput
+  sizes: ImageSharpSizesFilterInput
+  original: ImageSharpOriginalFilterInput
+  resize: ImageSharpResizeFilterInput
+}
+
+type ImageSharpFixed {
+  base64: String
+  tracedSVG: String
+  aspectRatio: Float
+  width: Float
+  height: Float
+  src: String
+  srcSet: String
+  srcWebp: String
+  srcSetWebp: String
+  originalName: String
+}
+
+input ImageSharpFixedFilterInput {
+  base64: StringQueryOperatorInput
+  tracedSVG: StringQueryOperatorInput
+  aspectRatio: FloatQueryOperatorInput
+  width: FloatQueryOperatorInput
+  height: FloatQueryOperatorInput
+  src: StringQueryOperatorInput
+  srcSet: StringQueryOperatorInput
+  srcWebp: StringQueryOperatorInput
+  srcSetWebp: StringQueryOperatorInput
+  originalName: StringQueryOperatorInput
+}
+
+type ImageSharpFluid {
+  base64: String
+  tracedSVG: String
+  aspectRatio: Float
+  src: String
+  srcSet: String
+  srcWebp: String
+  srcSetWebp: String
+  sizes: String
+  originalImg: String
+  originalName: String
+  presentationWidth: Int
+  presentationHeight: Int
+}
+
+input ImageSharpFluidFilterInput {
+  base64: StringQueryOperatorInput
+  tracedSVG: StringQueryOperatorInput
+  aspectRatio: FloatQueryOperatorInput
+  src: StringQueryOperatorInput
+  srcSet: StringQueryOperatorInput
+  srcWebp: StringQueryOperatorInput
+  srcSetWebp: StringQueryOperatorInput
+  sizes: StringQueryOperatorInput
+  originalImg: StringQueryOperatorInput
+  originalName: StringQueryOperatorInput
+  presentationWidth: IntQueryOperatorInput
+  presentationHeight: IntQueryOperatorInput
+}
+
+type ImageSharpGroupConnection {
+  totalCount: Int!
+  edges: [ImageSharpEdge!]!
+  nodes: [ImageSharp!]!
+  pageInfo: PageInfo!
+  field: String!
+  fieldValue: String
+}
+
+type ImageSharpOriginal {
+  width: Float
+  height: Float
+  src: String
+}
+
+input ImageSharpOriginalFilterInput {
+  width: FloatQueryOperatorInput
+  height: FloatQueryOperatorInput
+  src: StringQueryOperatorInput
+}
+
+type ImageSharpResize {
+  src: String
+  tracedSVG: String
+  width: Int
+  height: Int
+  aspectRatio: Float
+  originalName: String
+}
+
+input ImageSharpResizeFilterInput {
+  src: StringQueryOperatorInput
+  tracedSVG: StringQueryOperatorInput
+  width: IntQueryOperatorInput
+  height: IntQueryOperatorInput
+  aspectRatio: FloatQueryOperatorInput
+  originalName: StringQueryOperatorInput
+}
+
+type ImageSharpResolutions {
+  base64: String
+  tracedSVG: String
+  aspectRatio: Float
+  width: Float
+  height: Float
+  src: String
+  srcSet: String
+  srcWebp: String
+  srcSetWebp: String
+  originalName: String
+}
+
+input ImageSharpResolutionsFilterInput {
+  base64: StringQueryOperatorInput
+  tracedSVG: StringQueryOperatorInput
+  aspectRatio: FloatQueryOperatorInput
+  width: FloatQueryOperatorInput
+  height: FloatQueryOperatorInput
+  src: StringQueryOperatorInput
+  srcSet: StringQueryOperatorInput
+  srcWebp: StringQueryOperatorInput
+  srcSetWebp: StringQueryOperatorInput
+  originalName: StringQueryOperatorInput
+}
+
+type ImageSharpSizes {
+  base64: String
+  tracedSVG: String
+  aspectRatio: Float
+  src: String
+  srcSet: String
+  srcWebp: String
+  srcSetWebp: String
+  sizes: String
+  originalImg: String
+  originalName: String
+  presentationWidth: Int
+  presentationHeight: Int
+}
+
+input ImageSharpSizesFilterInput {
+  base64: StringQueryOperatorInput
+  tracedSVG: StringQueryOperatorInput
+  aspectRatio: FloatQueryOperatorInput
+  src: StringQueryOperatorInput
+  srcSet: StringQueryOperatorInput
+  srcWebp: StringQueryOperatorInput
+  srcSetWebp: StringQueryOperatorInput
+  sizes: StringQueryOperatorInput
+  originalImg: StringQueryOperatorInput
+  originalName: StringQueryOperatorInput
+  presentationWidth: IntQueryOperatorInput
+  presentationHeight: IntQueryOperatorInput
+}
+
+input ImageSharpSortInput {
+  fields: [ImageSharpFieldsEnum]
+  order: [SortOrderEnum] = [ASC]
+}
+
+type Internal {
+  content: String
+  contentDigest: String!
+  description: String
+  fieldOwners: [String]
+  ignoreType: Boolean
+  mediaType: String
+  owner: String!
+  type: String!
+}
+
+input InternalFilterInput {
+  content: StringQueryOperatorInput
+  contentDigest: StringQueryOperatorInput
+  description: StringQueryOperatorInput
+  fieldOwners: StringQueryOperatorInput
+  ignoreType: BooleanQueryOperatorInput
+  mediaType: StringQueryOperatorInput
+  owner: StringQueryOperatorInput
+  type: StringQueryOperatorInput
+}
+
+input IntQueryOperatorInput {
+  eq: Int
+  ne: Int
+  gt: Int
+  gte: Int
+  lt: Int
+  lte: Int
+  in: [Int]
+  nin: [Int]
+}
+
+scalar JSON
+
+input JSONQueryOperatorInput {
+  eq: JSON
+  ne: JSON
+  in: [JSON]
+  nin: [JSON]
+  regex: JSON
+  glob: JSON
+}
+
+interface Node {
+  id: ID!
+  parent: Node
+  children: [Node!]!
+  internal: Internal!
+}
+
+input NodeFilterInput {
+  id: StringQueryOperatorInput
+  parent: NodeFilterInput
+  children: NodeFilterListInput
+  internal: InternalFilterInput
+}
+
+input NodeFilterListInput {
+  elemMatch: NodeFilterInput
+}
+
+type PageInfo {
+  currentPage: Int!
+  hasPreviousPage: Boolean!
+  hasNextPage: Boolean!
+  itemCount: Int!
+  pageCount: Int!
+  perPage: Int
+}
+
+input Potrace {
+  turnPolicy: PotraceTurnPolicy
+  turdSize: Float
+  alphaMax: Float
+  optCurve: Boolean
+  optTolerance: Float
+  threshold: Int
+  blackOnWhite: Boolean
+  color: String
+  background: String
+}
+
+enum PotraceTurnPolicy {
+  TURNPOLICY_BLACK
+  TURNPOLICY_WHITE
+  TURNPOLICY_LEFT
+  TURNPOLICY_RIGHT
+  TURNPOLICY_MINORITY
+  TURNPOLICY_MAJORITY
+}
+
+type Query {
+  file(
+    id: StringQueryOperatorInput
+    parent: NodeFilterInput
+    children: NodeFilterListInput
+    internal: InternalFilterInput
+    sourceInstanceName: StringQueryOperatorInput
+    absolutePath: StringQueryOperatorInput
+    relativePath: StringQueryOperatorInput
+    extension: StringQueryOperatorInput
+    size: IntQueryOperatorInput
+    prettySize: StringQueryOperatorInput
+    modifiedTime: DateQueryOperatorInput
+    accessTime: DateQueryOperatorInput
+    changeTime: DateQueryOperatorInput
+    birthTime: DateQueryOperatorInput
+    root: StringQueryOperatorInput
+    dir: StringQueryOperatorInput
+    base: StringQueryOperatorInput
+    ext: StringQueryOperatorInput
+    name: StringQueryOperatorInput
+    relativeDirectory: StringQueryOperatorInput
+    dev: FloatQueryOperatorInput
+    mode: IntQueryOperatorInput
+    nlink: IntQueryOperatorInput
+    uid: IntQueryOperatorInput
+    gid: IntQueryOperatorInput
+    rdev: IntQueryOperatorInput
+    ino: FloatQueryOperatorInput
+    atimeMs: FloatQueryOperatorInput
+    mtimeMs: FloatQueryOperatorInput
+    ctimeMs: FloatQueryOperatorInput
+    birthtimeMs: FloatQueryOperatorInput
+    atime: DateQueryOperatorInput
+    mtime: DateQueryOperatorInput
+    ctime: DateQueryOperatorInput
+    birthtime: DateQueryOperatorInput
+    url: StringQueryOperatorInput
+    publicURL: StringQueryOperatorInput
+  ): File
+  allFile(
+    filter: FileFilterInput
+    sort: FileSortInput
+    skip: Int
+    limit: Int
+  ): FileConnection
+  sitePage(
+    id: StringQueryOperatorInput
+    parent: NodeFilterInput
+    children: NodeFilterListInput
+    internal: InternalFilterInput
+    path: StringQueryOperatorInput
+    jsonName: StringQueryOperatorInput
+    internalComponentName: StringQueryOperatorInput
+    component: StringQueryOperatorInput
+    componentChunkName: StringQueryOperatorInput
+    isCreatedByStatefulCreatePages: BooleanQueryOperatorInput
+    pluginCreator: SitePluginFilterInput
+    pluginCreatorId: StringQueryOperatorInput
+    componentPath: StringQueryOperatorInput
+  ): SitePage
+  allSitePage(
+    filter: SitePageFilterInput
+    sort: SitePageSortInput
+    skip: Int
+    limit: Int
+  ): SitePageConnection
+  sitePlugin(
+    id: StringQueryOperatorInput
+    parent: NodeFilterInput
+    children: NodeFilterListInput
+    internal: InternalFilterInput
+    resolve: StringQueryOperatorInput
+    name: StringQueryOperatorInput
+    version: StringQueryOperatorInput
+    pluginOptions: SitePluginPluginOptionsFilterInput
+    nodeAPIs: StringQueryOperatorInput
+    browserAPIs: StringQueryOperatorInput
+    ssrAPIs: StringQueryOperatorInput
+    pluginFilepath: StringQueryOperatorInput
+    packageJson: SitePluginPackageJsonFilterInput
+  ): SitePlugin
+  allSitePlugin(
+    filter: SitePluginFilterInput
+    sort: SitePluginSortInput
+    skip: Int
+    limit: Int
+  ): SitePluginConnection
+  site(
+    id: StringQueryOperatorInput
+    parent: NodeFilterInput
+    children: NodeFilterListInput
+    internal: InternalFilterInput
+    siteMetadata: SiteSiteMetadataFilterInput
+    port: IntQueryOperatorInput
+    host: StringQueryOperatorInput
+    pathPrefix: StringQueryOperatorInput
+    polyfill: BooleanQueryOperatorInput
+    buildTime: DateQueryOperatorInput
+  ): Site
+  allSite(
+    filter: SiteFilterInput
+    sort: SiteSortInput
+    skip: Int
+    limit: Int
+  ): SiteConnection
+  directory(
+    id: StringQueryOperatorInput
+    parent: NodeFilterInput
+    children: NodeFilterListInput
+    internal: InternalFilterInput
+    sourceInstanceName: StringQueryOperatorInput
+    absolutePath: StringQueryOperatorInput
+    relativePath: StringQueryOperatorInput
+    extension: StringQueryOperatorInput
+    size: IntQueryOperatorInput
+    prettySize: StringQueryOperatorInput
+    modifiedTime: DateQueryOperatorInput
+    accessTime: DateQueryOperatorInput
+    changeTime: DateQueryOperatorInput
+    birthTime: DateQueryOperatorInput
+    root: StringQueryOperatorInput
+    dir: StringQueryOperatorInput
+    base: StringQueryOperatorInput
+    ext: StringQueryOperatorInput
+    name: StringQueryOperatorInput
+    relativeDirectory: StringQueryOperatorInput
+    dev: FloatQueryOperatorInput
+    mode: IntQueryOperatorInput
+    nlink: IntQueryOperatorInput
+    uid: IntQueryOperatorInput
+    gid: IntQueryOperatorInput
+    rdev: IntQueryOperatorInput
+    ino: FloatQueryOperatorInput
+    atimeMs: FloatQueryOperatorInput
+    mtimeMs: FloatQueryOperatorInput
+    ctimeMs: FloatQueryOperatorInput
+    birthtimeMs: FloatQueryOperatorInput
+    atime: DateQueryOperatorInput
+    mtime: DateQueryOperatorInput
+    ctime: DateQueryOperatorInput
+    birthtime: DateQueryOperatorInput
+  ): Directory
+  allDirectory(
+    filter: DirectoryFilterInput
+    sort: DirectorySortInput
+    skip: Int
+    limit: Int
+  ): DirectoryConnection
+  imageSharp(
+    id: StringQueryOperatorInput
+    parent: NodeFilterInput
+    children: NodeFilterListInput
+    internal: InternalFilterInput
+    fixed: ImageSharpFixedFilterInput
+    resolutions: ImageSharpResolutionsFilterInput
+    fluid: ImageSharpFluidFilterInput
+    sizes: ImageSharpSizesFilterInput
+    original: ImageSharpOriginalFilterInput
+    resize: ImageSharpResizeFilterInput
+  ): ImageSharp
+  allImageSharp(
+    filter: ImageSharpFilterInput
+    sort: ImageSharpSortInput
+    skip: Int
+    limit: Int
+  ): ImageSharpConnection
+  contentfulContentType(
+    id: StringQueryOperatorInput
+    parent: NodeFilterInput
+    children: NodeFilterListInput
+    internal: InternalFilterInput
+    name: StringQueryOperatorInput
+    displayField: StringQueryOperatorInput
+    description: StringQueryOperatorInput
+  ): ContentfulContentType
+  allContentfulContentType(
+    filter: ContentfulContentTypeFilterInput
+    sort: ContentfulContentTypeSortInput
+    skip: Int
+    limit: Int
+  ): ContentfulContentTypeConnection
+  contentfulHomePage(
+    id: StringQueryOperatorInput
+    parent: NodeFilterInput
+    children: NodeFilterListInput
+    internal: InternalFilterInput
+    callToActionButtonText: StringQueryOperatorInput
+    callToAction: contentfulHomePageCallToActionRichTextNodeFilterInput
+    contentful_id: StringQueryOperatorInput
+    createdAt: DateQueryOperatorInput
+    updatedAt: DateQueryOperatorInput
+    node_locale: StringQueryOperatorInput
+    pageContent: contentfulHomePagePageContentRichTextNodeFilterInput
+  ): ContentfulHomePage
+  allContentfulHomePage(
+    filter: ContentfulHomePageFilterInput
+    sort: ContentfulHomePageSortInput
+    skip: Int
+    limit: Int
+  ): ContentfulHomePageConnection
+  contentfulHomePageCallToActionRichTextNode(
+    id: StringQueryOperatorInput
+    parent: NodeFilterInput
+    children: NodeFilterListInput
+    internal: InternalFilterInput
+    content: contentfulHomePageCallToActionRichTextNodeContentFilterListInput
+    nodeType: StringQueryOperatorInput
+    callToAction: StringQueryOperatorInput
+    json: JSONQueryOperatorInput
+  ): contentfulHomePageCallToActionRichTextNode
+  allContentfulHomePageCallToActionRichTextNode(
+    filter: contentfulHomePageCallToActionRichTextNodeFilterInput
+    sort: contentfulHomePageCallToActionRichTextNodeSortInput
+    skip: Int
+    limit: Int
+  ): contentfulHomePageCallToActionRichTextNodeConnection
+  contentfulHomePageCallToActionTextNode(
+    id: StringQueryOperatorInput
+    parent: NodeFilterInput
+    children: NodeFilterListInput
+    internal: InternalFilterInput
+    callToAction: StringQueryOperatorInput
+  ): contentfulHomePageCallToActionTextNode
+  allContentfulHomePageCallToActionTextNode(
+    filter: contentfulHomePageCallToActionTextNodeFilterInput
+    sort: contentfulHomePageCallToActionTextNodeSortInput
+    skip: Int
+    limit: Int
+  ): contentfulHomePageCallToActionTextNodeConnection
+  contentfulHomePagePageContentRichTextNode(
+    id: StringQueryOperatorInput
+    parent: NodeFilterInput
+    children: NodeFilterListInput
+    internal: InternalFilterInput
+    content: contentfulHomePagePageContentRichTextNodeContentFilterListInput
+    nodeType: StringQueryOperatorInput
+    pageContent: StringQueryOperatorInput
+    json: JSONQueryOperatorInput
+  ): contentfulHomePagePageContentRichTextNode
+  allContentfulHomePagePageContentRichTextNode(
+    filter: contentfulHomePagePageContentRichTextNodeFilterInput
+    sort: contentfulHomePagePageContentRichTextNodeSortInput
+    skip: Int
+    limit: Int
+  ): contentfulHomePagePageContentRichTextNodeConnection
+  contentfulSubscriptionPage(
+    id: StringQueryOperatorInput
+    parent: NodeFilterInput
+    children: NodeFilterListInput
+    internal: InternalFilterInput
+    subscriptionMessage: contentfulSubscriptionPageSubscriptionMessageTextNodeFilterInput
+    contentful_id: StringQueryOperatorInput
+    createdAt: DateQueryOperatorInput
+    updatedAt: DateQueryOperatorInput
+    node_locale: StringQueryOperatorInput
+  ): ContentfulSubscriptionPage
+  allContentfulSubscriptionPage(
+    filter: ContentfulSubscriptionPageFilterInput
+    sort: ContentfulSubscriptionPageSortInput
+    skip: Int
+    limit: Int
+  ): ContentfulSubscriptionPageConnection
+  contentfulSubscriptionPageSubscriptionMessageTextNode(
+    id: StringQueryOperatorInput
+    parent: NodeFilterInput
+    children: NodeFilterListInput
+    internal: InternalFilterInput
+    subscriptionMessage: StringQueryOperatorInput
+  ): contentfulSubscriptionPageSubscriptionMessageTextNode
+  allContentfulSubscriptionPageSubscriptionMessageTextNode(
+    filter: contentfulSubscriptionPageSubscriptionMessageTextNodeFilterInput
+    sort: contentfulSubscriptionPageSubscriptionMessageTextNodeSortInput
+    skip: Int
+    limit: Int
+  ): contentfulSubscriptionPageSubscriptionMessageTextNodeConnection
+  contentfulThankYouPage(
+    id: StringQueryOperatorInput
+    parent: NodeFilterInput
+    children: NodeFilterListInput
+    internal: InternalFilterInput
+    paragraph: contentfulThankYouPageParagraphTextNodeFilterInput
+    contentful_id: StringQueryOperatorInput
+    createdAt: DateQueryOperatorInput
+    updatedAt: DateQueryOperatorInput
+    node_locale: StringQueryOperatorInput
+  ): ContentfulThankYouPage
+  allContentfulThankYouPage(
+    filter: ContentfulThankYouPageFilterInput
+    sort: ContentfulThankYouPageSortInput
+    skip: Int
+    limit: Int
+  ): ContentfulThankYouPageConnection
+  contentfulThankYouPageParagraphTextNode(
+    id: StringQueryOperatorInput
+    parent: NodeFilterInput
+    children: NodeFilterListInput
+    internal: InternalFilterInput
+    paragraph: StringQueryOperatorInput
+  ): contentfulThankYouPageParagraphTextNode
+  allContentfulThankYouPageParagraphTextNode(
+    filter: contentfulThankYouPageParagraphTextNodeFilterInput
+    sort: contentfulThankYouPageParagraphTextNodeSortInput
+    skip: Int
+    limit: Int
+  ): contentfulThankYouPageParagraphTextNodeConnection
+  contentfulAsset(
+    id: StringQueryOperatorInput
+    parent: NodeFilterInput
+    children: NodeFilterListInput
+    internal: InternalFilterInput
+    contentful_id: StringQueryOperatorInput
+    file: ContentfulAssetFileFilterInput
+    title: StringQueryOperatorInput
+    description: StringQueryOperatorInput
+    node_locale: StringQueryOperatorInput
+    localFile: FileFilterInput
+    fixed: ContentfulFixedFilterInput
+    resolutions: ContentfulResolutionsFilterInput
+    fluid: ContentfulFluidFilterInput
+    sizes: ContentfulSizesFilterInput
+    resize: ContentfulResizeFilterInput
+  ): ContentfulAsset
+  allContentfulAsset(
+    filter: ContentfulAssetFilterInput
+    sort: ContentfulAssetSortInput
+    skip: Int
+    limit: Int
+  ): ContentfulAssetConnection
+}
+
+type Site implements Node {
+  id: ID!
+  parent: Node
+  children: [Node!]!
+  internal: Internal!
+  siteMetadata: SiteSiteMetadata
+  port: Int
+  host: String
+  pathPrefix: String
+  polyfill: Boolean
+  buildTime(
+    formatString: String
+    fromNow: Boolean
+    difference: String
+    locale: String
+  ): Date
+}
+
+type SiteConnection {
+  totalCount: Int!
+  edges: [SiteEdge!]!
+  nodes: [Site!]!
+  pageInfo: PageInfo!
+  distinct(field: SiteFieldsEnum!): [String!]!
+  group(skip: Int, limit: Int, field: SiteFieldsEnum!): [SiteGroupConnection!]!
+}
+
+type SiteEdge {
+  next: Site
+  node: Site!
+  previous: Site
+}
+
+enum SiteFieldsEnum {
+  id
+  parent___id
+  parent___parent___id
+  parent___parent___parent___id
+  parent___parent___parent___children
+  parent___parent___children
+  parent___parent___children___id
+  parent___parent___children___children
+  parent___parent___internal___content
+  parent___parent___internal___contentDigest
+  parent___parent___internal___description
+  parent___parent___internal___fieldOwners
+  parent___parent___internal___ignoreType
+  parent___parent___internal___mediaType
+  parent___parent___internal___owner
+  parent___parent___internal___type
+  parent___children
+  parent___children___id
+  parent___children___parent___id
+  parent___children___parent___children
+  parent___children___children
+  parent___children___children___id
+  parent___children___children___children
+  parent___children___internal___content
+  parent___children___internal___contentDigest
+  parent___children___internal___description
+  parent___children___internal___fieldOwners
+  parent___children___internal___ignoreType
+  parent___children___internal___mediaType
+  parent___children___internal___owner
+  parent___children___internal___type
+  parent___internal___content
+  parent___internal___contentDigest
+  parent___internal___description
+  parent___internal___fieldOwners
+  parent___internal___ignoreType
+  parent___internal___mediaType
+  parent___internal___owner
+  parent___internal___type
+  children
+  children___id
+  children___parent___id
+  children___parent___parent___id
+  children___parent___parent___children
+  children___parent___children
+  children___parent___children___id
+  children___parent___children___children
+  children___parent___internal___content
+  children___parent___internal___contentDigest
+  children___parent___internal___description
+  children___parent___internal___fieldOwners
+  children___parent___internal___ignoreType
+  children___parent___internal___mediaType
+  children___parent___internal___owner
+  children___parent___internal___type
+  children___children
+  children___children___id
+  children___children___parent___id
+  children___children___parent___children
+  children___children___children
+  children___children___children___id
+  children___children___children___children
+  children___children___internal___content
+  children___children___internal___contentDigest
+  children___children___internal___description
+  children___children___internal___fieldOwners
+  children___children___internal___ignoreType
+  children___children___internal___mediaType
+  children___children___internal___owner
+  children___children___internal___type
+  children___internal___content
+  children___internal___contentDigest
+  children___internal___description
+  children___internal___fieldOwners
+  children___internal___ignoreType
+  children___internal___mediaType
+  children___internal___owner
+  children___internal___type
+  internal___content
+  internal___contentDigest
+  internal___description
+  internal___fieldOwners
+  internal___ignoreType
+  internal___mediaType
+  internal___owner
+  internal___type
+  siteMetadata___title
+  siteMetadata___description
+  siteMetadata___author
+  port
+  host
+  pathPrefix
+  polyfill
+  buildTime
+}
+
+input SiteFilterInput {
+  id: StringQueryOperatorInput
+  parent: NodeFilterInput
+  children: NodeFilterListInput
+  internal: InternalFilterInput
+  siteMetadata: SiteSiteMetadataFilterInput
+  port: IntQueryOperatorInput
+  host: StringQueryOperatorInput
+  pathPrefix: StringQueryOperatorInput
+  polyfill: BooleanQueryOperatorInput
+  buildTime: DateQueryOperatorInput
+}
+
+type SiteGroupConnection {
+  totalCount: Int!
+  edges: [SiteEdge!]!
+  nodes: [Site!]!
+  pageInfo: PageInfo!
+  field: String!
+  fieldValue: String
+}
+
+type SitePage implements Node {
+  id: ID!
+  parent: Node
+  children: [Node!]!
+  internal: Internal!
+  path: String
+  jsonName: String
+  internalComponentName: String
+  component: String
+  componentChunkName: String
+  isCreatedByStatefulCreatePages: Boolean
+  pluginCreator: SitePlugin
+  pluginCreatorId: String
+  componentPath: String
+}
+
+type SitePageConnection {
+  totalCount: Int!
+  edges: [SitePageEdge!]!
+  nodes: [SitePage!]!
+  pageInfo: PageInfo!
+  distinct(field: SitePageFieldsEnum!): [String!]!
+  group(
+    skip: Int
+    limit: Int
+    field: SitePageFieldsEnum!
+  ): [SitePageGroupConnection!]!
+}
+
+type SitePageEdge {
+  next: SitePage
+  node: SitePage!
+  previous: SitePage
+}
+
+enum SitePageFieldsEnum {
+  id
+  parent___id
+  parent___parent___id
+  parent___parent___parent___id
+  parent___parent___parent___children
+  parent___parent___children
+  parent___parent___children___id
+  parent___parent___children___children
+  parent___parent___internal___content
+  parent___parent___internal___contentDigest
+  parent___parent___internal___description
+  parent___parent___internal___fieldOwners
+  parent___parent___internal___ignoreType
+  parent___parent___internal___mediaType
+  parent___parent___internal___owner
+  parent___parent___internal___type
+  parent___children
+  parent___children___id
+  parent___children___parent___id
+  parent___children___parent___children
+  parent___children___children
+  parent___children___children___id
+  parent___children___children___children
+  parent___children___internal___content
+  parent___children___internal___contentDigest
+  parent___children___internal___description
+  parent___children___internal___fieldOwners
+  parent___children___internal___ignoreType
+  parent___children___internal___mediaType
+  parent___children___internal___owner
+  parent___children___internal___type
+  parent___internal___content
+  parent___internal___contentDigest
+  parent___internal___description
+  parent___internal___fieldOwners
+  parent___internal___ignoreType
+  parent___internal___mediaType
+  parent___internal___owner
+  parent___internal___type
+  children
+  children___id
+  children___parent___id
+  children___parent___parent___id
+  children___parent___parent___children
+  children___parent___children
+  children___parent___children___id
+  children___parent___children___children
+  children___parent___internal___content
+  children___parent___internal___contentDigest
+  children___parent___internal___description
+  children___parent___internal___fieldOwners
+  children___parent___internal___ignoreType
+  children___parent___internal___mediaType
+  children___parent___internal___owner
+  children___parent___internal___type
+  children___children
+  children___children___id
+  children___children___parent___id
+  children___children___parent___children
+  children___children___children
+  children___children___children___id
+  children___children___children___children
+  children___children___internal___content
+  children___children___internal___contentDigest
+  children___children___internal___description
+  children___children___internal___fieldOwners
+  children___children___internal___ignoreType
+  children___children___internal___mediaType
+  children___children___internal___owner
+  children___children___internal___type
+  children___internal___content
+  children___internal___contentDigest
+  children___internal___description
+  children___internal___fieldOwners
+  children___internal___ignoreType
+  children___internal___mediaType
+  children___internal___owner
+  children___internal___type
+  internal___content
+  internal___contentDigest
+  internal___description
+  internal___fieldOwners
+  internal___ignoreType
+  internal___mediaType
+  internal___owner
+  internal___type
+  path
+  jsonName
+  internalComponentName
+  component
+  componentChunkName
+  isCreatedByStatefulCreatePages
+  pluginCreator___id
+  pluginCreator___parent___id
+  pluginCreator___parent___parent___id
+  pluginCreator___parent___parent___children
+  pluginCreator___parent___children
+  pluginCreator___parent___children___id
+  pluginCreator___parent___children___children
+  pluginCreator___parent___internal___content
+  pluginCreator___parent___internal___contentDigest
+  pluginCreator___parent___internal___description
+  pluginCreator___parent___internal___fieldOwners
+  pluginCreator___parent___internal___ignoreType
+  pluginCreator___parent___internal___mediaType
+  pluginCreator___parent___internal___owner
+  pluginCreator___parent___internal___type
+  pluginCreator___children
+  pluginCreator___children___id
+  pluginCreator___children___parent___id
+  pluginCreator___children___parent___children
+  pluginCreator___children___children
+  pluginCreator___children___children___id
+  pluginCreator___children___children___children
+  pluginCreator___children___internal___content
+  pluginCreator___children___internal___contentDigest
+  pluginCreator___children___internal___description
+  pluginCreator___children___internal___fieldOwners
+  pluginCreator___children___internal___ignoreType
+  pluginCreator___children___internal___mediaType
+  pluginCreator___children___internal___owner
+  pluginCreator___children___internal___type
+  pluginCreator___internal___content
+  pluginCreator___internal___contentDigest
+  pluginCreator___internal___description
+  pluginCreator___internal___fieldOwners
+  pluginCreator___internal___ignoreType
+  pluginCreator___internal___mediaType
+  pluginCreator___internal___owner
+  pluginCreator___internal___type
+  pluginCreator___resolve
+  pluginCreator___name
+  pluginCreator___version
+  pluginCreator___pluginOptions___name
+  pluginCreator___pluginOptions___path
+  pluginCreator___pluginOptions___short_name
+  pluginCreator___pluginOptions___start_url
+  pluginCreator___pluginOptions___background_color
+  pluginCreator___pluginOptions___theme_color
+  pluginCreator___pluginOptions___display
+  pluginCreator___pluginOptions___icon
+  pluginCreator___pluginOptions___google___families
+  pluginCreator___pluginOptions___pathCheck
+  pluginCreator___pluginOptions___spaceId
+  pluginCreator___pluginOptions___accessToken
+  pluginCreator___pluginOptions___downloadLocal
+  pluginCreator___nodeAPIs
+  pluginCreator___browserAPIs
+  pluginCreator___ssrAPIs
+  pluginCreator___pluginFilepath
+  pluginCreator___packageJson___name
+  pluginCreator___packageJson___description
+  pluginCreator___packageJson___version
+  pluginCreator___packageJson___main
+  pluginCreator___packageJson___author
+  pluginCreator___packageJson___license
+  pluginCreator___packageJson___dependencies
+  pluginCreator___packageJson___dependencies___name
+  pluginCreator___packageJson___dependencies___version
+  pluginCreator___packageJson___devDependencies
+  pluginCreator___packageJson___devDependencies___name
+  pluginCreator___packageJson___devDependencies___version
+  pluginCreator___packageJson___peerDependencies
+  pluginCreator___packageJson___peerDependencies___name
+  pluginCreator___packageJson___peerDependencies___version
+  pluginCreator___packageJson___keywords
+  pluginCreatorId
+  componentPath
+}
+
+input SitePageFilterInput {
+  id: StringQueryOperatorInput
+  parent: NodeFilterInput
+  children: NodeFilterListInput
+  internal: InternalFilterInput
+  path: StringQueryOperatorInput
+  jsonName: StringQueryOperatorInput
+  internalComponentName: StringQueryOperatorInput
+  component: StringQueryOperatorInput
+  componentChunkName: StringQueryOperatorInput
+  isCreatedByStatefulCreatePages: BooleanQueryOperatorInput
+  pluginCreator: SitePluginFilterInput
+  pluginCreatorId: StringQueryOperatorInput
+  componentPath: StringQueryOperatorInput
+}
+
+type SitePageGroupConnection {
+  totalCount: Int!
+  edges: [SitePageEdge!]!
+  nodes: [SitePage!]!
+  pageInfo: PageInfo!
+  field: String!
+  fieldValue: String
+}
+
+input SitePageSortInput {
+  fields: [SitePageFieldsEnum]
+  order: [SortOrderEnum] = [ASC]
+}
+
+type SitePlugin implements Node {
+  id: ID!
+  parent: Node
+  children: [Node!]!
+  internal: Internal!
+  resolve: String
+  name: String
+  version: String
+  pluginOptions: SitePluginPluginOptions
+  nodeAPIs: [String]
+  browserAPIs: [String]
+  ssrAPIs: [String]
+  pluginFilepath: String
+  packageJson: SitePluginPackageJson
+}
+
+type SitePluginConnection {
+  totalCount: Int!
+  edges: [SitePluginEdge!]!
+  nodes: [SitePlugin!]!
+  pageInfo: PageInfo!
+  distinct(field: SitePluginFieldsEnum!): [String!]!
+  group(
+    skip: Int
+    limit: Int
+    field: SitePluginFieldsEnum!
+  ): [SitePluginGroupConnection!]!
+}
+
+type SitePluginEdge {
+  next: SitePlugin
+  node: SitePlugin!
+  previous: SitePlugin
+}
+
+enum SitePluginFieldsEnum {
+  id
+  parent___id
+  parent___parent___id
+  parent___parent___parent___id
+  parent___parent___parent___children
+  parent___parent___children
+  parent___parent___children___id
+  parent___parent___children___children
+  parent___parent___internal___content
+  parent___parent___internal___contentDigest
+  parent___parent___internal___description
+  parent___parent___internal___fieldOwners
+  parent___parent___internal___ignoreType
+  parent___parent___internal___mediaType
+  parent___parent___internal___owner
+  parent___parent___internal___type
+  parent___children
+  parent___children___id
+  parent___children___parent___id
+  parent___children___parent___children
+  parent___children___children
+  parent___children___children___id
+  parent___children___children___children
+  parent___children___internal___content
+  parent___children___internal___contentDigest
+  parent___children___internal___description
+  parent___children___internal___fieldOwners
+  parent___children___internal___ignoreType
+  parent___children___internal___mediaType
+  parent___children___internal___owner
+  parent___children___internal___type
+  parent___internal___content
+  parent___internal___contentDigest
+  parent___internal___description
+  parent___internal___fieldOwners
+  parent___internal___ignoreType
+  parent___internal___mediaType
+  parent___internal___owner
+  parent___internal___type
+  children
+  children___id
+  children___parent___id
+  children___parent___parent___id
+  children___parent___parent___children
+  children___parent___children
+  children___parent___children___id
+  children___parent___children___children
+  children___parent___internal___content
+  children___parent___internal___contentDigest
+  children___parent___internal___description
+  children___parent___internal___fieldOwners
+  children___parent___internal___ignoreType
+  children___parent___internal___mediaType
+  children___parent___internal___owner
+  children___parent___internal___type
+  children___children
+  children___children___id
+  children___children___parent___id
+  children___children___parent___children
+  children___children___children
+  children___children___children___id
+  children___children___children___children
+  children___children___internal___content
+  children___children___internal___contentDigest
+  children___children___internal___description
+  children___children___internal___fieldOwners
+  children___children___internal___ignoreType
+  children___children___internal___mediaType
+  children___children___internal___owner
+  children___children___internal___type
+  children___internal___content
+  children___internal___contentDigest
+  children___internal___description
+  children___internal___fieldOwners
+  children___internal___ignoreType
+  children___internal___mediaType
+  children___internal___owner
+  children___internal___type
+  internal___content
+  internal___contentDigest
+  internal___description
+  internal___fieldOwners
+  internal___ignoreType
+  internal___mediaType
+  internal___owner
+  internal___type
+  resolve
+  name
+  version
+  pluginOptions___name
+  pluginOptions___path
+  pluginOptions___short_name
+  pluginOptions___start_url
+  pluginOptions___background_color
+  pluginOptions___theme_color
+  pluginOptions___display
+  pluginOptions___icon
+  pluginOptions___google___families
+  pluginOptions___pathCheck
+  pluginOptions___spaceId
+  pluginOptions___accessToken
+  pluginOptions___downloadLocal
+  nodeAPIs
+  browserAPIs
+  ssrAPIs
+  pluginFilepath
+  packageJson___name
+  packageJson___description
+  packageJson___version
+  packageJson___main
+  packageJson___author
+  packageJson___license
+  packageJson___dependencies
+  packageJson___dependencies___name
+  packageJson___dependencies___version
+  packageJson___devDependencies
+  packageJson___devDependencies___name
+  packageJson___devDependencies___version
+  packageJson___peerDependencies
+  packageJson___peerDependencies___name
+  packageJson___peerDependencies___version
+  packageJson___keywords
+}
+
+input SitePluginFilterInput {
+  id: StringQueryOperatorInput
+  parent: NodeFilterInput
+  children: NodeFilterListInput
+  internal: InternalFilterInput
+  resolve: StringQueryOperatorInput
+  name: StringQueryOperatorInput
+  version: StringQueryOperatorInput
+  pluginOptions: SitePluginPluginOptionsFilterInput
+  nodeAPIs: StringQueryOperatorInput
+  browserAPIs: StringQueryOperatorInput
+  ssrAPIs: StringQueryOperatorInput
+  pluginFilepath: StringQueryOperatorInput
+  packageJson: SitePluginPackageJsonFilterInput
+}
+
+type SitePluginGroupConnection {
+  totalCount: Int!
+  edges: [SitePluginEdge!]!
+  nodes: [SitePlugin!]!
+  pageInfo: PageInfo!
+  field: String!
+  fieldValue: String
+}
+
+type SitePluginPackageJson {
+  name: String
+  description: String
+  version: String
+  main: String
+  author: String
+  license: String
+  dependencies: [SitePluginPackageJsonDependencies]
+  devDependencies: [SitePluginPackageJsonDevDependencies]
+  peerDependencies: [SitePluginPackageJsonPeerDependencies]
+  keywords: [String]
+}
+
+type SitePluginPackageJsonDependencies {
+  name: String
+  version: String
+}
+
+input SitePluginPackageJsonDependenciesFilterInput {
+  name: StringQueryOperatorInput
+  version: StringQueryOperatorInput
+}
+
+input SitePluginPackageJsonDependenciesFilterListInput {
+  elemMatch: SitePluginPackageJsonDependenciesFilterInput
+}
+
+type SitePluginPackageJsonDevDependencies {
+  name: String
+  version: String
+}
+
+input SitePluginPackageJsonDevDependenciesFilterInput {
+  name: StringQueryOperatorInput
+  version: StringQueryOperatorInput
+}
+
+input SitePluginPackageJsonDevDependenciesFilterListInput {
+  elemMatch: SitePluginPackageJsonDevDependenciesFilterInput
+}
+
+input SitePluginPackageJsonFilterInput {
+  name: StringQueryOperatorInput
+  description: StringQueryOperatorInput
+  version: StringQueryOperatorInput
+  main: StringQueryOperatorInput
+  author: StringQueryOperatorInput
+  license: StringQueryOperatorInput
+  dependencies: SitePluginPackageJsonDependenciesFilterListInput
+  devDependencies: SitePluginPackageJsonDevDependenciesFilterListInput
+  peerDependencies: SitePluginPackageJsonPeerDependenciesFilterListInput
+  keywords: StringQueryOperatorInput
+}
+
+type SitePluginPackageJsonPeerDependencies {
+  name: String
+  version: String
+}
+
+input SitePluginPackageJsonPeerDependenciesFilterInput {
+  name: StringQueryOperatorInput
+  version: StringQueryOperatorInput
+}
+
+input SitePluginPackageJsonPeerDependenciesFilterListInput {
+  elemMatch: SitePluginPackageJsonPeerDependenciesFilterInput
+}
+
+type SitePluginPluginOptions {
+  name: String
+  path: String
+  short_name: String
+  start_url: String
+  background_color: String
+  theme_color: String
+  display: String
+  icon: String
+  google: SitePluginPluginOptionsGoogle
+  pathCheck: Boolean
+  spaceId: String
+  accessToken: String
+  downloadLocal: Boolean
+}
+
+input SitePluginPluginOptionsFilterInput {
+  name: StringQueryOperatorInput
+  path: StringQueryOperatorInput
+  short_name: StringQueryOperatorInput
+  start_url: StringQueryOperatorInput
+  background_color: StringQueryOperatorInput
+  theme_color: StringQueryOperatorInput
+  display: StringQueryOperatorInput
+  icon: StringQueryOperatorInput
+  google: SitePluginPluginOptionsGoogleFilterInput
+  pathCheck: BooleanQueryOperatorInput
+  spaceId: StringQueryOperatorInput
+  accessToken: StringQueryOperatorInput
+  downloadLocal: BooleanQueryOperatorInput
+}
+
+type SitePluginPluginOptionsGoogle {
+  families: [String]
+}
+
+input SitePluginPluginOptionsGoogleFilterInput {
+  families: StringQueryOperatorInput
+}
+
+input SitePluginSortInput {
+  fields: [SitePluginFieldsEnum]
+  order: [SortOrderEnum] = [ASC]
+}
+
+type SiteSiteMetadata {
+  title: String
+  description: String
+  author: String
+}
+
+input SiteSiteMetadataFilterInput {
+  title: StringQueryOperatorInput
+  description: StringQueryOperatorInput
+  author: StringQueryOperatorInput
+}
+
+input SiteSortInput {
+  fields: [SiteFieldsEnum]
+  order: [SortOrderEnum] = [ASC]
+}
+
+enum SortOrderEnum {
+  ASC
+  DESC
+}
+
+input StringQueryOperatorInput {
+  eq: String
+  ne: String
+  in: [String]
+  nin: [String]
+  regex: String
+  glob: String
+}
+

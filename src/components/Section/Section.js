@@ -15,7 +15,7 @@ Section.defaultProps = {
 
 function Section({ columns, id, title }) {
   return (
-    <section id={id}>
+    <section id={id} className={styles.Section}>
       {title && <h3 className={styles.title}>{title}</h3>}
 
       <div className={styles.columnsContainer}>
