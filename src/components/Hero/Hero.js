@@ -7,7 +7,7 @@ import { LinkButton } from '../Button';
 import styles from './Hero.module.scss';
 
 const Hero = () => {
-  const { backgroundImg } = useStaticQuery(graphql`
+  const { backgroundImg, homePageContent } = useStaticQuery(graphql`
     query {
       backgroundImg: file(relativePath: { eq: "overhead-3-pies.jpg" }) {
         sharp: childImageSharp {
@@ -17,32 +17,24 @@ const Hero = () => {
         }
       }
 
-      #      homePageContent: allContentfulHomePage {
-      #        nodes {
-      #          callToAction {
-      #            callToAction
-      #          }
-      #          callToActionButtonText
-      #        }
-      #      }
+      homePageContent: allContentfulHomePage {
+        nodes {
+          callToAction {
+            callToAction
+          }
+          callToActionButtonText
+        }
+      }
     }
   `);
 
-  // will be retrieved from Contentful query
-  const content = {
-    callToAction: {
-      callToAction: "Spread some L'oven:\nSubscribe to our Bakery Boxes!",
-    },
-    callToActionButtonText: 'Subscribe!',
-  };
+  const [content] = homePageContent.nodes;
+
   const { callToAction } = content.callToAction;
   const { callToActionButtonText } = content;
 
   return (
-    <BackgroundImage
-      className={styles.Hero}
-      fluid={backgroundImg.sharp.fluid}
-    >
+    <BackgroundImage className={styles.Hero} fluid={backgroundImg.sharp.fluid}>
       <div className={styles.container}>
         <div className={styles.content}>
           <img alt="L'oven Logo" src={Logo} className={styles.logo} />
