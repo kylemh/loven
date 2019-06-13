@@ -10,15 +10,21 @@
     "stripe"
   ],
   "scripts": {
-    "build": "gatsby build",
-    "dev": "gatsby develop",
+    "build": "run-p build:**",
+    "build:app": "gatsby build",
+    "build:lambda": "netlify-lambda build src/lambda",
+    "dev": "run-p dev:**",
+    "dev:app": "gatsby develop",
+    "dev:lambda": "netlify-lambda serve src/lambda --config ./webpack.functions.js",
     "format": "prettier --write \"src/**/*.{js,css,md}\"",
     "test": "echo \"Write tests!\""
   },
   "dependencies": {
     "@contentful/rich-text-react-renderer": "^13.2.0",
     "@contentful/rich-text-types": "^13.1.0",
+    "axios": "^0.19.0",
     "classnames": "^2.2.6",
+    "formik": "^1.5.7",
     "gatsby": "^2.9.0",
     "gatsby-background-image": "^0.7.0",
     "gatsby-image": "^2.1.3",
@@ -40,8 +46,12 @@
     "contentful-import": "^7.4.5",
     "cross-env": "^5.2.0",
     "dotenv": "^8.0.0",
+    "dotenv-webpack": "^1.7.0",
     "gatsby-plugin-sass": "^2.0.11",
+    "http-proxy-middleware": "^0.19.1",
+    "netlify-lambda": "^1.4.13",
     "node-sass": "^4.12.0",
+    "npm-run-all": "^4.1.5",
     "prettier": "^1.18.2"
   },
   "license": "MIT",

@@ -2,6 +2,9 @@ require('dotenv').config({
   path: `.env`,
 });
 
+const proxy = require("http-proxy-middleware");
+
+
 module.exports = {
   siteMetadata: {
     title: `L'Oven Bakeshop`,
@@ -50,4 +53,18 @@ module.exports = {
       },
     },
   ],
+  // proxies lambdas when running local dev server
+  // @see https://www.gatsbyjs.org/docs/api-proxy/#advanced-proxying
+  developMiddleware: app => {
+    app.use(
+      "/.netlify/functions/",
+      proxy({
+        target: "http://localhost:9000",
+        pathRewrite: {
+          "/.netlify/functions/": "",
+        },
+      })
+    )
+  },
+
 };
