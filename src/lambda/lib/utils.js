@@ -1,6 +1,10 @@
 import axios from 'axios';
 
-const API_KEY = process.env.AIRTABLE_API_KEY;
+const API_KEY =
+  process.env.NODE_ENV === 'production'
+    ? process.env.PROD_AIRTABLE_API_KEY
+    : process.env.DEV_AIRTABLE_API_KEY;
+
 const BASE = process.env.AIRTABLE_BASE;
 const TABLE = process.env.AIRTABLE_TABLE;
 
