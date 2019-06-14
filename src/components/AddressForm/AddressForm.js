@@ -1,6 +1,8 @@
 import React from 'react';
 import { ErrorMessage, Field, Form, Formik } from 'formik';
+
 import { createCustomerRecord, redirectToCheckout } from '../../common/api';
+import { Button } from '../Button';
 
 const initialValues = {
   email: '',
@@ -22,7 +24,6 @@ const onSubmit = async (values, formikBag) => {
       clientReferenceId: id,
       customerEmail: values.email,
     });
-
   } catch (ex) {
     console.error('Error on form submission', ex);
     // TODO: Display error
@@ -60,14 +61,14 @@ const AddressForm = () => {
             <Field
               type="text"
               name="address1"
-              label="Address 1"
+              label="Street Address"
               autoComplete="address-line1"
               component={Input}
             />
             <Field
               type="text"
               name="address2"
-              label="Address 2"
+              label="Unit / Room Number"
               autoComplete="address-line2"
               component={Input}
             />
@@ -93,9 +94,9 @@ const AddressForm = () => {
               component={Input}
             />
 
-            <button type="submit" disabled={isSubmitting}>
+            <Button type="submit" disabled={isSubmitting}>
               Continue to Payment
-            </button>
+            </Button>
           </Form>
         )}
       </Formik>
