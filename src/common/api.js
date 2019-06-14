@@ -1,4 +1,4 @@
-import { cancelUrl, successUrl, testPlan, prodPlan } from './configs';
+import { cancelUrl, successUrl, stripePlan } from './configs';
 
 export const redirectToCheckout = async ({
   clientReferenceId,
@@ -8,7 +8,7 @@ export const redirectToCheckout = async ({
   const { error } = await stripe.redirectToCheckout({
     items: [
       {
-        plan: process.env.NODE_ENV === 'production' ? prodPlan : testPlan,
+        plan: stripePlan,
         quantity: 1,
       },
     ],
