@@ -14,7 +14,7 @@
     "build:app": "gatsby build",
     "build:lambda": "netlify-lambda build src/lambda",
     "dev": "run-p dev:**",
-    "dev:app": "gatsby develop",
+    "dev:app": "cross-env GATSBY_GRAPHQL_IDE=playground gatsby develop",
     "dev:lambda": "netlify-lambda serve src/lambda --config ./webpack.functions.js",
     "format": "prettier --write \"src/**/*.{js,css,md}\"",
     "test": "echo \"Write tests!\""

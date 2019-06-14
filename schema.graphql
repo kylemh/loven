@@ -571,7 +571,8 @@ type ContentfulHomePage implements Node {
   children: [Node!]!
   internal: Internal!
   callToActionButtonText: String
-  callToAction: contentfulHomePageCallToActionRichTextNode
+  callToAction: contentfulHomePageCallToActionTextNode
+  pageContent: contentfulHomePagePageContentRichTextNode
   contentful_id: String
   createdAt(
     formatString: String
@@ -586,193 +587,8 @@ type ContentfulHomePage implements Node {
     locale: String
   ): Date
   node_locale: String
-  pageContent: contentfulHomePagePageContentRichTextNode
-  childContentfulHomePageCallToActionRichTextNode: contentfulHomePageCallToActionRichTextNode
   childContentfulHomePageCallToActionTextNode: contentfulHomePageCallToActionTextNode
   childContentfulHomePagePageContentRichTextNode: contentfulHomePagePageContentRichTextNode
-}
-
-type contentfulHomePageCallToActionRichTextNode implements Node {
-  id: ID!
-  parent: Node
-  children: [Node!]!
-  internal: Internal!
-  content: [contentfulHomePageCallToActionRichTextNodeContent]
-  nodeType: String
-  @deprecated(reason: "This field is deprecated, please use 'json' instead.")
-  callToAction: String
-  json: JSON
-}
-
-type contentfulHomePageCallToActionRichTextNodeConnection {
-  totalCount: Int!
-  edges: [contentfulHomePageCallToActionRichTextNodeEdge!]!
-  nodes: [contentfulHomePageCallToActionRichTextNode!]!
-  pageInfo: PageInfo!
-  distinct(
-    field: contentfulHomePageCallToActionRichTextNodeFieldsEnum!
-  ): [String!]!
-  group(
-    skip: Int
-    limit: Int
-    field: contentfulHomePageCallToActionRichTextNodeFieldsEnum!
-  ): [contentfulHomePageCallToActionRichTextNodeGroupConnection!]!
-}
-
-type contentfulHomePageCallToActionRichTextNodeContent {
-  content: [contentfulHomePageCallToActionRichTextNodeContentContent]
-  nodeType: String
-}
-
-type contentfulHomePageCallToActionRichTextNodeContentContent {
-  value: String
-  nodeType: String
-}
-
-input contentfulHomePageCallToActionRichTextNodeContentContentFilterInput {
-  value: StringQueryOperatorInput
-  nodeType: StringQueryOperatorInput
-}
-
-input contentfulHomePageCallToActionRichTextNodeContentContentFilterListInput {
-  elemMatch: contentfulHomePageCallToActionRichTextNodeContentContentFilterInput
-}
-
-input contentfulHomePageCallToActionRichTextNodeContentFilterInput {
-  content: contentfulHomePageCallToActionRichTextNodeContentContentFilterListInput
-  nodeType: StringQueryOperatorInput
-}
-
-input contentfulHomePageCallToActionRichTextNodeContentFilterListInput {
-  elemMatch: contentfulHomePageCallToActionRichTextNodeContentFilterInput
-}
-
-type contentfulHomePageCallToActionRichTextNodeEdge {
-  next: contentfulHomePageCallToActionRichTextNode
-  node: contentfulHomePageCallToActionRichTextNode!
-  previous: contentfulHomePageCallToActionRichTextNode
-}
-
-enum contentfulHomePageCallToActionRichTextNodeFieldsEnum {
-  id
-  parent___id
-  parent___parent___id
-  parent___parent___parent___id
-  parent___parent___parent___children
-  parent___parent___children
-  parent___parent___children___id
-  parent___parent___children___children
-  parent___parent___internal___content
-  parent___parent___internal___contentDigest
-  parent___parent___internal___description
-  parent___parent___internal___fieldOwners
-  parent___parent___internal___ignoreType
-  parent___parent___internal___mediaType
-  parent___parent___internal___owner
-  parent___parent___internal___type
-  parent___children
-  parent___children___id
-  parent___children___parent___id
-  parent___children___parent___children
-  parent___children___children
-  parent___children___children___id
-  parent___children___children___children
-  parent___children___internal___content
-  parent___children___internal___contentDigest
-  parent___children___internal___description
-  parent___children___internal___fieldOwners
-  parent___children___internal___ignoreType
-  parent___children___internal___mediaType
-  parent___children___internal___owner
-  parent___children___internal___type
-  parent___internal___content
-  parent___internal___contentDigest
-  parent___internal___description
-  parent___internal___fieldOwners
-  parent___internal___ignoreType
-  parent___internal___mediaType
-  parent___internal___owner
-  parent___internal___type
-  children
-  children___id
-  children___parent___id
-  children___parent___parent___id
-  children___parent___parent___children
-  children___parent___children
-  children___parent___children___id
-  children___parent___children___children
-  children___parent___internal___content
-  children___parent___internal___contentDigest
-  children___parent___internal___description
-  children___parent___internal___fieldOwners
-  children___parent___internal___ignoreType
-  children___parent___internal___mediaType
-  children___parent___internal___owner
-  children___parent___internal___type
-  children___children
-  children___children___id
-  children___children___parent___id
-  children___children___parent___children
-  children___children___children
-  children___children___children___id
-  children___children___children___children
-  children___children___internal___content
-  children___children___internal___contentDigest
-  children___children___internal___description
-  children___children___internal___fieldOwners
-  children___children___internal___ignoreType
-  children___children___internal___mediaType
-  children___children___internal___owner
-  children___children___internal___type
-  children___internal___content
-  children___internal___contentDigest
-  children___internal___description
-  children___internal___fieldOwners
-  children___internal___ignoreType
-  children___internal___mediaType
-  children___internal___owner
-  children___internal___type
-  internal___content
-  internal___contentDigest
-  internal___description
-  internal___fieldOwners
-  internal___ignoreType
-  internal___mediaType
-  internal___owner
-  internal___type
-  content
-  content___content
-  content___content___value
-  content___content___nodeType
-  content___nodeType
-  nodeType
-  callToAction
-  json
-}
-
-input contentfulHomePageCallToActionRichTextNodeFilterInput {
-  id: StringQueryOperatorInput
-  parent: NodeFilterInput
-  children: NodeFilterListInput
-  internal: InternalFilterInput
-  content: contentfulHomePageCallToActionRichTextNodeContentFilterListInput
-  nodeType: StringQueryOperatorInput
-  callToAction: StringQueryOperatorInput
-  json: JSONQueryOperatorInput
-}
-
-type contentfulHomePageCallToActionRichTextNodeGroupConnection {
-  totalCount: Int!
-  edges: [contentfulHomePageCallToActionRichTextNodeEdge!]!
-  nodes: [contentfulHomePageCallToActionRichTextNode!]!
-  pageInfo: PageInfo!
-  field: String!
-  fieldValue: String
-}
-
-input contentfulHomePageCallToActionRichTextNodeSortInput {
-  fields: [contentfulHomePageCallToActionRichTextNodeFieldsEnum]
-  order: [SortOrderEnum] = [ASC]
 }
 
 type contentfulHomePageCallToActionTextNode implements Node {
@@ -1059,18 +875,7 @@ enum ContentfulHomePageFieldsEnum {
   callToAction___internal___mediaType
   callToAction___internal___owner
   callToAction___internal___type
-  callToAction___content
-  callToAction___content___content
-  callToAction___content___content___value
-  callToAction___content___content___nodeType
-  callToAction___content___nodeType
-  callToAction___nodeType
   callToAction___callToAction
-  callToAction___json
-  contentful_id
-  createdAt
-  updatedAt
-  node_locale
   pageContent___id
   pageContent___parent___id
   pageContent___parent___parent___id
@@ -1117,6 +922,10 @@ enum ContentfulHomePageFieldsEnum {
   pageContent___nodeType
   pageContent___pageContent
   pageContent___json
+  contentful_id
+  createdAt
+  updatedAt
+  node_locale
 }
 
 input ContentfulHomePageFilterInput {
@@ -1125,12 +934,12 @@ input ContentfulHomePageFilterInput {
   children: NodeFilterListInput
   internal: InternalFilterInput
   callToActionButtonText: StringQueryOperatorInput
-  callToAction: contentfulHomePageCallToActionRichTextNodeFilterInput
+  callToAction: contentfulHomePageCallToActionTextNodeFilterInput
+  pageContent: contentfulHomePagePageContentRichTextNodeFilterInput
   contentful_id: StringQueryOperatorInput
   createdAt: DateQueryOperatorInput
   updatedAt: DateQueryOperatorInput
   node_locale: StringQueryOperatorInput
-  pageContent: contentfulHomePagePageContentRichTextNodeFilterInput
 }
 
 type ContentfulHomePageGroupConnection {
@@ -3286,7 +3095,6 @@ type Query {
     children: NodeFilterListInput
     internal: InternalFilterInput
     path: StringQueryOperatorInput
-    jsonName: StringQueryOperatorInput
     internalComponentName: StringQueryOperatorInput
     component: StringQueryOperatorInput
     componentChunkName: StringQueryOperatorInput
@@ -3422,12 +3230,12 @@ type Query {
     children: NodeFilterListInput
     internal: InternalFilterInput
     callToActionButtonText: StringQueryOperatorInput
-    callToAction: contentfulHomePageCallToActionRichTextNodeFilterInput
+    callToAction: contentfulHomePageCallToActionTextNodeFilterInput
+    pageContent: contentfulHomePagePageContentRichTextNodeFilterInput
     contentful_id: StringQueryOperatorInput
     createdAt: DateQueryOperatorInput
     updatedAt: DateQueryOperatorInput
     node_locale: StringQueryOperatorInput
-    pageContent: contentfulHomePagePageContentRichTextNodeFilterInput
   ): ContentfulHomePage
   allContentfulHomePage(
     filter: ContentfulHomePageFilterInput
@@ -3435,22 +3243,6 @@ type Query {
     skip: Int
     limit: Int
   ): ContentfulHomePageConnection
-  contentfulHomePageCallToActionRichTextNode(
-    id: StringQueryOperatorInput
-    parent: NodeFilterInput
-    children: NodeFilterListInput
-    internal: InternalFilterInput
-    content: contentfulHomePageCallToActionRichTextNodeContentFilterListInput
-    nodeType: StringQueryOperatorInput
-    callToAction: StringQueryOperatorInput
-    json: JSONQueryOperatorInput
-  ): contentfulHomePageCallToActionRichTextNode
-  allContentfulHomePageCallToActionRichTextNode(
-    filter: contentfulHomePageCallToActionRichTextNodeFilterInput
-    sort: contentfulHomePageCallToActionRichTextNodeSortInput
-    skip: Int
-    limit: Int
-  ): contentfulHomePageCallToActionRichTextNodeConnection
   contentfulHomePageCallToActionTextNode(
     id: StringQueryOperatorInput
     parent: NodeFilterInput
@@ -3723,7 +3515,6 @@ type SitePage implements Node {
   children: [Node!]!
   internal: Internal!
   path: String
-  jsonName: String
   internalComponentName: String
   component: String
   componentChunkName: String
@@ -3840,7 +3631,6 @@ enum SitePageFieldsEnum {
   internal___owner
   internal___type
   path
-  jsonName
   internalComponentName
   component
   componentChunkName
@@ -3895,10 +3685,10 @@ enum SitePageFieldsEnum {
   pluginCreator___pluginOptions___display
   pluginCreator___pluginOptions___icon
   pluginCreator___pluginOptions___google___families
-  pluginCreator___pluginOptions___pathCheck
   pluginCreator___pluginOptions___spaceId
   pluginCreator___pluginOptions___accessToken
   pluginCreator___pluginOptions___downloadLocal
+  pluginCreator___pluginOptions___pathCheck
   pluginCreator___nodeAPIs
   pluginCreator___browserAPIs
   pluginCreator___ssrAPIs
@@ -3929,7 +3719,6 @@ input SitePageFilterInput {
   children: NodeFilterListInput
   internal: InternalFilterInput
   path: StringQueryOperatorInput
-  jsonName: StringQueryOperatorInput
   internalComponentName: StringQueryOperatorInput
   component: StringQueryOperatorInput
   componentChunkName: StringQueryOperatorInput
@@ -4087,10 +3876,10 @@ enum SitePluginFieldsEnum {
   pluginOptions___display
   pluginOptions___icon
   pluginOptions___google___families
-  pluginOptions___pathCheck
   pluginOptions___spaceId
   pluginOptions___accessToken
   pluginOptions___downloadLocal
+  pluginOptions___pathCheck
   nodeAPIs
   browserAPIs
   ssrAPIs
@@ -4216,10 +4005,10 @@ type SitePluginPluginOptions {
   display: String
   icon: String
   google: SitePluginPluginOptionsGoogle
-  pathCheck: Boolean
   spaceId: String
   accessToken: String
   downloadLocal: Boolean
+  pathCheck: Boolean
 }
 
 input SitePluginPluginOptionsFilterInput {
@@ -4232,10 +4021,10 @@ input SitePluginPluginOptionsFilterInput {
   display: StringQueryOperatorInput
   icon: StringQueryOperatorInput
   google: SitePluginPluginOptionsGoogleFilterInput
-  pathCheck: BooleanQueryOperatorInput
   spaceId: StringQueryOperatorInput
   accessToken: StringQueryOperatorInput
   downloadLocal: BooleanQueryOperatorInput
+  pathCheck: BooleanQueryOperatorInput
 }
 
 type SitePluginPluginOptionsGoogle {
