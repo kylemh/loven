@@ -8,6 +8,8 @@
 
 [context.deploy-preview.environment]
   GATSBY_STRIPE_PLAN = "plan_EbzcEa5yCpjaMM" # test plan
+  GATSBY_STRIPE_PUBLIC_KEY = "pk_test_VX8ryA4ab2Bgzr4RF2yeVb2i"
 
 [context.branch-deploy.environment]
   NODE_ENV = "plan_EbzcEa5yCpjaMM"  # test plan
+  GATSBY_STRIPE_PUBLIC_KEY = "pk_test_VX8ryA4ab2Bgzr4RF2yeVb2i"
