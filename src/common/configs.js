@@ -1,5 +1,5 @@
 export const stripePlan =
-  process.env.GATSBY_PROD_PLAN || 'plan_EbzcEa5yCpjaMM';
+  process.env.GATSBY_STRIPE_PLAN || 'plan_EbzcEa5yCpjaMM';
 export const successUrl =
   process.env.GATSBY_SUCCESS_URL || 'https://lovenbakeshop.com/thank_you/';
 export const cancelUrl =
