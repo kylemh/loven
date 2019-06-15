@@ -1,7 +1,6 @@
 import React from 'react';
 
 import { Link } from 'gatsby';
-import Checkout from '../components/Checkout';
 import Container from '../components/Container';
 import Layout from '../components/Layout';
 import SEO from '../components/SEO';
@@ -12,8 +11,6 @@ const Subscribe = () => (
 
     <Container isFullViewportHeight>
       <h1>Subscribe To Bakery Boxes</h1>
-
-      <Checkout />
 
       <br />
 
@@ -32,6 +29,8 @@ const Subscribe = () => (
         or alterations to ingredients at this time. A month may be skipped or
         reallocated if emailed 7 days prior to delivery.
       </p>
+
+      <Link to="/delivery_info">Click here to subscribe</Link>
 
       <Link to="/">Go back to the homepage</Link>
     </Container>

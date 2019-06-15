@@ -1,0 +1,17 @@
+[build]
+  command = "yarn build"
+  functions = "lambda" #  netlify-lambda reads this
+  publish = "public"
+
+[context.production.environment]
+  GATSBY_STRIPE_PLAN = "plan_FA1maWmEMVsFUe" # production plan
+
+[context.deploy-preview.environment]
+  GATSBY_STRIPE_PLAN = "plan_EbzcEa5yCpjaMM" # test plan
+  GATSBY_STRIPE_PUBLIC_KEY = "pk_test_i27dZgga81biOwh7ggQtOg1W"
+  NODE_ENV = "development"
+
+[context.branch-deploy.environment]
+  GATSBY_STRIPE_PLAN = "plan_EbzcEa5yCpjaMM"  # test plan
+  GATSBY_STRIPE_PUBLIC_KEY = "pk_test_i27dZgga81biOwh7ggQtOg1W"
+  NODE_ENV = "development"
