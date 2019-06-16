@@ -57,7 +57,8 @@ typings/
 # gatsby files
 .cache/
 public/
-lambda/
+lambda
+!src/lambda
 
 # Mac files
 .DS_Store
