@@ -138,7 +138,7 @@ export const homePageContentQuery = graphql`
 
   fragment sectionImage on File {
     sharp: childImageSharp {
-      fluid(maxWidth: 550) {
+      fluid {
         ...GatsbyImageSharpFluid_withWebp
       }
     }
