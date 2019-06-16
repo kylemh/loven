@@ -10,7 +10,7 @@
     "stripe"
   ],
   "scripts": {
-    "build": "run-p build:**",
+    "build": "netlify-lambda build src/lambda && gatsby build",
     "build:app": "gatsby build",
     "build:lambda": "netlify-lambda build src/lambda",
     "dev": "run-p dev:**",
