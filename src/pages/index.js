@@ -122,7 +122,7 @@ const IndexPage = ({ data: { mixingBowl, workersPosing, twylaKitchen } }) => (
   </Layout>
 );
 
-export const homePageContentQuery = graphql`
+export const query = graphql`
   {
     mixingBowl: file(relativePath: { eq: "mixing-bowl.jpg" }) {
       ...sectionImage
