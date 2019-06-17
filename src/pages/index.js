@@ -122,7 +122,7 @@ const IndexPage = ({ data: { mixingBowl, workersPosing, twylaKitchen } }) => (
   </Layout>
 );
 
-export const homePageContentQuery = graphql`
+export const query = graphql`
   {
     mixingBowl: file(relativePath: { eq: "mixing-bowl.jpg" }) {
       ...sectionImage
@@ -138,7 +138,7 @@ export const homePageContentQuery = graphql`
 
   fragment sectionImage on File {
     sharp: childImageSharp {
-      fluid(maxWidth: 550) {
+      fluid {
         ...GatsbyImageSharpFluid_withWebp
       }
     }

@@ -4,6 +4,7 @@ import { Link } from 'gatsby';
 import Container from '../components/Container';
 import Layout from '../components/Layout';
 import SEO from '../components/SEO';
+import AddressForm from '../components/AddressForm/AddressForm';
 
 const Subscribe = () => (
   <Layout>
@@ -30,7 +31,7 @@ const Subscribe = () => (
         reallocated if emailed 7 days prior to delivery.
       </p>
 
-      <Link to="/delivery_info">Click here to subscribe</Link>
+      <AddressForm />
 
       <Link to="/">Go back to the homepage</Link>
     </Container>
