@@ -1,3 +1,4 @@
+import axios from 'axios';
 import { cancelUrl, successUrl, stripePlan } from './configs';
 
 export const redirectToCheckout = async ({
@@ -24,13 +25,12 @@ export const redirectToCheckout = async ({
 };
 
 export async function createCustomerRecord(values) {
-  const res = await fetch('/.netlify/functions/addCustomer', {
-    body: JSON.stringify(values),
-    method: 'POST',
-  });
-  const data = await res.json();
-  if (!res.ok) {
+  const { data, status } = await axios.post('/.netlify/functions/addCustomer', values);
+
+  if (status !== 200) {
+    console.error('Error status', status);
     throw new Error(data.error.message);
   }
+
   return data;
 }
