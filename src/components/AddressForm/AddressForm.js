@@ -18,14 +18,15 @@ const initialValues = {
 const onSubmit = async (values, formikBag) => {
   try {
     const { id } = await createCustomerRecord(values);
+
     formikBag.setSubmitting(false);
 
     await redirectToCheckout({
       clientReferenceId: id,
       customerEmail: values.email,
     });
-  } catch (ex) {
-    console.error('Error on form submission', ex);
+  } catch (error) {
+    console.error('Error on form submission', error);
     // TODO: Display error
     formikBag.setSubmitting(false);
   }
