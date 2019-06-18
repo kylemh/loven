@@ -32,6 +32,7 @@ const validationSchema = Yup.object().shape({
     .nullable()
     .required(validationErrorMessages.required)
     .test('zipcode', validationErrorMessages.zipcode, isValidZipcode),
+  specialDeliveryInstructions: Yup.string().nullable(),
 });
 
 const initialValues = {
@@ -42,10 +43,10 @@ const initialValues = {
   address2: '',
   city: '',
   zipcode: '',
+  specialDeliveryInstructions: '',
 };
 
 const onSubmit = async (values, formikBag) => {
-  console.log('values', values);
   try {
     const { id } = await createCustomerRecord(values);
 
@@ -57,7 +58,7 @@ const onSubmit = async (values, formikBag) => {
     });
   } catch (error) {
     console.error('Error on form submission', error);
-    // TODO: Display error
+
     formikBag.setSubmitting(false);
   }
 };
@@ -139,6 +140,14 @@ const AddressForm = () => {
                 disabled={isSubmitting}
               />
             </div>
+
+            <Field
+              type="text"
+              name="specialDeliveryInstructions"
+              label="Special Delivery Instructions"
+              component={Input}
+              disabled={isSubmitting}
+            />
 
             <div className={styles.buttonContainer}>
               <Button type="submit" disabled={isSubmitting} theme="secondary">
