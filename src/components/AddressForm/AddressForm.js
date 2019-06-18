@@ -141,13 +141,15 @@ const AddressForm = () => {
               />
             </div>
 
-            <Field
-              type="text"
-              name="specialDeliveryInstructions"
-              label="Special Delivery Instructions"
-              component={Input}
-              disabled={isSubmitting}
-            />
+            <div className={styles.ungroupedInput}>
+              <Field
+                type="text"
+                name="specialDeliveryInstructions"
+                label="Special Delivery Instructions"
+                component={Input}
+                disabled={isSubmitting}
+              />
+            </div>
 
             <div className={styles.buttonContainer}>
               <Button type="submit" disabled={isSubmitting} theme="secondary">
