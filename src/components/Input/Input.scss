@@ -1,0 +1,46 @@
+@import '../../styles/variables.scss';
+
+.field {
+  margin: 1rem;
+}
+
+.Input {
+  border: 1px solid $lightGray;
+  border-radius: 3px;
+  font-size: 1.125rem;
+  margin-top: 0.25rem;
+  margin-bottom: 1rem;
+  padding: 0.5rem;
+  min-width: 200px;
+}
+
+.Input:focus {
+  border-color: $primaryColor;
+  box-shadow: 0 0 1px 1px $primaryColor;
+  outline: none;
+}
+
+.Input:disabled {
+  opacity: 0.6;
+}
+
+.Input:disabled:hover {
+  cursor: not-allowed;
+}
+
+.errorMessage {
+  /* Alert's border is only 1px - not 2px (account for Input's left and right border) */
+  max-width: calc(inherit + 2px);
+}
+
+.valid {
+  border-color: $successDeep;
+  box-shadow: 0 0 1px 1px $successDeep;
+  outline: none;
+}
+
+.invalid {
+  border-color: $errorDeep;
+  box-shadow: 0 0 1px 1px $errorDeep;
+  outline: none;
+}
