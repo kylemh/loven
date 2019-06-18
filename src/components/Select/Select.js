@@ -13,13 +13,16 @@ import {
 import { ErrorMessage } from 'formik';
 import Alert from '../Alert';
 import Label from '../Label';
-import styles from './Select.scss';
+import styles from './Select.module.scss';
 
 class Select extends React.Component {
   static propTypes = {
     field: shape({
       name: string.isRequired,
-      value: oneOfType([string.isRequired, arrayOf(string.isRequired).isRequired]),
+      value: oneOfType([
+        string.isRequired,
+        arrayOf(string.isRequired).isRequired,
+      ]),
     }).isRequired,
     form: shape({
       // TODO: Resolve why multiselects can end up with touched: { key: array }
@@ -34,8 +37,9 @@ class Select extends React.Component {
     isLabelHidden: bool,
     isMulti: bool,
     label: string.isRequired,
-    options: arrayOf(shape({ label: string.isRequired, value: string.isRequired }).isRequired)
-      .isRequired,
+    options: arrayOf(
+      shape({ label: string.isRequired, value: string.isRequired }).isRequired
+    ).isRequired,
   };
 
   static defaultProps = {
@@ -115,7 +119,9 @@ class Select extends React.Component {
     const hasErrors = Boolean(errors[name]);
 
     // handlers and value depend on whether or not select allows for multiple selections.
-    const value = isMulti ? this.getValueFromMulti() : this.getValueFromSingle();
+    const value = isMulti
+      ? this.getValueFromMulti()
+      : this.getValueFromSingle();
     const onChangeHandler = isMulti ? this.onChangeMulti : this.onChangeSingle;
 
     return (

@@ -2,7 +2,7 @@ import React from 'react';
 import { node, string, bool } from 'prop-types';
 import classNames from 'classnames';
 import ScreenReaderOnly from '../ScreenReaderOnly';
-import styles from './Label.scss';
+import styles from './Label.module.scss';
 
 Label.propTypes = {
   children: node.isRequired,
@@ -28,7 +28,11 @@ function Label({ children, className, isHidden, ...props }) {
     </label>
   );
 
-  return isHidden ? <ScreenReaderOnly>{TheLabel}</ScreenReaderOnly> : <>{TheLabel}</>;
+  return isHidden ? (
+    <ScreenReaderOnly>{TheLabel}</ScreenReaderOnly>
+  ) : (
+    <>{TheLabel}</>
+  );
 }
 
 export default Label;

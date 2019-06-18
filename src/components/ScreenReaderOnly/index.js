@@ -1,1 +1,3 @@
-export { default as ScreenReaderOnly } from './ScreenReaderOnly';
+import ScreenReaderOnly from './ScreenReaderOnly';
+
+export default ScreenReaderOnly;

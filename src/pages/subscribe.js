@@ -1,41 +1,58 @@
-import React from 'react';
-
+import React, { useState } from 'react';
 import { Link } from 'gatsby';
+
 import Container from '../components/Container';
+import { Button } from '../components/Button';
 import Layout from '../components/Layout';
 import SEO from '../components/SEO';
 import AddressForm from '../components/AddressForm/AddressForm';
+import styles from './styles/subscribe.scss';
 
-const Subscribe = () => (
-  <Layout>
-    <SEO title="Subscribe To Bakery Boxes" />
+const Subscribe = () => {
+  const [isFormOpen, setFormExistence] = useState(false);
 
-    <Container isFullViewportHeight>
-      <h1>Subscribe To Bakery Boxes</h1>
+  const renderForm = () => setFormExistence(true);
 
-      <br />
+  return (
+    <Layout>
+      <SEO title="Subscribe To Bakery Boxes" />
 
-      <p>
-        Fresh, seasonal pastries made from local ingredients delivered to your
-        door the first Sunday of every month. A L'Oven Bakeshop Bakery Box
-        subscription will get you hand-delivered, delicious pastries while
-        giving people with intellectual and developmental disabilities job
-        training and employment. Each box contains a unique, seasonal pastry and
-        educational information on different exceptionalities we work with in
-        our kitchen.
-      </p>
+      <Container isFullViewportHeight>
+        <h1>Subscribe To Bakery Boxes</h1>
 
-      <p>
-        Subscriptions are $30 a month, billed monthly. Sorry, no substitutions
-        or alterations to ingredients at this time. A month may be skipped or
-        reallocated if emailed 7 days prior to delivery.
-      </p>
+        <br />
 
-      <AddressForm />
+        <p>
+          Delicious and fresh baker's choice treats made from local ingredients
+          delivered to your door the first Sunday of every month. Each box
+          contains a unique, seasonal pastry and educational information on
+          different exceptionalities we work with in our kitchen.
+        </p>
 
-      <Link to="/">Go back to the homepage</Link>
-    </Container>
-  </Layout>
-);
+        <p>
+          Subscriptions are $30 a month, billed monthly. Some, but not all, may
+          contain nuts or alcohol. Sorry, no substitutions or alterations to
+          ingredients at this time. A month may be skipped or reallocated if
+          emailed 7 days prior to delivery. Subscriptions automatically renew.
+          You may cancel at any time.
+        </p>
+
+        <p className={styles.oddParagraph}>
+          Current delivery locations solely include:
+          <br />
+          <b>New Orleans</b>, <b>Metairie</b>, and <b>Gretna</b>.
+        </p>
+
+        {!isFormOpen ? (
+          <Button onClick={renderForm}>Subscribe Now</Button>
+        ) : (
+          <AddressForm />
+        )}
+
+        <Link to="/">Go back to the homepage</Link>
+      </Container>
+    </Layout>
+  );
+};
 
 export default Subscribe;

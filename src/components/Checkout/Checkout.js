@@ -11,10 +11,7 @@ class Checkout extends Component {
     const { error } = await this.stripe.redirectToCheckout({
       items: [
         {
-          plan:
-            process.env.NODE_ENV === 'production'
-              ? 'plan_FA1maWmEMVsFUe'
-              : 'plan_EbzcEa5yCpjaMM',
+          plan: process.env.GATSBY_STRIPE_PLAN,
           quantity: 1,
         },
       ],

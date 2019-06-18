@@ -1,8 +1,9 @@
 import React from 'react';
-import { ErrorMessage, Field, Form, Formik } from 'formik';
+import { Field, Form, Formik } from 'formik';
 
 import { createCustomerRecord, redirectToCheckout } from '../../common/api';
 import { Button } from '../Button';
+import Input from '../Input';
 
 const initialValues = {
   email: '',
@@ -104,26 +105,5 @@ const AddressForm = () => {
     </div>
   );
 };
-
-const Input = ({
-  field: { name, value, ...field },
-  label,
-  id,
-  type,
-  ...props
-}) => (
-  <div>
-    <label>{label}</label>
-    <input
-      {...field}
-      {...props}
-      type={type}
-      name={name}
-      id={name}
-      value={value}
-    />
-    <ErrorMessage name={name} component="div" />
-  </div>
-);
 
 export default AddressForm;

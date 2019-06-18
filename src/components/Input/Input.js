@@ -1,10 +1,19 @@
 import React from 'react';
-import { shape, string, number, object, objectOf, oneOfType, bool, oneOf } from 'prop-types';
+import {
+  shape,
+  string,
+  number,
+  object,
+  objectOf,
+  oneOfType,
+  bool,
+  oneOf,
+} from 'prop-types';
 import classNames from 'classnames';
 import { ErrorMessage } from 'formik';
 import Alert from '../Alert';
 import Label from '../Label';
-import styles from './Input.scss';
+import styles from './Input.module.scss';
 
 Input.propTypes = {
   field: shape({
@@ -99,7 +108,11 @@ function Input({
       </div>
 
       {isLabelAfterInput && (
-        <Label for={name} isHidden={isLabelHidden} className={styles.labelAfterInput}>
+        <Label
+          for={name}
+          isHidden={isLabelHidden}
+          className={styles.labelAfterInput}
+        >
           {label}
         </Label>
       )}

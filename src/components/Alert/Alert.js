@@ -2,7 +2,7 @@ import React from 'react';
 import { bool, func, node, oneOf, string } from 'prop-types';
 import classNames from 'classnames';
 import ScreenReaderOnly from '../ScreenReaderOnly';
-import styles from './Alert.scss';
+import styles from './Alert.module.scss';
 
 Alert.propTypes = {
   children: node.isRequired,
@@ -31,7 +31,11 @@ function Alert({ children, className, isOpen, onToggle, type }) {
       role="alert"
     >
       {Boolean(onToggle) && isOpen ? (
-        <button type="button" className={styles.alertCloseButton} onClick={onToggle}>
+        <button
+          type="button"
+          className={styles.alertCloseButton}
+          onClick={onToggle}
+        >
           <ScreenReaderOnly>Close Alert</ScreenReaderOnly>
           <span>&times;</span>
         </button>

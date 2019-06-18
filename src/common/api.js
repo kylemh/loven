@@ -25,7 +25,10 @@ export const redirectToCheckout = async ({
 };
 
 export async function createCustomerRecord(values) {
-  const { data, status } = await axios.post('/.netlify/functions/addCustomer', values);
+  const { data, status } = await axios.post(
+    '/.netlify/functions/addCustomer',
+    values
+  );
 
   if (status !== 200) {
     console.error('Error status', status);

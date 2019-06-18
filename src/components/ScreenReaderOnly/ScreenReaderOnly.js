@@ -1,6 +1,6 @@
 import React from 'react';
 import { node } from 'prop-types';
-import styles from './ScreenReaderOnly.scss';
+import styles from './ScreenReaderOnly.module.scss';
 
 ScreenReaderOnly.propTypes = {
   children: node.isRequired,
