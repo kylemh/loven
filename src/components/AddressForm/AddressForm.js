@@ -6,6 +6,7 @@ import { createCustomerRecord, redirectToCheckout } from '../../common/api';
 import { validationErrorMessages } from '../../common/constants';
 import { isValidZipcode } from '../../common/utils';
 import { Button } from '../Button';
+import LoadingSpinner from '../LoadingSpinner';
 import Input from '../Input';
 import styles from './AddressForm.module.scss';
 
@@ -141,7 +142,7 @@ const AddressForm = () => {
 
             <div className={styles.buttonContainer}>
               <Button type="submit" disabled={isSubmitting} theme="secondary">
-                Continue to Payment
+                {isSubmitting ? <LoadingSpinner /> : 'Continue to Payment'}
               </Button>
             </div>
           </Form>
