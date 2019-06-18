@@ -6,7 +6,7 @@ import { Button } from '../components/Button';
 import Layout from '../components/Layout';
 import SEO from '../components/SEO';
 import AddressForm from '../components/AddressForm/AddressForm';
-import styles from './styles/subscribe.scss';
+import styles from '../styles/pages/subscribe.module.scss';
 
 const Subscribe = () => {
   const [isFormOpen, setFormExistence] = useState(false);
@@ -38,13 +38,18 @@ const Subscribe = () => {
         </p>
 
         <p className={styles.oddParagraph}>
-          Current delivery locations solely include:
-          <br />
-          <b>New Orleans</b>, <b>Metairie</b>, and <b>Gretna</b>.
+          Current delivery locations include <b>New Orleans</b>, <b>Metairie</b>
+          , and <b>Gretna</b>.
         </p>
 
         {!isFormOpen ? (
-          <Button onClick={renderForm}>Subscribe Now</Button>
+          <Button
+            className={styles.showFormButton}
+            onClick={renderForm}
+            theme="secondary"
+          >
+            Subscribe Now
+          </Button>
         ) : (
           <AddressForm />
         )}

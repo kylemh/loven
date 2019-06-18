@@ -2,6 +2,14 @@
 
 .field {
   margin: 1rem;
+  width: 100%;
+}
+
+.feedbackGrouping {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: space-between;
 }
 
 .Input {
@@ -12,6 +20,7 @@
   margin-bottom: 1rem;
   padding: 0.5rem;
   min-width: 200px;
+  width: 100%;
 }
 
 .Input:focus {
@@ -29,8 +38,7 @@
 }
 
 .errorMessage {
-  /* Alert's border is only 1px - not 2px (account for Input's left and right border) */
-  max-width: calc(inherit + 2px);
+  width: 100%;
 }
 
 .valid {

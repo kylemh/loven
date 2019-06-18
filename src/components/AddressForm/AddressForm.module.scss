@@ -1,0 +1,24 @@
+.ungroupedInput {
+  display: flex;
+  align-items: center;
+  width: 100%;
+}
+
+.fieldGrouping {
+  display: flex;
+  flex-wrap: nowrap;
+  align-items: center;
+  justify-content: space-around;
+
+  @media screen and (max-width: 500px) {
+    flex-wrap: wrap;
+  }
+}
+
+.buttonContainer {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  margin: 1rem 0 3rem;
+}

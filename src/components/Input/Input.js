@@ -83,7 +83,7 @@ function Input({
         </Label>
       )}
 
-      <div className={styles.inputFeedbackGrouping}>
+      <div className={styles.feedbackGrouping}>
         <input
           {...field}
           {...props}

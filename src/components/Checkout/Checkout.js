@@ -25,11 +25,7 @@ class Checkout extends Component {
   };
 
   render() {
-    return (
-      <Button onClick={this.redirectToCheckout} theme="secondary">
-        Checkout
-      </Button>
-    );
+    return <Button onClick={this.redirectToCheckout}>Checkout</Button>;
   }
 }
 
