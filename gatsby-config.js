@@ -52,6 +52,27 @@ module.exports = {
         downloadLocal: true,
       },
     },
+    {
+      resolve: `gatsby-plugin-google-analytics`,
+      options: {
+        trackingId: "UA-89189905-2",
+
+        // Avoids sending pageview hits from custom paths
+        // exclude: ["/preview/**", "/do-not-track/me/too/"],
+
+        // Enables Google Optimize using your container Id
+        // optimizeId: "YOUR_GOOGLE_OPTIMIZE_TRACKING_ID",
+
+        // Enables Google Optimize Experiment ID
+        // experimentId: "YOUR_GOOGLE_EXPERIMENT_ID",
+
+        // Set Variation ID. 0 for original 1,2,3....
+        // variationId: "YOUR_GOOGLE_OPTIMIZE_VARIATION_ID",
+
+        // Define the host for the cookies which Google Analytics sets
+        cookieDomain: "lovenbakeshop.com",
+      },
+    },
   ],
   // proxies lambdas when running local dev server
   // @see https://www.gatsbyjs.org/docs/api-proxy/#advanced-proxying
