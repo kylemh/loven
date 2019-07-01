@@ -5573,10 +5573,10 @@ gatsby-source-contentful@^2.1.2:
     lodash "^4.17.10"
     qs "^6.4.0"
 
-gatsby-source-filesystem@^2.1.0:
-  version "2.1.0"
-  resolved "https://registry.yarnpkg.com/gatsby-source-filesystem/-/gatsby-source-filesystem-2.1.0.tgz#221dcd711f093fae700bb78d5d5c3854d051f36b"
-  integrity sha512-XBtu9eY7xtQB7PnGtEJ3k2C7yRjYuwvP25fcdq22zWxxWgvXdA70bjO/o23X6G1ZO3r6rO8b6RZKyHBiUfIVlw==
+gatsby-source-filesystem@^2.1.0, gatsby-source-filesystem@^2.1.1:
+  version "2.1.1"
+  resolved "https://registry.yarnpkg.com/gatsby-source-filesystem/-/gatsby-source-filesystem-2.1.1.tgz#5f19c527b4b6c43a9f46da8be5b9cc15cb142787"
+  integrity sha512-B01of7+bvpyaJz6uF4mM/kVfZrkxB28kfg+csHE9Ro8w+4+qGAFG/HKYGOCQxeKNL/yI6Uw8KeKLMW14KVD0UA==
   dependencies:
     "@babel/runtime" "^7.0.0"
     better-queue "^3.8.7"
@@ -7323,15 +7323,6 @@ joi@^13.4.0:
   integrity sha512-xuY5VkHfeOYK3Hdi91ulocfuFopwgbSORmIwzcwHKESQhC7w1kD5jaVSPnqDxS2I8t3RZ9omCKAxNwXN5zG1/Q==
   dependencies:
     hoek "5.x.x"
-    isemail "3.x.x"
-    topo "3.x.x"
-
-joi@^14.0.0:
-  version "14.3.1"
-  resolved "https://registry.yarnpkg.com/joi/-/joi-14.3.1.tgz#164a262ec0b855466e0c35eea2a885ae8b6c703c"
-  integrity sha512-LQDdM+pkOrpAn4Lp+neNIFV3axv1Vna3j38bisbQhETPMANYRbFJFUyOZcOClYvM/hppMhGWuKSFEK9vjrB+bQ==
-  dependencies:
-    hoek "6.x.x"
     isemail "3.x.x"
     topo "3.x.x"
 
