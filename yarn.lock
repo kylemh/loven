@@ -5375,10 +5375,10 @@ functional-red-black-tree@^1.0.1:
   resolved "https://registry.yarnpkg.com/functional-red-black-tree/-/functional-red-black-tree-1.0.1.tgz#1b0ab3bd553b2a0d6399d29c0e3ea0b252078327"
   integrity sha1-GwqzvVU7Kg1jmdKcDj6gslIHgyc=
 
-gatsby-background-image@^0.7.3:
-  version "0.7.3"
-  resolved "https://registry.yarnpkg.com/gatsby-background-image/-/gatsby-background-image-0.7.3.tgz#92d54698dcd5775f4207501cffc5d95ebb97da1b"
-  integrity sha512-qDkYeIffDAMBXOG/AVXZeUjsh4OanK2xHCb5aaydtbxA1z42EbK5aR2HR2Zq5P/epP7EDlMZJfDckTw2I37qTA==
+gatsby-background-image@^0.7.4:
+  version "0.7.4"
+  resolved "https://registry.yarnpkg.com/gatsby-background-image/-/gatsby-background-image-0.7.4.tgz#e9fef62a8165e021961f630f198400fde036f5fe"
+  integrity sha512-lUWdC02E77yg9xqnPE/nSyBOm/nXVJSXKm0Cz/ZyRrpM/A15BZN4BDmB06ZbENSUMBHejNWwIneyMUocB92ojw==
   dependencies:
     "@babel/runtime" "^7.4.5"
     global "^4.4.0"
@@ -5589,10 +5589,10 @@ gatsby-source-contentful@^2.1.2:
     lodash "^4.17.10"
     qs "^6.4.0"
 
-gatsby-source-filesystem@^2.1.0:
-  version "2.1.0"
-  resolved "https://registry.yarnpkg.com/gatsby-source-filesystem/-/gatsby-source-filesystem-2.1.0.tgz#221dcd711f093fae700bb78d5d5c3854d051f36b"
-  integrity sha512-XBtu9eY7xtQB7PnGtEJ3k2C7yRjYuwvP25fcdq22zWxxWgvXdA70bjO/o23X6G1ZO3r6rO8b6RZKyHBiUfIVlw==
+gatsby-source-filesystem@^2.1.0, gatsby-source-filesystem@^2.1.1:
+  version "2.1.1"
+  resolved "https://registry.yarnpkg.com/gatsby-source-filesystem/-/gatsby-source-filesystem-2.1.1.tgz#5f19c527b4b6c43a9f46da8be5b9cc15cb142787"
+  integrity sha512-B01of7+bvpyaJz6uF4mM/kVfZrkxB28kfg+csHE9Ro8w+4+qGAFG/HKYGOCQxeKNL/yI6Uw8KeKLMW14KVD0UA==
   dependencies:
     "@babel/runtime" "^7.0.0"
     better-queue "^3.8.7"
@@ -5911,21 +5911,21 @@ global-prefix@^1.0.1:
     is-windows "^1.0.1"
     which "^1.2.14"
 
-global@^4.3.0, global@~4.3.0:
-  version "4.3.2"
-  resolved "https://registry.yarnpkg.com/global/-/global-4.3.2.tgz#e76989268a6c74c38908b1305b10fc0e394e9d0f"
-  integrity sha1-52mJJopsdMOJCLEwWxD8DjlOnQ8=
-  dependencies:
-    min-document "^2.19.0"
-    process "~0.5.1"
-
-global@^4.4.0:
+global@^4.3.0, global@^4.4.0:
   version "4.4.0"
   resolved "https://registry.yarnpkg.com/global/-/global-4.4.0.tgz#3e7b105179006a323ed71aafca3e9c57a5cc6406"
   integrity sha512-wv/LAoHdRE3BeTGz53FAamhGlPLhlssK45usmGFThIi4XqnBmjKQ16u+RNbP7WvigRZDxUsM0J3gcQ5yicaL0w==
   dependencies:
     min-document "^2.19.0"
     process "^0.11.10"
+
+global@~4.3.0:
+  version "4.3.2"
+  resolved "https://registry.yarnpkg.com/global/-/global-4.3.2.tgz#e76989268a6c74c38908b1305b10fc0e394e9d0f"
+  integrity sha1-52mJJopsdMOJCLEwWxD8DjlOnQ8=
+  dependencies:
+    min-document "^2.19.0"
+    process "~0.5.1"
 
 globals@^11.1.0:
   version "11.9.0"
