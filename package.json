@@ -36,7 +36,7 @@
     "gatsby-plugin-sharp": "^2.2.9",
     "gatsby-plugin-stripe": "^1.2.2",
     "gatsby-plugin-web-font-loader": "^1.0.4",
-    "gatsby-source-contentful": "^2.1.15",
+    "gatsby-source-contentful": "^2.1.17",
     "gatsby-source-filesystem": "^2.1.6",
     "gatsby-transformer-sharp": "^2.2.4",
     "prop-types": "^15.7.2",
