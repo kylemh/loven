@@ -50,7 +50,7 @@
     "cross-env": "^5.2.0",
     "dotenv": "^8.0.0",
     "dotenv-webpack": "^1.7.0",
-    "gatsby-plugin-sass": "^2.1.4",
+    "gatsby-plugin-sass": "^2.1.6",
     "http-proxy-middleware": "^0.19.1",
     "netlify-lambda": "^1.5.1",
     "node-sass": "^4.12.0",
