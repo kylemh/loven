@@ -1,0 +1,9 @@
+pull_request_rules:
+  - name: automatic merge on CI success and review
+    conditions:
+      - base=master
+      - status-success=deploy/netlify
+      - status-success=Netlify / Mixed content
+    actions:
+      merge:
+        method: merge
