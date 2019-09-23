@@ -3,7 +3,7 @@ pull_request_rules:
     conditions:
       - base=master
       - status-success=deploy/netlify
-      - status-success=Netlify / Mixed content
+      - status-success=Mixed content
     actions:
       merge:
         method: merge
