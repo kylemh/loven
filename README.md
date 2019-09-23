@@ -1,11 +1,11 @@
 # L'oven Bakeshop
 
-<center>
-  <img src="./src/images/loven-logo.svg" width="200" height="200" />
+<img src="./src/images/loven-logo.svg" width="200" height="200" />
+  
+<br />
 
 [![Netlify Status](https://api.netlify.com/api/v1/badges/101c6f08-2bb7-4405-8b31-23f8f4746913/deploy-status)](https://app.netlify.com/sites/loven-bakeshop/deploys)
-
-</center>
+![Mergify Enablement Status](https://img.shields.io/endpoint.svg?url=https://gh.mergify.io/badges/kylemh/loven&style=flat)
 
 ## 🚀 Quick start
 
