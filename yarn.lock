@@ -3603,15 +3603,15 @@ contentful-batch-libs@^9.0.0:
     lodash "^4.0.1"
     moment "^2.18.1"
 
-contentful-import@^7.5.1:
-  version "7.5.1"
-  resolved "https://registry.yarnpkg.com/contentful-import/-/contentful-import-7.5.1.tgz#06bc6635964680c41cd48c04ed092fc22eca69bc"
-  integrity sha512-d8vqBxdmlJm9pA1Pav6gG3deFQClHLIO6W2/D4b5zFZPtD1PzwElR1ZssWG6+smVDY7GvP1M6U4ErmA27qdMHg==
+contentful-import@^7.6.0:
+  version "7.6.0"
+  resolved "https://registry.yarnpkg.com/contentful-import/-/contentful-import-7.6.0.tgz#6c77dc302a7c8604dca1310fb674cc2a341b7f36"
+  integrity sha512-JbqkRB4Nrjoe62nj6vdIGnD7uVrNJVhtbYyTumbsaD056KP2Hp+LFtoXKV9Qctzi6CLJMFsjJ1SFHdhAAd7c+g==
   dependencies:
     bluebird "^3.5.1"
     cli-table3 "^0.5.1"
     contentful-batch-libs "^9.0.0"
-    contentful-management "^5.9.0"
+    contentful-management "^5.11.0"
     echo-cli "^1.0.8"
     joi "^13.4.0"
     listr "^0.14.1"
@@ -3621,13 +3621,13 @@ contentful-import@^7.5.1:
     moment "^2.22.2"
     yargs "^12.0.1"
 
-contentful-management@^5.9.0:
-  version "5.9.0"
-  resolved "https://registry.yarnpkg.com/contentful-management/-/contentful-management-5.9.0.tgz#3c83b06941eaecf672f35f980bc36883931667e7"
-  integrity sha512-VbX8IJydvTnvoVu2+cL1KTAnfVCenPTjYruCVu/cg9Lyn1TXR/vYJY0mGZGif9stQgfFsmBwWuF5R4PX3Bjkqw==
+contentful-management@^5.11.0:
+  version "5.11.2"
+  resolved "https://registry.yarnpkg.com/contentful-management/-/contentful-management-5.11.2.tgz#3a2cb17292acf922f365471618f559ade0af6c97"
+  integrity sha512-ey6OlAgDZlNn4d9bE4O6a0zZ/13qNHqxE6kkBHBkTUVdtrAS5lIaujmrUpyKgdKZAubL3OJJjGrx4jS1dZMBDQ==
   dependencies:
     axios "^0.19.0"
-    contentful-sdk-core "^6.3.6"
+    contentful-sdk-core "^6.4.0"
     lodash "^4.17.11"
 
 contentful-resolve-response@^1.1.4:
@@ -3645,10 +3645,10 @@ contentful-sdk-core@^6.0.1:
     lodash "^4.17.10"
     qs "^6.5.2"
 
-contentful-sdk-core@^6.3.6:
-  version "6.3.6"
-  resolved "https://registry.yarnpkg.com/contentful-sdk-core/-/contentful-sdk-core-6.3.6.tgz#b8b65d76c26482da7dc0a0803c2245a22e2e5b49"
-  integrity sha512-QUHrnzBXzJmLD68apaAQYy0BaTtbfmPwZvPk2hJ3uTzjiR0rlFC7qHxL/aN4rBx8ahHqxJ6EGgmoGmcjBYxe5A==
+contentful-sdk-core@^6.4.0:
+  version "6.4.0"
+  resolved "https://registry.yarnpkg.com/contentful-sdk-core/-/contentful-sdk-core-6.4.0.tgz#3b42991ae9084baf1bc5d01c61cb54441f740803"
+  integrity sha512-UvYQ/Wrt5EntlMSBbgqgvKfTBRzf6fIT2p5Wp7bsnA3/KLEiYcYd/2qhUKw4x9nfp+0G8B1s4TpDwxV0oymBiA==
   dependencies:
     lodash "^4.17.10"
     qs "^6.5.2"
